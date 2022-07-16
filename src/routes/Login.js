@@ -4,8 +4,8 @@ import {Container, PasswordInput, Card,
         Center,
         TextInput,
         Button,
-        Image} from '@mantine/core';
-import { Navigate } from 'react-router-dom';
+        Image,
+        Anchor} from '@mantine/core';
 
 function Login() {
     const [user, setUser] = useState('');
@@ -84,6 +84,14 @@ function Login() {
                 style={{marginBottom: 10}}
                 >
                     {error.password}
+                </Text>
+
+                <Text color="dimmed" size="sm" align="center" mt={5}>
+                    Do not have an account yet?{' '}
+                    <Anchor href="#" size="sm">
+                        {/* need to add route to register here */}
+                        Register here
+                    </Anchor>
                 </Text>
                 
                 <Center>
