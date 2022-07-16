@@ -6,7 +6,6 @@ import {Container, PasswordInput, Card,
         Button,
         Image,
         Anchor} from '@mantine/core';
-import { Navigate } from 'react-router-dom';
 
 function Login() {
     const [user, setUser] = useState('');

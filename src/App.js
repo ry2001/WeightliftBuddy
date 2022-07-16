@@ -8,6 +8,7 @@ import Settings from "./routes/Settings";
 import Profile from "./routes/Profile";
 import History from "./routes/History";
 import Login from "./routes/Login";
+import Register from "./routes/Register";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/createactivity" element={<CreateActivity />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
         </Routes>
         <BottomNavbar />
