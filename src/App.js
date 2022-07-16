@@ -7,6 +7,7 @@ import CreateActivity from "./routes/CreateActivity";
 import Settings from "./routes/Settings";
 import Profile from "./routes/Profile";
 import History from "./routes/History";
+import Login from "./routes/Login";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/history" element={<History/>} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/createactivity" element={<CreateActivity />} />
+          <Route path="/login" element={<Login />} />
 
         </Routes>
         <BottomNavbar />
