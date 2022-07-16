@@ -10,14 +10,7 @@ import Home from './routes/Home';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <Routes>
-          <Route>
-          <Route path="/" element={<App />} />
-          <Route path="/home" element={<Home />} />
-  
-            
-          </Route>
-        </Routes>
+  <App/>
     
     </BrowserRouter>
 );
