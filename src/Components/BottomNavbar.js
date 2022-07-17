@@ -19,6 +19,8 @@ function BottomNavbar() {
             <Link to="/createactivity"> <Button> Create Activity</Button></Link>
             <Link to="/settings"> <Button> Settings</Button></Link>
             <Link to="/profile"> <Button> Profile</Button></Link>
+            <Link to="/login"> <Button> Login</Button></Link>
+            <Link to="/register"> <Button> Register</Button></Link>
               
             </Footer>
           }  >
