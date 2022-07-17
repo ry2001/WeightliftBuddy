@@ -9,17 +9,17 @@ import Profile from "./routes/Profile";
 import History from "./routes/History";
 import Login from "./routes/Login";
 import Register from "./routes/Register";
+import About from "./routes/About";
+import Display from "./routes/Display";
+import Help from "./routes/Help";
 
 
 function App() {
   
     return (
         <>
-       
 
-      
-      <Routes>
-         
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />}/>
@@ -28,8 +28,11 @@ function App() {
           <Route path="/createactivity" element={<CreateActivity />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
+          <Route path="/about" element={<About />} />
+          <Route path="/display" element={<Display />} />
+          <Route path="/help" element={<Help />} />
         </Routes>
+
         <BottomNavbar />
         
         </>
