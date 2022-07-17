@@ -1,0 +1,53 @@
+
+
+.homeTopButtonsContainer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    border: solid black 0.2rem;
+}
+
+.homeTopButtons{
+    background-color: transparent;
+    color:black;
+}
+
+.homeInfoContainer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.homeInfoStack{
+    min-width: min-content;
+    width: 18rem;
+
+}
+
+.homeChartContainer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    border: solid black 0.2rem;
+}
+
+.homeRecentContainer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.homeRecentIndivContainer{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    border: solid black 0.2rem;
+    padding: 0.5rem;
+
+}
+
+
+.backgroundCheck {
+    background-color: aqua;
+}

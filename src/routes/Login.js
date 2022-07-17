@@ -88,7 +88,7 @@ function Login() {
 
                 <Text color="dimmed" size="sm" align="center" mt={5}>
                     Do not have an account yet?{' '}
-                    <Anchor href="#" size="sm">
+                    <Anchor href="/register" size="sm">
                         {/* need to add route to register here */}
                         Register here
                     </Anchor>
