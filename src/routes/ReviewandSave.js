@@ -4,13 +4,11 @@ import { Container, Grid, Text, Stack, Title, Divider, Center, Image, TextInput,
 import styles from './styles.module.css';
 import { Link} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
-import CreateSet from "../Components/CreateSet";
 
 
 function ReviewandSave() {
 
     
-    const [reviewSets, setReviewSets] = useState("")
     const [inputList, setInputList] = useState([{ weight: "", reps: "" }]);
 
     const handleInputChange = (e, index) => {
@@ -87,7 +85,9 @@ function ReviewandSave() {
             </Grid> );
             })}
             <Divider my="sm" />
-            <Center><Button onClick={handleAddClick} variant ="subtle"> + </Button></Center>
+            <Center><Button onClick={handleAddClick} variant ="subtle"> + </Button>
+                    <Button onClick={handleRemoveClick} variant ="subtle"> - </Button>
+            </Center>
         </Container>
 
 
