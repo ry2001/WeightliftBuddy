@@ -9,8 +9,8 @@ import tempthumbnail from '../Components/tempthumbnail.jpg';
 function ReviewandSave() {
 
     
-    const [inputList, setInputList] = useState([{ weight: "", reps: "" }]);
-    const [comment, setComment] = useState([""]);
+    const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
+    //const [comment, setComment] = useState([""]);
     const navigate = useNavigate();
 
     function passtoReview(){
@@ -37,12 +37,15 @@ function ReviewandSave() {
       };
 
       console.log(inputList)
-      console.log(comment)
+
 
       //hmmm 
-      const handleTextInputChange = (e) => {
+      const handleTextInputChange = (e, index) => {
+        console.log(e)
         const  value  = e.target.value;
-        setComment(value);
+        const list = [...inputList];
+        list[0]["comment"] = value;
+        setInputList(list);
         
       };
 

@@ -111,9 +111,10 @@ function Review(props) {
         <Container className={styles.ReviewSaveCommentsContainer}>
             <Title order={2}>Comments</Title>
             <Divider my="sm" />
-            <Container className={styles.ReviewCommentTextbox} > 
-            <Text className={styles.ReviewCommentText}> 
-            Shag, but made good progress. yay!</Text></Container>
+            <Container className={styles.ReviewCommentTextbox} >
+            {newReviewInfo.map((newReviewInfo, index) => ( 
+            <Text key={index} className={styles.ReviewCommentText}> 
+           {newReviewInfo.comment} </Text> ))}</Container>
         </Container>
 
         <Container className={styles.ReviewSavePostureContainer}>
