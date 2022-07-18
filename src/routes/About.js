@@ -14,19 +14,17 @@ function About() {
                     </Center> 
                 </Container>
 
-                {/* This is not aligned properly, since Version no need a button */}
                 <Center>
                     <Stack 
                         justify="space-around" 
                         sx={() => ({ height: 300 })}
-                        align='center'
                         style={{marginTop:50}}
                         >
                         <UnstyledButton 
                             style={{width: '100%'}} 
                             onClick={() => console.log('Go to Terms of Service page')}
                         >
-                            <Group>
+                            <Group position="apart">
                                 <Text size="xl" weight='bold'>Terms of Service</Text>
                                 <ChevronRight 
                                     size={48}
@@ -39,7 +37,7 @@ function About() {
                             style={{width: '100%'}} 
                             onClick={() => console.log('Go to Privacy Policy page')}
                         >
-                            <Group>
+                            <Group position="apart">
                                 <Text size="xl" weight='bold'>Privacy Policy</Text>
                                 <ChevronRight 
                                     size={48}
@@ -47,21 +45,16 @@ function About() {
                                 />
                             </Group>
                         </UnstyledButton>
-            
-                        {/* <UnstyledButton 
-                            style={{width: '100%'}}
-                        >
-                            <Group>
-                                <Text size="xl" weight='bold'>Version 1.23</Text>
-                            </Group>
-                        </UnstyledButton> */}
-                        <Text size="xl" weight='bold'>Version 1.23</Text>
+
+                        <Group position="apart" >
+                            <Text size="xl" weight='bold'>Version 1.23</Text>
+                        </Group>
 
                         <UnstyledButton 
                             style={{width: '100%'}} 
                             onClick={() => console.log('Go to About app page')}
                         >
-                            <Group>
+                            <Group position="apart">
                                 <Text size="xl" weight='bold'>About WeightliftBuddy</Text>
                                 <ChevronRight 
                                     size={48}

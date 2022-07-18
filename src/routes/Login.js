@@ -28,17 +28,14 @@ function Login() {
     }, []);
 
     const checkLogin = () => {
-        console.log(users.password)
         const i = users.user.findIndex(users => {
             return users === user;})
-        console.log(i)
         if (i === -1) {
             setError({user: "User does not exist"});
         }
 
         else {
             const correctPassword = users.password[i];
-            console.log(correctPassword);
             if (correctPassword === password){
                 setError({password:"success"})
                 // navigate next page

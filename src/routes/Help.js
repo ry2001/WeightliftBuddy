@@ -21,12 +21,12 @@ function Help() {
                     sx={() => ({ height: 150 })}
                     align='center'
                     style={{marginTop:50}}
-                    >
+                >
                     <UnstyledButton 
                         style={{width: '100%'}} 
                         onClick={() => console.log('Go to FAQ page')}
                     >
-                        <Group>
+                        <Group position="apart" >
                             <Text size="xl" weight='bold'>FAQ</Text>
                             <ChevronRight 
                                 size={48}
@@ -39,7 +39,7 @@ function Help() {
                         style={{width: '100%'}} 
                         onClick={() => console.log('Go to Contact Us page')}
                     >
-                        <Group>
+                        <Group position="apart" >
                             <Text size="xl" weight='bold'>Contact Us</Text>
                             <ChevronRight 
                                 size={48}
@@ -50,7 +50,7 @@ function Help() {
                 </Stack>
             </Center>
         </div>
-        </>
+    </>
 ); }
 
   export default Help;

@@ -1,6 +1,5 @@
 import ml_detection as ml
 from flask import Flask
-import sys
 
 app = Flask(__name__)
 

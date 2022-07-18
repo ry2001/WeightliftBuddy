@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Text, 
         Button,
         Center, 
@@ -12,20 +12,9 @@ function NewActivity () {
     fetch("/camera")
   }
 
-  // this is not working
-  function close(){
-    fetch("/createactivity")
-}
-
   return (
     <>
       <div>
-          <Button
-            onClick={() => close()}
-            variant="light"
-            style={{width: 200, height: 150}}
-            color="dark"
-            />
         <Center>
           <Stack
           spacing={50}

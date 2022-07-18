@@ -1,5 +1,5 @@
 import { React, useState } from "react"
-import { Container, Text, Center, Title, Stack, UnstyledButton, Group, Select } from "@mantine/core";
+import { Container, Center, Title, Stack, Select } from "@mantine/core";
 
 function Display() {
 
@@ -16,16 +16,15 @@ function Display() {
 
   return (
     <>
-    <div>
+      <div>
         <Container 
-            style={{marginTop:50}}
+          style={{marginTop:50}}
         >
-            <Center>
-                <Title order={1}>Display</Title>
-            </Center> 
+          <Center>
+              <Title order={1}>Display</Title>
+          </Center> 
         </Container>
 
-        {/* maybe can autoselect the current?? by using use state?? */}
         <Stack
           justify="space-around" 
           sx={() => ({ height: 300 })}
@@ -50,8 +49,7 @@ function Display() {
             placeholder={currentData.theme}
           />
         </Stack>
-          
-    </div>
+      </div>
     </>
   ); }
 
