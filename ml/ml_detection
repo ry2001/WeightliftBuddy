@@ -62,7 +62,6 @@ mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 
 # for webcam
-# cap = cv2.VideoCapture(0)
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 # # for upload
@@ -78,7 +77,6 @@ fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 # Video writer.
 # video_output = cv2.VideoWriter('output.mp4', fourcc, fps, frame_size)
 
-
 ## Setup mediapipe instance
 with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
     while cap.isOpened():
@@ -87,7 +85,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
         if not success:
             print("Null.Frames")
             break
-
+        
         # Get fps.
         fps = cap.get(cv2.CAP_PROP_FPS)
 
@@ -135,7 +133,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             # Offset threshold 30 is based on results obtained from analysis over 100 samples.
             if offset < 100:
                 # cv2.putText(image, str(int(offset)) + ' Aligned', (w - 160, 30), font, 0.9, green, 2)
-                cv2.putText(image, str(int(offset)) + ' Aligned', (w - 160, 30), font, 0.9, (0,0,0), 2)
+                cv2.putText(image, str(int(offset)) + ' Aligned', (w - 160, 30), font, 0.9, (0,0,0), 2)  # black is easier to see
             else:
                 cv2.putText(image, str(int(offset)) + ' Not Aligned', (w - 250, 30), font, 0.9, (0,0,0), 2)
             
@@ -170,31 +168,12 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
 
         # # Determine whether good posture or bad posture.
             # The threshold angles have been set based on intuition.
-            if torso_inclination_left < 20:
-                bad_frames = 0
-                good_frames += 1
-                
-                cv2.putText(image, angle_text_string, (10, 30), font, 0.9, light_green, 2)
-                cv2.putText(image, str(int(torso_inclination_left)), (left_hip_x + 10, left_hip_y), font, 0.9, light_green, 2)
+ 
+            # # Join landmarks.
+            # cv2.line(image, (left_shoulder_x, left_shoulder_y), (left_shoulder_x, left_shoulder_y - 100), green, 4)
+            # cv2.line(image, (left_hip_x, left_hip_y), (left_shoulder_x, left_shoulder_y), green, 4)
+            # cv2.line(image, (left_hip_x, left_hip_y), (left_hip_x, left_hip_y - 100), green, 4) 
 
-        #         # Join landmarks.
-        #         cv2.line(image, (left_shoulder_x, left_shoulder_y), (left_shoulder_x, left_shoulder_y - 100), green, 4)
-        #         cv2.line(image, (left_hip_x, left_hip_y), (left_shoulder_x, left_shoulder_y), green, 4)
-        #         cv2.line(image, (left_hip_x, left_hip_y), (left_hip_x, left_hip_y - 100), green, 4) 
-            
-            else:
-                good_frames = 0
-                bad_frames += 1
-            
-                cv2.putText(image, angle_text_string, (10, 30), font, 0.9, red, 2)
-                cv2.putText(image, (left_shoulder_x + 10, left_shoulder_y), font, 0.9, red, 2)
-                cv2.putText(image, str(int(torso_inclination_left)), (left_hip_x + 10, left_hip_y), font, 0.9, red, 2)
-            
-        #         # Join landmarks.
-        #         cv2.line(image, (left_shoulder_x, left_shoulder_y), (left_shoulder_x, left_shoulder_y - 100), red, 4)
-        #         cv2.line(image, (left_hip_x, left_hip_y), (left_shoulder_x, left_shoulder_y), red, 4)
-        #         cv2.line(image, (left_hip_x, left_hip_y), (left_hip_x, left_hip_y - 100), red, 4)
-            
             # Calculate the time of remaining in a particular posture.
             fps = 15
             good_time = (1 / fps) * good_frames
