@@ -64,7 +64,7 @@ function ReviewandSave() {
             {inputList.map((x, i) => {
         return (
             <Grid>
-                <Grid.Col span={2}><Title> 1</Title></Grid.Col>
+                <Grid.Col span={2}><Title> {i+1}</Title></Grid.Col>
                 <Grid.Col span={10}>
                 <Stack spacing ={1}> 
                 <TextInput
