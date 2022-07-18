@@ -7,6 +7,10 @@ import tempthumbnail from '../Components/tempthumbnail.jpg';
 
 function Home() {
 
+  
+
+
+
   const recent_dummy = {
     recentInfo: [
         {
