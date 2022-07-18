@@ -6,8 +6,12 @@ import { Link} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 
 
-function Review() {
+function Review(props) {
 
+  const {
+    inputist,
+
+  } = props
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)

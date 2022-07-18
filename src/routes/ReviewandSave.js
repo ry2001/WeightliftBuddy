@@ -11,21 +11,37 @@ function ReviewandSave() {
     
     const [inputList, setInputList] = useState([{ weight: "", reps: "" }]);
 
-    const handleInputChange = (e, index) => {
-        const { name, value } = e.target;
+   const handleWeightInputChange = (e, index) => {
+        console.log(e)
+        const value  = e;
         const list = [...inputList];
-        list[index][name] = value;
+        list[index]["weight"] = value;
         setInputList(list);
+        
       };
 
+      const handleRepsInputChange = (e, index) => {
+        console.log(e)
+        const  value  = e;
+        const list = [...inputList];
+        list[index]["reps"] = value;
+        setInputList(list);
+        
+      };
+
+      console.log(inputList)
+
+
       const handleAddClick = () => {
-        setInputList([...inputList, { weight: "", reps: 5 }]);
+        setInputList([...inputList, { weight: "", reps: "" }]);
+        console.log(inputList)
       };
 
       const handleRemoveClick = index => {
         const list = [...inputList];
         list.splice(index, 1);
         setInputList(list);
+        console.log(inputList)
       };
 
   return (
@@ -47,6 +63,7 @@ function ReviewandSave() {
             <Center>
             <Image radius="lg" className={styles.homeRecentImage} src={tempthumbnail}/></Center>
             <Grid className={styles.ReviewSaveInfoGrid} justify="center">
+                
             <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> - </Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
             <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> - </Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
             <Grid.Col span={4} ><Stack  align="center" spacing={1}><Title order={2}> 30:20 </Title> <Text size="xs"> TIME</Text></Stack></Grid.Col>
@@ -65,20 +82,19 @@ function ReviewandSave() {
                 <Grid.Col span={2}><Title> {i+1}</Title></Grid.Col>
                 <Grid.Col span={10}>
                 <Stack spacing ={1}> 
-                <TextInput
+                <NumberInput
                     placeholder="KG"
                     label="WEIGHT"
                     required
                     value={x.weight}
-                    handleInputChange={handleInputChange}
+                    onChange={e => handleWeightInputChange(e, i)}
                     />
                 <NumberInput
-                    defaultValue={5}
                     placeholder="No. of Reps"
                     label="REPS"
                     required
                     value={x.reps}
-                    handleInputChange={handleInputChange}
+                    onChange={e => handleRepsInputChange(e, i)}
                     />
                 </Stack>
                 </Grid.Col>
@@ -114,7 +130,9 @@ function ReviewandSave() {
             </List>
             <Divider my="sm" />
             <Link to="/review">
-            <Button className={styles.ReviewSaveSaveButton} >Save</Button></Link>
+            <Button className={styles.ReviewSaveSaveButton} 
+            inputList = {inputList}
+            >Save</Button></Link>
         </Container>
 
 
