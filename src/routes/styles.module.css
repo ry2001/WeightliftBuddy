@@ -47,6 +47,19 @@
 
 }
 
+.homeRecentIndivStat {
+    margin-right: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.homeRecentImageCol {
+    padding: 0rem;
+    padding-right:0.5rem;
+}
+
+.homeRecentImage {
+    margin-top: 0.8rem;
+}
 
 .backgroundCheck {
     background-color: aqua;
