@@ -15,11 +15,6 @@ function Login() {
         password: ""
 })
 
-    const validUsers = [
-        {user: 'kaywee', password: '1234'},
-        {user: 'valu', password: 'abc'}
-    ]
-
     const [users, setUsers] = useState([{}]);
 
     useEffect(() => {
@@ -35,7 +30,6 @@ function Login() {
     const checkLogin = () => {
         console.log(users.password)
         const i = users.user.findIndex(users => {
-            console.log(users)
             return users === user;})
         console.log(i)
         if (i === -1) {
