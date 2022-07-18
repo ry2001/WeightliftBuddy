@@ -9,6 +9,8 @@ import Profile from "./routes/Profile";
 import History from "./routes/History";
 import Login from "./routes/Login";
 import Register from "./routes/Register";
+import Review from "./routes/Review";
+import ReviewandSave from "./routes/ReviewandSave";
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route path="/createactivity" element={<CreateActivity />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/review" element={<Review />} />
+          <Route path="/reviewandsave" element={<ReviewandSave />} />
 
         </Routes>
         <BottomNavbar />
