@@ -76,7 +76,7 @@ function Settings() {
               </UnstyledButton>
 
               <UnstyledButton 
-                style={{width: '100%'}}
+                // style={{width: '100%'}}
                 onClick={() => console.log('Go to About page')}
               >
                 <Group>
