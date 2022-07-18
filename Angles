@@ -1,0 +1,172 @@
+import cv2
+import mediapipe as mp
+import numpy as np
+import math as m
+import time
+import math
+
+# Colors.
+blue = (255, 127, 0)
+red = (50, 50, 255)
+green = (127, 255, 0)
+dark_blue = (127, 20, 0)
+light_green = (127, 233, 100)
+yellow = (0, 255, 255)
+pink = (255, 0, 255)
+
+# Font type.
+font = cv2.FONT_HERSHEY_SIMPLEX
+
+# Initialize frame counters.
+good_frames = 0
+bad_frames  = 0
+
+
+def findDistance(x1, y1, x2, y2):
+    dist = m.sqrt((x2-x1)**2+(y2-y1)**2)
+    return dist
+
+def findAngle(x1, y1, x2, y2):
+    theta = m.acos((y2 -y1)*(-y1) / (m.sqrt((x2 - x1)**2 + (y2 - y1)**2 ) * y1))
+    degree = int(180/m.pi)*theta
+    return degree
+
+#b is the middle point of the 3 points
+
+def findAngle3(a,b,c):
+    theta=math.degrees(math.atan2(c[1]-b[1], c[0]-b[0]) - math.atan2(a[1]-b[1], a[0]-b[0]))
+    return theta + 360 if theta < 0 else theta
+
+#send warning when bad posture is detected
+def sendWarning(image, offset, w, font, red):
+    cv2.putText(image, str(int(offset)) + ' Poor posture', (w - 150, 130), font, 0.9, red, 2)
+    pass
+
+
+
+mp_drawing = mp.solutions.drawing_utils
+mp_pose = mp.solutions.pose
+
+# for webcam
+# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+
+# # for upload
+# file_name = 'path to file' # file in uploads
+# cap = cv2.VideoCapture(file_name)
+
+fps = int(cap.get(cv2.CAP_PROP_FPS))
+width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+frame_size = (width, height)
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
+# Video writer.
+# video_output = cv2.VideoWriter('output.mp4', fourcc, fps, frame_size)
+
+
+## Setup mediapipe instance
+with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
+    while cap.isOpened():
+        #read file for each frame
+        success, frame = cap.read() # success, image
+        # if not success:
+        #     print("Null.Frames")
+        #     break
+
+        # Get fps.
+        fps = cap.get(cv2.CAP_PROP_FPS)
+
+        # Get height and width of the frame.
+        h, w = frame.shape[:2]
+
+        # Recolor image to RGB
+        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        image.flags.writeable = False
+      
+        # Make detection
+        keypoints = pose.process(image)
+    
+        # Recolor back to BGR
+        image.flags.writeable = True
+        image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+        
+        try:
+            landmarks = keypoints.pose_landmarks.landmark
+                        # left hip coords
+            left_hip_x = landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].x * w
+            left_hip_y = landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].y * h
+
+            # right hip coords
+            right_hip_x = landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x * w
+            right_hip_y = landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y * h
+
+            right_knee_x = landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].x * w
+            right_knee_y = landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].y * h
+
+            left_knee_x = landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].x * w
+            left_knee_y = landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].y * h
+            
+            right_ankle_x = landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].x * w
+            right_ankle_y = landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].y * h
+
+            left_ankle_x = landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].x * w
+            left_ankle_y = landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].y * h
+
+            
+
+        except:
+            pass
+
+        mp_drawing.draw_landmarks(image, keypoints.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
+                                mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
+                                 )     
+        # mp_drawing.draw_landmarks(annotated_image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS, landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())          
+        
+        left_side = False
+        right_side = False
+
+        if (landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].visibility + 
+            landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].visibility + 
+            landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility) < (landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].visibility + 
+            landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility + 
+            landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility) :
+            right_side = True
+            
+        else: 
+            left_side = True
+
+
+        if left_side:
+            left_hip=(left_hip_x, left_hip_y)
+            left_knee=(left_knee_x, left_knee_y)
+            left_ankle=(left_ankle_x, left_ankle_y)
+            T_angle= findAngle3(left_hip, left_knee, left_ankle)
+
+        else: 
+            right_hip=(right_hip_x, right_hip_y)
+            right_knee=(right_knee_x, right_knee_y)
+            right_ankle=(right_ankle_x, right_ankle_y)
+            T_angle= findAngle3(right_hip, right_knee, right_ankle)
+
+
+
+        angle_text_string = '  T-Angle : ' + str(int(T_angle)) 
+
+        if left_side:    
+            side= 'left side'
+        else: 
+            side= 'right side'
+
+        cv2.putText(image, angle_text_string, (10, 30), font, 0.9, light_green, 2)
+        cv2.putText(image, side, (10, 100), font, 0.9, red , 2)
+  
+        cv2.imshow('Mediapipe Feed', image)
+
+
+        if cv2.waitKey(10) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
