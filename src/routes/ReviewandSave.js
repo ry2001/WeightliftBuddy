@@ -1,11 +1,35 @@
 import React from "react"
+import { useLayoutEffect, useState} from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, TextInput, NumberInput, Button, Textarea, List } from "@mantine/core";
 import styles from './styles.module.css';
 import { Link} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import CreateSet from "../Components/CreateSet";
 
 
 function ReviewandSave() {
+
+    
+    const [reviewSets, setReviewSets] = useState("")
+    const [inputList, setInputList] = useState([{ weight: "", reps: "" }]);
+
+    const handleInputChange = (e, index) => {
+        const { name, value } = e.target;
+        const list = [...inputList];
+        list[index][name] = value;
+        setInputList(list);
+      };
+
+      const handleAddClick = () => {
+        setInputList([...inputList, { weight: "", reps: 5 }]);
+      };
+
+      const handleRemoveClick = index => {
+        const list = [...inputList];
+        list.splice(index, 1);
+        setInputList(list);
+      };
+
   return (
     <>
       <Container> 
@@ -31,9 +55,14 @@ function ReviewandSave() {
             </Grid>
         </Container>
 
+
+       
         <Container className={styles.ReviewSaveSetsContainer}>
             <Title order={2}>Sets</Title>
             <Divider my="sm" />
+
+            {inputList.map((x, i) => {
+        return (
             <Grid>
                 <Grid.Col span={2}><Title> 1</Title></Grid.Col>
                 <Grid.Col span={10}>
@@ -42,19 +71,26 @@ function ReviewandSave() {
                     placeholder="KG"
                     label="WEIGHT"
                     required
+                    value={x.weight}
+                    handleInputChange={handleInputChange}
                     />
                 <NumberInput
                     defaultValue={5}
                     placeholder="No. of Reps"
                     label="REPS"
                     required
+                    value={x.reps}
+                    handleInputChange={handleInputChange}
                     />
                 </Stack>
                 </Grid.Col>
-            </Grid>
+            </Grid> );
+            })}
             <Divider my="sm" />
-            <Center><Button variant ="subtle"> + </Button></Center>
+            <Center><Button onClick={handleAddClick} variant ="subtle"> + </Button></Center>
         </Container>
+
+
 
         <Container className={styles.ReviewSaveCommentsContainer}>
             <Title order={2}>Comments</Title>
@@ -80,6 +116,7 @@ function ReviewandSave() {
             <Link to="/review">
             <Button className={styles.ReviewSaveSaveButton} >Save</Button></Link>
         </Container>
+
 
 
 

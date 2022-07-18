@@ -1,4 +1,5 @@
 import React from "react"
+import { useLayoutEffect } from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, TextInput, NumberInput, Button, Textarea, List } from "@mantine/core";
 import styles from './styles.module.css';
 import { Link} from "react-router-dom";
@@ -6,6 +7,12 @@ import tempthumbnail from '../Components/tempthumbnail.jpg';
 
 
 function Review() {
+
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+});
+
 
   const review_dummy = {
     reviewInfo: [
@@ -88,9 +95,10 @@ function Review() {
 
                 <Grid><Grid.Col span={4}><Title order={5}>REPS:</Title></Grid.Col> 
                 <Grid.Col  span={3}><Text> {reviewInfo.reps}</Text></Grid.Col></Grid> 
-                </Stack>
+                </Stack> <Divider my="xs" />
                 </Grid.Col>
-            </Grid> ))}
+            </Grid> 
+            ))}
             <Divider my="sm" />
         </Container>
 
