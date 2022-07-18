@@ -79,11 +79,11 @@ function Home() {
       <Text align="center" > June 2022 </Text>
       <Title align="center"> 100</Title>
       <Text align="center"> MINS</Text>
-      <Center><Grid justify="center">
+      <Grid justify="center">
         <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 3</Title> <Text size="xs"> SESSIONS</Text> </Stack></Grid.Col>
         <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 110</Title> <Text size="xs"> AVG.KG</Text></Stack></Grid.Col>
         <Grid.Col span={4} ><Stack  align="center" spacing={1}><Title order={2}> 300</Title> <Text size="xs"> TOT.KG</Text></Stack></Grid.Col>
-      </Grid></Center>
+      </Grid>
       </Stack>
     </Center>
     </Container>

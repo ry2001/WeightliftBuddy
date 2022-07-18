@@ -5,49 +5,7 @@ import { Link} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 
 
-function Review() {
-
-  const review_dummy = {
-    reviewInfo: [
-        {
-           id: 1,
-           weight: 60, 
-           reps: 6,
-            
-        },
-
-        {
-          id: 2,
-          weight: 60, 
-          reps: 6,
-            
-        },
-
-        {
-          id: 3,
-          weight: 65, 
-          reps: 5,
-            
-        },
-
-        {
-          id: 4,
-          weight: 70, 
-          reps: 3,
-            
-        },
-
-        {
-          id: 5,
-          weight: 70, 
-          reps: 3,
-            
-        },
-
-        
-    ]}
-
-
+function ReviewandSave() {
   return (
     <>
       <Container> 
@@ -66,40 +24,43 @@ function Review() {
         <Container>
             <Center>
             <Image radius="lg" className={styles.homeRecentImage} src={tempthumbnail}/></Center>
-           
             <Grid className={styles.ReviewSaveInfoGrid} justify="center">
-            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 5 </Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
-            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 209 </Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
+            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> - </Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
+            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> - </Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
             <Grid.Col span={4} ><Stack  align="center" spacing={1}><Title order={2}> 30:20 </Title> <Text size="xs"> TIME</Text></Stack></Grid.Col>
-            </Grid> 
+            </Grid>
         </Container>
 
         <Container className={styles.ReviewSaveSetsContainer}>
             <Title order={2}>Sets</Title>
             <Divider my="sm" />
-            {review_dummy.reviewInfo.map((reviewInfo, index) => (
             <Grid>
-                <Grid.Col span={2}><Title> {reviewInfo.id}</Title></Grid.Col>
+                <Grid.Col span={2}><Title> 1</Title></Grid.Col>
                 <Grid.Col span={10}>
                 <Stack spacing ={1}> 
-                <Grid><Grid.Col span={4}><Title order={5}>WEIGHT:</Title></Grid.Col> 
-                <Grid.Col  span={3} ><Text> {reviewInfo.weight}</Text></Grid.Col> 
-                <Grid.Col span={1}><Title order={5}>KG</Title></Grid.Col></Grid> 
-
-                <Grid><Grid.Col span={4}><Title order={5}>REPS:</Title></Grid.Col> 
-                <Grid.Col  span={3}><Text> {reviewInfo.reps}</Text></Grid.Col></Grid> 
+                <TextInput
+                    placeholder="KG"
+                    label="WEIGHT"
+                    required
+                    />
+                <NumberInput
+                    defaultValue={5}
+                    placeholder="No. of Reps"
+                    label="REPS"
+                    required
+                    />
                 </Stack>
                 </Grid.Col>
-            </Grid> ))}
+            </Grid>
             <Divider my="sm" />
+            <Center><Button variant ="subtle"> + </Button></Center>
         </Container>
 
         <Container className={styles.ReviewSaveCommentsContainer}>
             <Title order={2}>Comments</Title>
             <Divider my="sm" />
-            <Container className={styles.ReviewCommentTextbox} > 
-            <Text className={styles.ReviewCommentText}> 
-            Shag, but made good progress. yay!</Text></Container>
+            <Textarea
+            placeholder= "Write a comment (optional)"/>
         </Container>
 
         <Container className={styles.ReviewSavePostureContainer}>
@@ -113,8 +74,11 @@ function Review() {
             <List>
                 <List.Item>Back was not straight</List.Item>
                 <List.Item>Arms were bent</List.Item>
+                
             </List>
             <Divider my="sm" />
+            <Link to="/review">
+            <Button className={styles.ReviewSaveSaveButton} >Save</Button></Link>
         </Container>
 
 
@@ -125,4 +89,4 @@ function Review() {
       </>
   ); }
 
-  export default Review;
+  export default ReviewandSave;

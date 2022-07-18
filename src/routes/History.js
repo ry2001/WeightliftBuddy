@@ -127,6 +127,7 @@ function History() {
                 </Grid.Col>
                 <Grid.Col className={styles.homeRecentImageCol} span = {3}>
                 <Image radius="sm" className={styles.homeRecentImage} src={tempthumbnail}/>
+                
                 </Grid.Col>
               </Grid>
                
