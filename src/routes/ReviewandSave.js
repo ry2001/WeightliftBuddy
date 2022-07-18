@@ -2,7 +2,7 @@ import React from "react"
 import { useLayoutEffect, useState} from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, TextInput, NumberInput, Button, Textarea, List } from "@mantine/core";
 import styles from './styles.module.css';
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 
 
@@ -10,6 +10,13 @@ function ReviewandSave() {
 
     
     const [inputList, setInputList] = useState([{ weight: "", reps: "" }]);
+    const [comment, setComment] = useState([""]);
+    const navigate = useNavigate();
+
+    function passtoReview(){
+        navigate('/review', { state: inputList });
+        //navigate('/review', { state: comment });
+    }
 
    const handleWeightInputChange = (e, index) => {
         console.log(e)
@@ -30,7 +37,14 @@ function ReviewandSave() {
       };
 
       console.log(inputList)
+      console.log(comment)
 
+      //hmmm 
+      const handleTextInputChange = (e) => {
+        const  value  = e.target.value;
+        setComment(value);
+        
+      };
 
       const handleAddClick = () => {
         setInputList([...inputList, { weight: "", reps: "" }]);
@@ -112,7 +126,8 @@ function ReviewandSave() {
             <Title order={2}>Comments</Title>
             <Divider my="sm" />
             <Textarea
-            placeholder= "Write a comment (optional)"/>
+            placeholder= "Write a comment (optional)"
+            onChange={e => handleTextInputChange(e)} />
         </Container>
 
         <Container className={styles.ReviewSavePostureContainer}>
@@ -129,10 +144,11 @@ function ReviewandSave() {
                 
             </List>
             <Divider my="sm" />
-            <Link to="/review">
-            <Button className={styles.ReviewSaveSaveButton} 
-            inputList = {inputList}
-            >Save</Button></Link>
+            
+            <Button 
+            className={styles.ReviewSaveSaveButton} 
+            onClick={passtoReview}
+            >Save</Button>
         </Container>
 
 

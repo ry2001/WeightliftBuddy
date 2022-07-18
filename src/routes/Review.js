@@ -3,15 +3,17 @@ import { useLayoutEffect } from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, TextInput, NumberInput, Button, Textarea, List } from "@mantine/core";
 import styles from './styles.module.css';
 import { Link} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 
 
 function Review(props) {
 
-  const {
-    inputist,
 
-  } = props
+  const location = useLocation();
+
+  const newReviewInfo = location.state
+  console.log(newReviewInfo, "test")
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
@@ -88,17 +90,17 @@ function Review(props) {
         <Container className={styles.ReviewSaveSetsContainer}>
             <Title order={2}>Sets</Title>
             <Divider my="sm" />
-            {review_dummy.reviewInfo.map((reviewInfo, index) => (
-            <Grid>
-                <Grid.Col span={2}><Title> {reviewInfo.id}</Title></Grid.Col>
+            {newReviewInfo.map((newReviewInfo, index) => (
+            <Grid key={index}>
+                <Grid.Col span={2}><Title> {newReviewInfo.key}</Title></Grid.Col>
                 <Grid.Col span={10}>
                 <Stack spacing ={1}> 
                 <Grid><Grid.Col span={4}><Title order={5}>WEIGHT:</Title></Grid.Col> 
-                <Grid.Col  span={3} ><Text> {reviewInfo.weight}</Text></Grid.Col> 
+                <Grid.Col  span={3} ><Text> {newReviewInfo.weight}</Text></Grid.Col> 
                 <Grid.Col span={1}><Title order={5}>KG</Title></Grid.Col></Grid> 
 
                 <Grid><Grid.Col span={4}><Title order={5}>REPS:</Title></Grid.Col> 
-                <Grid.Col  span={3}><Text> {reviewInfo.reps}</Text></Grid.Col></Grid> 
+                <Grid.Col  span={3}><Text> {newReviewInfo.reps}</Text></Grid.Col></Grid> 
                 </Stack> <Divider my="xs" />
                 </Grid.Col>
             </Grid> 
