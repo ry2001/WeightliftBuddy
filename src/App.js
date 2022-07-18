@@ -9,6 +9,9 @@ import Profile from "./routes/Profile";
 import History from "./routes/History";
 import Login from "./routes/Login";
 import Register from "./routes/Register";
+import About from "./routes/About";
+import Display from "./routes/Display";
+import Help from "./routes/Help";
 import Review from "./routes/Review";
 import ReviewandSave from "./routes/ReviewandSave";
 
@@ -17,11 +20,8 @@ function App() {
   
     return (
         <>
-       
 
-      
-      <Routes>
-         
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />}/>
@@ -30,10 +30,14 @@ function App() {
           <Route path="/createactivity" element={<NewActivity />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/display" element={<Display />} />
+          <Route path="/help" element={<Help />} />
           <Route path="/review" element={<Review />} />
           <Route path="/reviewandsave" element={<ReviewandSave />} />
 
         </Routes>
+
         <BottomNavbar />
         
         </>

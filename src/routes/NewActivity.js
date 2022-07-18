@@ -6,8 +6,12 @@ import { Text,
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import UploadIcon from '@mui/icons-material/Upload';
 
-
 function NewActivity () {
+
+  function openCamera(){
+    fetch("/camera")
+  }
+
   return (
     <>
       <div>
@@ -16,6 +20,7 @@ function NewActivity () {
           spacing={50}
           >
             <Button
+            onClick={() => openCamera()}
             variant="light"
             style={{width: 200, height: 150}}
             color="dark"
