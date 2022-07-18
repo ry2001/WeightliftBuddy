@@ -12,6 +12,8 @@ import Register from "./routes/Register";
 import About from "./routes/About";
 import Display from "./routes/Display";
 import Help from "./routes/Help";
+import Review from "./routes/Review";
+import ReviewandSave from "./routes/ReviewandSave";
 
 
 function App() {
@@ -31,6 +33,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/display" element={<Display />} />
           <Route path="/help" element={<Help />} />
+          <Route path="/review" element={<Review />} />
+          <Route path="/reviewandsave" element={<ReviewandSave />} />
+
         </Routes>
 
         <BottomNavbar />

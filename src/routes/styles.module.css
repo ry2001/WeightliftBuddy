@@ -47,7 +47,58 @@
 
 }
 
+.homeRecentIndivStat {
+    margin-right: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.homeRecentImageCol {
+    padding: 0rem;
+    padding-right:0.5rem;
+}
+
+.homeRecentImage {
+    margin-top: 0.8rem;
+}
 
 .backgroundCheck {
     background-color: aqua;
+}
+
+.ReviewSaveHeaderContainer {
+    margin-top: 2rem;
+}
+
+.ReviewSaveInfoGrid{
+    margin-top: 2rem;
+}
+
+.ReviewSaveSetsContainer{
+    margin-top: 2rem;
+}
+
+
+.ReviewSaveCommentsContainer{
+    margin-top: 1rem;
+}
+
+.ReviewSavePostureContainer{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.ReviewSaveSaveButton{
+    float: right;
+}
+
+.ReviewCommentTextbox{
+    border: solid 0.1rem rgb(219, 219, 219);
+    border-radius: 0.5rem;
+    min-width: min-content;
+    min-height: min-content;
+    height: 5rem;
+}
+
+.ReviewCommentText{
+    margin-top: 0.5rem;
 }

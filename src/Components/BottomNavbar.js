@@ -24,6 +24,8 @@ function BottomNavbar() {
             <Link to="/about"> <Button> About</Button></Link>
             <Link to="/help"> <Button> Help</Button></Link>
             <Link to="/display"> <Button> Display</Button></Link>
+            <Link to="/review"> <Button> Review</Button></Link>
+            <Link to="/reviewandsave"> <Button> Review n Save</Button></Link>
               
             </Footer>
           }  >
