@@ -3,7 +3,7 @@ import './App.css';
 import { Routes, Route, Link} from "react-router-dom";
 import BottomNavbar from './Components/BottomNavbar';
 import Home from "./routes/Home";
-import CreateActivity from "./routes/CreateActivity";
+import NewActivity from "./routes/NewActivity";
 import Settings from "./routes/Settings";
 import Profile from "./routes/Profile";
 import History from "./routes/History";
@@ -27,7 +27,7 @@ function App() {
           <Route path="/profile" element={<Profile />}/>
           <Route path="/history" element={<History/>} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/createactivity" element={<CreateActivity />} />
+          <Route path="/createactivity" element={<NewActivity />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/review" element={<Review />} />
