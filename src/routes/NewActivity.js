@@ -9,9 +9,10 @@ import UploadIcon from '@mui/icons-material/Upload';
 function NewActivity () {
 
   function openCamera(){
-      fetch("/camera")
+    fetch("/camera")
   }
 
+  // this is not working
   function close(){
     fetch("/createactivity")
 }
