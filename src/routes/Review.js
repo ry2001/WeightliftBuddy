@@ -91,8 +91,8 @@ function Review(props) {
             <Title order={2}>Sets</Title>
             <Divider my="sm" />
             {newReviewInfo.map((newReviewInfo, index) => (
-            <Grid key={index}>
-                <Grid.Col span={2}><Title> {newReviewInfo.key}</Title></Grid.Col>
+            <Grid  key={index} >
+                <Grid.Col span={2}><Title> {index+1}</Title></Grid.Col>
                 <Grid.Col span={10}>
                 <Stack spacing ={1}> 
                 <Grid><Grid.Col span={4}><Title order={5}>WEIGHT:</Title></Grid.Col> 
