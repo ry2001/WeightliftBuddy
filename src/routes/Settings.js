@@ -7,17 +7,15 @@ function Settings() {
   return (
     <>
       <div>
-        <Container 
-          style={{marginTop:50}}
-        >
+        <Container style={{marginTop:50}}>
           <Center>
-            <Title order={1}>Setting</Title>
+            <Title order={1}>
+              Setting
+            </Title>
           </Center> 
         </Container>
 
-        <Container 
-          style={{marginTop:50}}
-        >
+        <Container style={{marginTop:50}}>
           <Center>
             <Autocomplete 
               icon={<Search />}
