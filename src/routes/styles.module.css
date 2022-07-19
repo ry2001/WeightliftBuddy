@@ -1,7 +1,7 @@
 
 
 .homeTopButtonsContainer{
-    margin-top: 1rem;
+    margin-top: 6rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
     padding: 0.5rem;
@@ -34,6 +34,12 @@
 
 .homeRecentContainer{
     margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.HistoryContainer{
+    margin-top: 6rem;
     margin-bottom: 1rem;
 
 }
@@ -101,4 +107,16 @@
 
 .ReviewCommentText{
     margin-top: 0.5rem;
+}
+
+
+.TopHeader {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: aliceblue;
+
+}
+
+.NewActivityContainer {
+    margin-top: 10rem;
 }
