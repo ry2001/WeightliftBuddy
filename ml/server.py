@@ -16,6 +16,13 @@ def login():
 def camera():
     return ml.main()
 
+# for post request
+
+
+@app.route('/register')
+def register():
+    return
+
 
 if __name__ == '__main__':
     app.run(debug=True)

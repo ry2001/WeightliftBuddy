@@ -37,9 +37,7 @@ function Profile() {
           </Center> 
         </Container>
 
-        <Container 
-          style={{marginTop:50}}
-        >
+        <Container style={{marginTop:50}}>
           <Grid>
             <Grid.Col span={6} align='right'>
               <Text weight='bold'>Username:</Text>
@@ -61,9 +59,7 @@ function Profile() {
           </Grid>
         </Container>
 
-        <Container 
-          style={{marginTop:50}}
-        >
+        <Container style={{marginTop:50}}>
           <Center>
             <Button>Logout</Button>
           </Center> 

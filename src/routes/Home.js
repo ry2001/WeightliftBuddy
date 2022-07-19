@@ -112,34 +112,27 @@ function Home() {
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
                   <Stack spacing={1} >
-                  <Title order={4}>
-                    {recentInfo.title}  </Title>
-                <Title order={5}>
-                    {recentInfo.day} {recentInfo.date}
-                </Title>
-                <Grid>
-                <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack align="center" spacing={1}><Title order={5}> 5</Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
-                <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack align="center" spacing={1}><Title order={5}> 256</Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
-                <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack  align="center" spacing={1}><Title order={5}> 300</Title> <Text size="xs"> TIME</Text></Stack></Grid.Col>
-                </Grid>
-
+                    <Title order={4}>
+                      {recentInfo.title}
+                    </Title>
+                    <Title order={5}>
+                        {recentInfo.day} {recentInfo.date}
+                    </Title>
+                    <Grid>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack align="center" spacing={1}><Title order={5}> 5</Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack align="center" spacing={1}><Title order={5}> 256</Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack  align="center" spacing={1}><Title order={5}> 300</Title> <Text size="xs"> TIME</Text></Stack></Grid.Col>
+                    </Grid>
                   </Stack>
-                
                 </Grid.Col>
                 <Grid.Col className={styles.homeRecentImageCol} span = {3}>
-                <Image radius="sm" className={styles.homeRecentImage} src={tempthumbnail}/>
+                  <Image radius="sm" className={styles.homeRecentImage} src={tempthumbnail}/>
                 </Grid.Col>
               </Grid>
-               
-              </Container> ))}
-
-    
-    </Container>
-
-
-
-   </Container>
-      </>
+            </Container> ))}
+        </Container>
+      </Container>
+    </>
   ); }
 
   export default Home;
