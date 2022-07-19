@@ -205,7 +205,8 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                 cv2.putText(image, message, (10, 60), font, 0.9, red, 2)
                 # cv2.putText(image, str(int(torso_angle)), (left_hip_x + 10, left_hip_y), font, 0.9, red, 2)
                 # cv2.putText(image, str(int(knee_angle)), (left_hip_x + 10, left_hip_y+20), font, 0.9, red, 2)
-            
+            else:
+                pass
             # Calculate the time of remaining in a particular posture.
             fps = 15
             good_time = (1 / fps) * good_frames

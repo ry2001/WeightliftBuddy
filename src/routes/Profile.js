@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Text, Title, Image, Center, Grid, Button } from "@mantine/core";
-
+import TopHeader from "../Components/TopHeader";
 
 function Profile() {
 
@@ -16,62 +16,60 @@ function Profile() {
   return (
     <>
       <div>
-          <Container 
-            style={{marginTop:50}}
-          >
-            <Center>
-              <Title order={1}>Profile</Title>
-            </Center> 
-          </Container>
+      
+        <Container 
+          style={{marginTop:50}}
+        >
+          <TopHeader header="Profile" /> 
+        </Container>
 
-          <Container 
-            style={{marginTop:50}}
-          >
-            <Center>
-              <Image
-                width={200}
-                height={200}
-                fit='contain'
-                radius="lg"
-                src="https://daxstreet.com/wp-content/uploads/2022/05/Anya-Forger.jpg"
-              />
-            </Center> 
-          </Container>
-              
-          <Container 
-            style={{marginTop:50}}
-          >
-            <Grid>
-              <Grid.Col span={6} align='right'>
-                <Text weight='bold'>Username:</Text>
-                <Text weight='bold'>Age:</Text>
-                <Text weight='bold'>Email:</Text>
-                <Text weight='bold'>Height:</Text>
-                <Text weight='bold'>Weight:</Text>
-                <Text weight='bold'>1RM:</Text>
-              </Grid.Col>
-              <Grid.Col span={6} align='left'>
-                <Text>{data.name}</Text>
-                <Text>{data.age}</Text>
-                <Text>{data.email}</Text>
-                <Text>{data.height}</Text>
-                <Text>{data.weight}</Text>
-                <Text>{data.rm}</Text>
-              </Grid.Col>
-            </Grid>
-          </Container>
+        <Container 
+          style={{marginTop:100}}
+        >
+          <Center>
+            <Image
+              width={200}
+              height={200}
+              fit='contain'
+              radius="lg"
+              src="https://daxstreet.com/wp-content/uploads/2022/05/Anya-Forger.jpg"
+            />
+          </Center> 
+        </Container>
 
-          <Container 
-            style={{marginTop:50}}
-          >
-            <Center>
-              <Button>Logout</Button>
-            </Center> 
-          </Container>
-          
+        <Container 
+          style={{marginTop:50}}
+        >
+          <Grid>
+            <Grid.Col span={6} align='right'>
+              <Text weight='bold'>Username:</Text>
+              <Text weight='bold'>Age:</Text>
+              <Text weight='bold'>Email:</Text>
+              <Text weight='bold'>Height:</Text>
+              <Text weight='bold'>Weight:</Text>
+              <Text weight='bold'>1RM:</Text>
+            </Grid.Col>
+
+            <Grid.Col span={6} align='left'>
+              <Text>{data.name}</Text>
+              <Text>{data.age}</Text>
+              <Text>{data.email}</Text>
+              <Text>{data.height}</Text>
+              <Text>{data.weight}</Text>
+              <Text>{data.rm}</Text>
+            </Grid.Col>
+          </Grid>
+        </Container>
+
+        <Container 
+          style={{marginTop:50}}
+        >
+          <Center>
+            <Button>Logout</Button>
+          </Center> 
+        </Container>
       </div>
-
-      </>
+    </>
   ); }
 
   export default Profile;

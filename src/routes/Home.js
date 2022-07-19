@@ -1,8 +1,10 @@
 import React from "react"
 import { Container, Text, Grid, Group, Button, Center, Title, Stack, Image } from "@mantine/core";
 import styles from './styles.module.css';
+import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
 import Chart from 'chart.js/auto';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import TopHeader from "../Components/TopHeader";
 
 
 function Home() {
@@ -55,9 +57,13 @@ function Home() {
     ]}
 
 
+
   return (
     <>
    <Container>
+
+    <TopHeader header="Home" />
+   
     
     <Container className={styles.homeTopButtonsContainer}>
       <Center>
@@ -79,11 +85,11 @@ function Home() {
       <Text align="center" > June 2022 </Text>
       <Title align="center"> 100</Title>
       <Text align="center"> MINS</Text>
-      <Center><Grid justify="center">
+      <Grid justify="center">
         <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 3</Title> <Text size="xs"> SESSIONS</Text> </Stack></Grid.Col>
         <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 110</Title> <Text size="xs"> AVG.KG</Text></Stack></Grid.Col>
         <Grid.Col span={4} ><Stack  align="center" spacing={1}><Title order={2}> 300</Title> <Text size="xs"> TOT.KG</Text></Stack></Grid.Col>
-      </Grid></Center>
+      </Grid>
       </Stack>
     </Center>
     </Container>

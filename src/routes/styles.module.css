@@ -1,7 +1,7 @@
 
 
 .homeTopButtonsContainer{
-    margin-top: 1rem;
+    margin-top: 6rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
     padding: 0.5rem;
@@ -38,6 +38,12 @@
 
 }
 
+.HistoryContainer{
+    margin-top: 6rem;
+    margin-bottom: 1rem;
+
+}
+
 .homeRecentIndivContainer{
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -63,4 +69,58 @@
 
 .backgroundCheck {
     background-color: aqua;
+}
+
+.ReviewSaveHeaderContainer {
+    margin-top: 6rem;
+}
+
+.ReviewSaveInfoGrid{
+    margin-top: 2rem;
+}
+
+.ReviewSaveSetsContainer{
+    margin-top: 2rem;
+}
+
+
+.ReviewSaveCommentsContainer{
+    margin-top: 1rem;
+}
+
+.ReviewSavePostureContainer{
+    margin-top: 2rem;
+    margin-bottom: 9rem;
+}
+
+.ReviewSaveSaveButton{
+    float: right;
+}
+
+.ReviewCommentTextbox{
+    border: solid 0.1rem rgb(219, 219, 219);
+    border-radius: 0.5rem;
+    min-width: min-content;
+    min-height: min-content;
+    height: 5rem;
+}
+
+.ReviewCommentText{
+    margin-top: 0.5rem;
+}
+
+
+.TopHeader {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: aliceblue;
+
+}
+
+.NewActivityContainer {
+    margin-top: 10rem;
+}
+
+.MarginforNavbar {
+    margin-bottom: 4rem;
 }

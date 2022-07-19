@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {Container, PasswordInput, Card,
         Text,
         Center,
@@ -15,22 +15,27 @@ function Login() {
         password: ""
 })
 
-    const validUsers = [
-        {user: 'kaywee', password: '1234'},
-        {user: 'valu', password: 'abc'}
-    ]
+    const [users, setUsers] = useState([{}]);
+
+    useEffect(() => {
+        fetch("/login").then(
+            response => response.json()
+        ).then(
+            users => {
+                setUsers(users);
+            }
+        )
+    }, []);
 
     const checkLogin = () => {
-        const i = validUsers.findIndex(object => {
-            return object.user === user;})
-        console.log(i)
+        const i = users.user.findIndex(users => {
+            return users === user;})
         if (i === -1) {
             setError({user: "User does not exist"});
         }
 
         else {
-            const correctPassword = validUsers[i].password;
-            console.log(correctPassword);
+            const correctPassword = users.password[i];
             if (correctPassword === password){
                 setError({password:"success"})
                 // navigate next page
