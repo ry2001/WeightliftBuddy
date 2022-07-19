@@ -1,8 +1,10 @@
 import React from "react"
 import { Container, Text, Grid, Group, Button, Center, Title, Stack, Image } from "@mantine/core";
 import styles from './styles.module.css';
+import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
 import Chart from 'chart.js/auto';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import TopHeader from "../Components/TopHeader";
 
 
 function Home() {
@@ -55,9 +57,13 @@ function Home() {
     ]}
 
 
+
   return (
     <>
    <Container>
+
+    <TopHeader header="Home" />
+   
     
     <Container className={styles.homeTopButtonsContainer}>
       <Center>

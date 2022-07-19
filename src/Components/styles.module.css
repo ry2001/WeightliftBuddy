@@ -6,3 +6,10 @@
 .backgroundCheck {
     background-color: white;
 }
+
+.TopHeader {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: aliceblue;
+
+}
