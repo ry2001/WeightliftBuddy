@@ -5,6 +5,8 @@ import { Text,
         Stack} from "@mantine/core";
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import UploadIcon from '@mui/icons-material/Upload';
+import TopHeader from "../Components/TopHeader";
+import styles from './styles.module.css';
 
 function NewActivity () {
 
@@ -14,7 +16,9 @@ function NewActivity () {
 
   return (
     <>
-      <div>
+      <div className={styles.NewActivityContainer}>
+      <TopHeader header="New Activity" />
+
         <Center>
           <Stack spacing={50}>
             <Button

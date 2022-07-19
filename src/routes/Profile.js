@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Text, Title, Image, Center, Grid, Button } from "@mantine/core";
-
+import TopHeader from "../Components/TopHeader";
 
 function Profile() {
 
@@ -16,13 +16,16 @@ function Profile() {
   return (
     <>
       <div>
-        <Container style={{marginTop:50}}>
-          <Center>
-            <Title order={1}>Profile</Title>
-          </Center> 
+      
+        <Container 
+          style={{marginTop:50}}
+        >
+          <TopHeader header="Profile" /> 
         </Container>
 
-        <Container style={{marginTop:50}}>
+        <Container 
+          style={{marginTop:100}}
+        >
           <Center>
             <Image
               width={200}

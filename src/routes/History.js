@@ -1,7 +1,9 @@
 import React from "react"
-import { Container, Text, Grid, Title, Stack, Image } from "@mantine/core";
+import { Container, Text, Grid, Group, Button, Center, Title, Stack, Image } from "@mantine/core";
+import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import TopHeader from "../Components/TopHeader";
 
 
 function History() {
@@ -31,13 +33,18 @@ function History() {
 
   return (
     <>
+    
+
       <Container>
 
-        <Container className={styles.homeRecentContainer}>
-          <Title>History</Title>
-          <Title order={3}>This Week</Title>
-          {recent_dummy.recentInfo.map((recentInfo, index) => (
-            <Container className={styles.homeRecentIndivContainer} key={index} >
+      <TopHeader header="History" />
+
+     
+        
+      <Container className={styles.HistoryContainer}>
+    <Title order={3}>This Week</Title>
+    {recent_dummy.recentInfo.map((recentInfo, index) => (
+              <Container className={styles.homeRecentIndivContainer} key={index} >
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
                   <Stack spacing={1} >

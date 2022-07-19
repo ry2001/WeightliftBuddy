@@ -1,21 +1,22 @@
 import React from "react"
 import { Container, Text, Title, Center, UnstyledButton, Autocomplete, Group, Stack } from "@mantine/core";
 import { Search, AlertCircle, Help, Eye, ChevronRight } from 'tabler-icons-react';
+import TopHeader from "../Components/TopHeader";
 
 
 function Settings() {
   return (
     <>
       <div>
-        <Container style={{marginTop:50}}>
-          <Center>
-            <Title order={1}>
-              Setting
-            </Title>
-          </Center> 
+        <Container 
+          style={{marginTop:50}}
+        >
+          <TopHeader header="Setting" /> 
         </Container>
 
-        <Container style={{marginTop:50}}>
+        <Container 
+          style={{marginTop:100}}
+        >
           <Center>
             <Autocomplete 
               icon={<Search />}
