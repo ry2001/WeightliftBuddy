@@ -10,12 +10,10 @@ function ReviewandSave() {
 
     
     const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
-    //const [comment, setComment] = useState([""]);
     const navigate = useNavigate();
 
     function passtoReview(){
         navigate('/review', { state: inputList });
-        //navigate('/review', { state: comment });
     }
 
    const handleWeightInputChange = (e, index) => {

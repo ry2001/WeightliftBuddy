@@ -14,13 +14,15 @@ import Display from "./routes/Display";
 import Help from "./routes/Help";
 import Review from "./routes/Review";
 import ReviewandSave from "./routes/ReviewandSave";
+import Navigation from "./Components/Navigation";
 
 
 function App() {
   
     return (
         <>
-
+        <div>
+        <Navigation/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -37,9 +39,7 @@ function App() {
           <Route path="/reviewandsave" element={<ReviewandSave />} />
 
         </Routes>
-
-        <BottomNavbar />
-        
+        </div>
         </>
     );
   }
