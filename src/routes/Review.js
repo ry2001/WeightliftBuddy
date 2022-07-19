@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 import { Link} from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import TopHeader from "../Components/TopHeader";
 
 
 function Review(props) {
@@ -65,6 +66,7 @@ function Review(props) {
   return (
     <>
       <Container> 
+      <TopHeader header="Review" /> 
         <Container className={styles.ReviewSaveHeaderContainer}>
 
            <Stack spacing={1}> 

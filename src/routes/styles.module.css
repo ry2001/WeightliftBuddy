@@ -72,7 +72,7 @@
 }
 
 .ReviewSaveHeaderContainer {
-    margin-top: 2rem;
+    margin-top: 6rem;
 }
 
 .ReviewSaveInfoGrid{
@@ -90,7 +90,7 @@
 
 .ReviewSavePostureContainer{
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 9rem;
 }
 
 .ReviewSaveSaveButton{
@@ -119,4 +119,8 @@
 
 .NewActivityContainer {
     margin-top: 10rem;
+}
+
+.MarginforNavbar {
+    margin-bottom: 4rem;
 }
