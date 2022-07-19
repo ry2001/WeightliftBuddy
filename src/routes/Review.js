@@ -13,7 +13,8 @@ function Review(props) {
   const location = useLocation();
 
   const newReviewInfo = location.state
-  console.log(newReviewInfo, "test")
+  
+  console.log(newReviewInfo)
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
@@ -81,7 +82,7 @@ function Review(props) {
             <Image radius="lg" className={styles.homeRecentImage} src={tempthumbnail}/></Center>
            
             <Grid className={styles.ReviewSaveInfoGrid} justify="center">
-            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 5 </Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
+            <Grid.Col  span={4} ><Stack align="center" spacing={1}><Title order={2}> {newReviewInfo.length} </Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col> 
             <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 209 </Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
             <Grid.Col span={4} ><Stack  align="center" spacing={1}><Title order={2}> 30:20 </Title> <Text size="xs"> TIME</Text></Stack></Grid.Col>
             </Grid> 

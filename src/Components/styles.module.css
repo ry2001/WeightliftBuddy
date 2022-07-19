@@ -1,6 +1,8 @@
-FooterPosition {
-position: fixed !important;
-left:0 !important;
-bottom:0 !important;
-right:0 !important;
+.FooterPosition {
+    position: fixed;
+    bottom: 0;
+}
+
+.backgroundCheck {
+    background-color: white;
 }
