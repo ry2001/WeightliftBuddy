@@ -66,28 +66,28 @@ def determine_posture(knee_angle, torso_angle, params):
         print(message)
         return -1, message
 
-
-mp_drawing = mp.solutions.drawing_utils
-mp_pose = mp.solutions.pose
-
-# for webcam
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-
-# # for upload
-# file_name = 'path to file' # file in uploads
-# cap = cv2.VideoCapture(file_name)
-
-fps = int(cap.get(cv2.CAP_PROP_FPS))
-width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-frame_size = (width, height)
-fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-
-# Video writer.
-# video_output = cv2.VideoWriter('output.mp4', fourcc, fps, frame_size)
-
 def main():
-## Setup mediapipe instance
+    mp_drawing = mp.solutions.drawing_utils
+    mp_pose = mp.solutions.pose
+
+    # for webcam
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+
+    # # for upload
+    # file_name = 'path to file' # file in uploads
+    # cap = cv2.VideoCapture(file_name)
+
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    frame_size = (width, height)
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
+    # Video writer.
+    # video_output = cv2.VideoWriter('output.mp4', fourcc, fps, frame_size)
+
+
+    ## Setup mediapipe instance
     with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
         while cap.isOpened():
             # read file for each frame
@@ -242,7 +242,15 @@ def main():
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 break
 
+            if cv2.getWindowProperty('Mediapipe Feed', 0) < 0:
+                break
+
         cap.release()
         cv2.destroyAllWindows()
+
+        
+
+
+
 
 
