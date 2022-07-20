@@ -1,5 +1,5 @@
 import ml_detection as ml
-from flask import Flask
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -16,12 +16,16 @@ def login():
 def camera():
     return ml.main()
 
-# for post request
 
-
-@app.route('/register')
+@app.route("/register", methods=["POST"], strict_slashes=False)
 def register():
-    return
+    body = request.get_json(force=True)
+    user = body['user']
+    password = body['password']
+
+    users.append(user)
+    passwords.append(password)
+    return jsonify(body)
 
 
 if __name__ == '__main__':

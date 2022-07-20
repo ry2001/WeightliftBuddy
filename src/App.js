@@ -14,7 +14,7 @@ import Display from "./routes/Display";
 import Help from "./routes/Help";
 import Review from "./routes/Review";
 import ReviewandSave from "./routes/ReviewandSave";
-import Navigation from "./Components/Navigation";
+// import Navigation from "./Components/Navigation";
 //import TopHeader from "./Components/TopHeader";
 
 
@@ -23,7 +23,7 @@ function App() {
     return (
         <>
         <div>
-        <Navigation/>
+        {/* <Navigation/> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />

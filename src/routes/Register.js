@@ -14,8 +14,27 @@ function Register () {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
+    function handleChangeUser(e) {
+        setUser(e.target.value);
+      }
+
+    function handleChangePassword(e) {
+        setPassword(e.target.value);
+    }
+
     const register = () => {
-        // do a post request here to backend
+        fetch('/register', {  
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              user: user,
+              password: password,
+            })
+          })
+          .then(response => response.json())
+          .catch(error => console.log(error))
     }
 
     return (
@@ -40,13 +59,13 @@ function Register () {
                     <TextInput
                         label="Username"
                         required
-                        onChange={(event) => setUser(event.currentTarget.value)}
+                        onChange={handleChangeUser}
                     />
 
                     <PasswordInput
                         label="Password"
                         required
-                        onChange={(event) => setPassword(event.currentTarget.value)}
+                        onChange={handleChangePassword}
                     />
                     
                     <TextInput label="Age"/>
