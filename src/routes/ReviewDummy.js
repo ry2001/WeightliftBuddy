@@ -129,7 +129,6 @@ function ReviewDummy() {
           <Divider my="sm" />
           <Text> Feedback from our AI</Text>
           <Center>
-            <Image src="https://cdn-icons-png.flaticon.com/512/3412/3412862.png"/>
             <PieChart/>
           </Center>
           <Title order={3}> Issues: </Title>

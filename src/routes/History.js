@@ -1,4 +1,5 @@
 import React from "react"
+import { useLayoutEffect } from "react";
 import { Container, Text, Grid, Title, Stack, Image } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
@@ -6,6 +7,9 @@ import TopHeader from "../Components/TopHeader";
 import { Link } from "react-router-dom";
 
 function History() {
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0) });
 
   const recent_dummy = {
     recentInfo: [

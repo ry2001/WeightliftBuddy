@@ -1,4 +1,5 @@
 import React from "react"
+import { useLayoutEffect } from "react";
 import { Container, Text, Grid, Button, Center, Title, Stack, Image } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
@@ -8,6 +9,11 @@ import BarChart from "../Components/BarChart";
 
 
 function Home() {
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0) });
+
+
   const recent_dummy = {
     recentInfo: [
         {
