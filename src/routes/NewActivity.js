@@ -10,8 +10,9 @@ import styles from './styles.module.css';
 
 function NewActivity () {
 
-  function openCamera(){
-    fetch("/camera")
+  async function openCamera(){
+    await fetch('/camera')
+    window.location = 'http://localhost:3000/reviewandsave'
   }
 
   return (
