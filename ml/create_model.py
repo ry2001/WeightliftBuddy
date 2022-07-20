@@ -1,13 +1,14 @@
 # import pandas as pd
 # import numpy as np
-# filename = "./ml/data_abi.csv"
+# filename = "./ml/data_zenton.csv"
 
 # data=pd.read_csv(filename, sep = ",", names=["torso_angle", "knee_angle"])
 # # print(data)
 
 # params = {}
-# datapoints = [15,20,25,30,35,40]
+# datapoints = [15,20,25,30,35,40] # torso angle
 # c = 0
+
 # # decide paremeters based on data
 # params = {}
 # for i in datapoints:
