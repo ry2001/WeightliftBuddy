@@ -5,18 +5,20 @@ import { PasswordInput,
         Button,
         Image,
         Stack} from "@mantine/core";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate} from 'react-router-dom';
 
 
 
 function Register () {
 
+    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
     function handleChangeUser(e) {
         setUser(e.target.value);
-      }
+    }
 
     function handleChangePassword(e) {
         setPassword(e.target.value);
@@ -26,15 +28,17 @@ function Register () {
         fetch('/register', {  
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              user: user,
-              password: password,
+                user: user,
+                password: password,
             })
-          })
-          .then(response => response.json())
-          .catch(error => console.log(error))
+        })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+
+        navigate("/login")
     }
 
     return (
@@ -50,7 +54,7 @@ function Register () {
                             width={150}
                         />
                     </Center>
-                    
+
                     <TextInput
                         label="Email"
                         required
