@@ -3,7 +3,10 @@ import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } fro
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import { useLocation } from "react-router-dom";
+import { useLayoutEffect } from "react";
 import TopHeader from "../Components/TopHeader";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHome, faUserCircle, faGear, faClock, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 function Review() {
@@ -14,6 +17,9 @@ function Review() {
   const newComment = location.state
 
   console.log(newReviewInfo, "test")
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0) });
 
 
 
@@ -61,7 +67,7 @@ function Review() {
   return (
     <>
       <Container> 
-      <TopHeader header="Review" /> 
+      <TopHeader header="Review"> </TopHeader>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>

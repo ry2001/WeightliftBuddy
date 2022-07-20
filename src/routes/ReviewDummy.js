@@ -1,4 +1,5 @@
 import React from "react"
+import { useLayoutEffect } from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
@@ -6,6 +7,9 @@ import TopHeader from "../Components/TopHeader";
 
 
 function ReviewDummy() {
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0) });
 
   const review_dummy = {
     reviewInfo: [

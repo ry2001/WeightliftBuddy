@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import TopHeader from "../Components/TopHeader";
 import { Link } from "react-router-dom";
+import BarChart from "../Components/BarChart";
 
 
 function Home() {
@@ -87,6 +88,7 @@ function Home() {
         <Container className={styles.homeChartContainer}>
           <Center>
             <Image src="https://cdn-icons-png.flaticon.com/512/3412/3412862.png"/>
+
           </Center>
         </Container>
 
