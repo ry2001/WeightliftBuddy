@@ -24,7 +24,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 # Initialize frame counters.
 good_frames = 0
 bad_frames  = 0
-bad = False
+# bad = False
 bad_timings = []
 
 def findDistance(x1, y1, x2, y2):
@@ -109,7 +109,6 @@ def main():
             # Recolor image to RGB
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             image.flags.writeable = False
-
             # Make detection
             keypoints = pose.process(image)
         
