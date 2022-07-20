@@ -5,6 +5,11 @@ import styles from './styles.module.css';
 import { useNavigate} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import TopHeader from "../Components/TopHeader";
+import PieChart from "../Components/PieChart";
+import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 
 function ReviewandSave() {
@@ -59,7 +64,16 @@ function ReviewandSave() {
   return (
     <>
       <Container> 
-        <TopHeader header="Review and Save" /> 
+      <AppShell
+        header={<Header fixed position={{ top: 0, left: 0, right:0}} 
+        className={styles.TopHeader} > 
+       <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Review and Save</Title></Grid.Col>
+       <Grid.Col  className={styles.SetHeaderIcon} span={1}>
+          <Center><FontAwesomeIcon  size="lg" icon={faTrash}/></Center></Grid.Col></Grid>
+         
+         
+         </Header>}>
+      </AppShell>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
