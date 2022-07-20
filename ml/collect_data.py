@@ -178,7 +178,7 @@ def main():
 
         ## add data to csv for data collection
                 data = [torso_angle, knee_angle]
-                with open('./ml/data_zenton.csv', 'a', newline='') as f_object:  
+                with open('./ml/data_zenton.cqsv', 'a', newline='') as f_object:  
                     writer_object = writer(f_object)
                     writer_object.writerow(data)  
                     f_object.close()
