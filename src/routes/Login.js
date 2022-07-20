@@ -7,8 +7,10 @@ import {Container,
         Button,
         Image,
         Anchor} from '@mantine/core';
+import {Link, useNavigate} from 'react-router-dom';
 
 function Login() {
+    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState({
@@ -38,7 +40,7 @@ function Login() {
         else {
             const correctPassword = users.password[i];
             if (correctPassword === password){
-                setError({password:"success"})
+                navigate("/home")
                 // navigate next page
             }
             else {
@@ -93,7 +95,7 @@ function Login() {
 
                 <Text color="dimmed" size="sm" align="center" mt={5}>
                     Do not have an account yet?{' '}
-                    <Anchor href="/register" size="sm">
+                    <Anchor component={Link} to="/register" size="sm">
                         {/* need to add route to register here */}
                         Register here
                     </Anchor>
