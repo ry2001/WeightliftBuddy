@@ -88,7 +88,7 @@ function Home() {
         <Container className={styles.homeChartContainer}>
           <Center>
             <Image src="https://cdn-icons-png.flaticon.com/512/3412/3412862.png"/>
-
+            <BarChart/>
           </Center>
         </Container>
 
