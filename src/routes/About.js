@@ -65,7 +65,7 @@ function About() {
                     </Stack>
                 </Center>
             </div>
-            </>
+        </>
     ); }
 
     export default About;

@@ -24,8 +24,6 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 # Initialize frame counters.
 good_frames = 0
 bad_frames  = 0
-# bad = False
-bad_timings = []
 
 def findDistance(x1, y1, x2, y2):
     dist = m.sqrt((x2-x1)**2+(y2-y1)**2)
@@ -47,8 +45,8 @@ def calculate_angle(a,b,c):
     return angle 
 
 #send warning when bad posture is detected
-def sendWarning(image, w, font, red, message):
-    cv2.putText(image, message, (w - 150, 130), font, 0.9, red, 2)
+def sendWarning(image, offset, w, font, red):
+    cv2.putText(image, str(int(offset)) + ' Poor posture', (w - 150, 130), font, 0.9, red, 2)
     pass
 
 def determine_posture(knee_angle, torso_angle, params):
@@ -57,15 +55,15 @@ def determine_posture(knee_angle, torso_angle, params):
     if knee_angle > i[0]:
         if knee_angle < i[1]:
             message = 'good posture'
-            # print(message)
+            print(message)
             return 0, message
         else:
-            message = 'lower your back'
-            # print(message)
+            message = 'your back is too high'
+            print(message)
             return 1, message
     else:
-        message = 'lift your back'
-        # print(message)
+        message = 'your back is too low'
+        print(message)
         return -1, message
 
 def main():
@@ -75,7 +73,6 @@ def main():
 
     # for webcam
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    start = time.time()
 
     # # for upload
     # file_name = 'path to file' # file in uploads
@@ -92,7 +89,6 @@ def main():
 
     ## Setup mediapipe instance
     with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
-
         while cap.isOpened():
             # read file for each frame
             success, frame = cap.read() # success, image
@@ -109,6 +105,7 @@ def main():
             # Recolor image to RGB
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             image.flags.writeable = False
+        
             # Make detection
             keypoints = pose.process(image)
         
@@ -141,99 +138,94 @@ def main():
         # # Assist to align the camera to point at the side view of the person.
                 # Calculate distance between left shoulder and right shoulder points.
                 offset = findDistance(left_shoulder_x, left_shoulder_y, right_shoulder_x, right_shoulder_y)
-                # cv2.rectangle(image, (0, h-60), (w, h), black, -1)
-                # cv2.rectangle(image, (0, 0), (0, 60), black, -1)
 
                 # Offset threshold 30 is based on results obtained from analysis over 100 samples.
-                if offset < 50:
-                    cv2.putText(image, str(int(offset)) + ' Aligned', (w - 160, 30), font, 0.9, light_green, 2)
-
-                    left_side = False
-                    right_side = False
-
-                    if (landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].visibility + 
-                        landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].visibility + 
-                        landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility) < (landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].visibility + 
-                        landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility + 
-                        landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility) :
-                        right_side = True
-                        
-                    else: 
-                        left_side = True
-
-
-                    if left_side:
-                        left_hip=(left_hip_x, left_hip_y)
-                        left_knee=(left_knee_x, left_knee_y)
-                        left_ankle=(left_ankle_x, left_ankle_y)
-                        knee_angle= calculate_angle(left_hip, left_knee, left_ankle)
-                        torso_angle = findAngle(left_hip_x, left_hip_y, left_shoulder_x, left_shoulder_y)
-
-                    else: 
-                        right_hip=(right_hip_x, right_hip_y)
-                        right_knee=(right_knee_x, right_knee_y)
-                        right_ankle=(right_ankle_x, right_ankle_y)
-                        knee_angle= calculate_angle(right_hip, right_knee, right_ankle)
-                        torso_angle = findAngle(right_hip_x, right_hip_y, right_shoulder_x, right_shoulder_y)
-                    
-                # # Put text, Posture and angle inclination.
-                    angle_text_string = '  Torso : ' + str(int(torso_angle))
-                    cv2.putText(image, angle_text_string, (10, 30), font, 0.9, black, 2)
-                    
-                    # if bad == True:
-                    #     cv2.putText(image, message, (w - 150, 130), font, 0.9, red, 2)
-                    # print('gg to determine posture')
-
-                # # Determine whether good posture or bad posture.
-                    posture, message = determine_posture(knee_angle, torso_angle, params)
-                    
-                    if posture == 0:
-                        bad_frames = 0
-                        good_frames += 1
-                        
-                        cv2.putText(image, message, (10, 60), font, 0.9, light_green, 2)
-                        # cv2.putText(image, angle_text_string, (10, 30), font, 0.9, green, 2)
-                        # cv2.putText(image, str(int(torso_angle)), (left_hip_x + 10, left_hip_y), font, 0.9, green, 2)
-                        # cv2.putText(image, str(int(knee_angle)), (left_hip_x + 10, left_hip_y+20), font, 0.9, green, 2)
-        
-                    elif posture == 1 or posture == -1:
-                        good_frames = 0
-                        bad_frames += 1
-                        cv2.putText(image, message, (10, 60), font, 0.9, red, 2)
-                        # cv2.putText(image, angle_text_string, (10, 30), font, 0.9, red, 2)
-            
-                    else:
-                        pass
-
-                    # Calculate the time of remaining in a particular posture.
-                    # fps = 15
-                    # good_time = (1 / fps) * good_frames
-                    # bad_time =  (1 / fps) * bad_frames
-                    # print(good_time)
-                    
-                    # Pose time.
-                    # if good_time > 0:
-                    #     # time_string_good = 'Good Posture Time : ' + str(round(good_time, 1)) + 's'
-                    #     # cv2.putText(image, time_string_good, (10, h - 20), font, 0.9, green, 2)
-                    #     pass
-                    # else:
-                    #     time_string_bad = 'Bad Posture Time : ' + str(round(bad_time, 1)) + 's'
-                    #     cv2.putText(image, time_string_bad, (10, h - 20), font, 0.9, red, 2)
-                    
-                    # If you stay in bad posture for more than 3 minutes (180s) send an alert.
-                    if bad_frames > 5:
-                        end_time = time.time()
-                        bad_timings.append(end_time-start)
-                        # bad = True
-                        # bad_frames = 0
-                        sendWarning(image, offset, w, font, red, 'Bad Posture')
-                        
-                    else:
-                        cv2.putText(image, message, (10, 60), font, 0.9, light_green, 2)
+                if offset < 100:
+                    cv2.putText(image, str(int(offset)) + ' Aligned', (w - 160, 30), font, 0.9, black, 2)
                 else:
-                    cv2.putText(image, str(int(offset)) + ' Not Aligned', (w - 250, 30), font, 0.9, red, 3)
+                    cv2.putText(image, str(int(offset)) + ' Not Aligned', (w - 250, 30), font, 0.9, black, 2)
                 
+
+                left_side = False
+                right_side = False
+
+                if (landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].visibility + 
+                    landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].visibility + 
+                    landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility) < (landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].visibility + 
+                    landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility + 
+                    landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility) :
+                    right_side = True
                     
+                else: 
+                    left_side = True
+
+
+                if left_side:
+                    left_hip=(left_hip_x, left_hip_y)
+                    left_knee=(left_knee_x, left_knee_y)
+                    left_ankle=(left_ankle_x, left_ankle_y)
+                    knee_angle= calculate_angle(left_hip, left_knee, left_ankle)
+                    torso_angle = findAngle(left_hip_x, left_hip_y, left_shoulder_x, left_shoulder_y)
+            
+
+                else: 
+                    right_hip=(right_hip_x, right_hip_y)
+                    right_knee=(right_knee_x, right_knee_y)
+                    right_ankle=(right_ankle_x, right_ankle_y)
+                    knee_angle= calculate_angle(right_hip, right_knee, right_ankle)
+                    torso_angle = findAngle(right_hip_x, right_hip_y, right_shoulder_x, right_shoulder_y)
+        
+
+        ## add data to csv for data collection
+                data = [torso_angle, knee_angle]
+                with open('./ml/data_zenton.cqsv', 'a', newline='') as f_object:  
+                    writer_object = writer(f_object)
+                    writer_object.writerow(data)  
+                    f_object.close()
+                
+                
+            # # Put text, Posture and angle inclination.
+                angle_text_string = '  Torso : ' + str(int(torso_angle))
+                cv2.putText(image, angle_text_string, (10, 30), font, 0.9, dark_green, 2)
+
+            # # Determine whether good posture or bad posture.
+                posture, message = determine_posture(knee_angle, torso_angle, params)
+        
+                if posture == 0:
+                    bad_frames = 0
+                    good_frames += 1
+                    
+                    cv2.putText(image, message, (10, 60), font, 0.9, light_green, 2)
+                    # cv2.putText(image, str(int(torso_angle)), (left_hip_x + 10, left_hip_y), font, 0.9, light_green, 2)
+                    # cv2.putText(image, str(int(knee_angle)), (left_hip_x + 10, left_hip_y+20), font, 0.9, light_green, 2)
+    
+                elif posture == 1 or posture == -1:
+                    good_frames = 0
+                    bad_frames += 1
+                
+                    cv2.putText(image, message, (10, 60), font, 0.9, red, 2)
+                    # cv2.putText(image, str(int(torso_angle)), (left_hip_x + 10, left_hip_y), font, 0.9, red, 2)
+                    # cv2.putText(image, str(int(knee_angle)), (left_hip_x + 10, left_hip_y+20), font, 0.9, red, 2)
+                else:
+                    pass
+                # Calculate the time of remaining in a particular posture.
+                fps = 15
+                good_time = (1 / fps) * good_frames
+                bad_time =  (1 / fps) * bad_frames
+                print(good_time)
+                
+                # Pose time.
+                if good_time > 0:
+                    time_string_good = 'Good Posture Time : ' + str(round(good_time, 1)) + 's'
+                    cv2.putText(image, time_string_good, (10, h - 20), font, 0.9, green, 2)
+                else:
+                    time_string_bad = 'Bad Posture Time : ' + str(round(bad_time, 1)) + 's'
+                    cv2.putText(image, time_string_bad, (10, h - 20), font, 0.9, red, 2)
+                
+                # If you stay in bad posture for more than 3 minutes (180s) send an alert.
+                # if bad_time > 3:
+                #     sendWarning(image, offset, w, font, red)
+                
             except:
                 pass
 
@@ -253,7 +245,5 @@ def main():
 
         cap.release()
         cv2.destroyAllWindows()
-        print(bad_timings)
-
 main()
 

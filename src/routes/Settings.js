@@ -1,6 +1,7 @@
 import React from "react"
-import { Container, Text, Title, Center, UnstyledButton, Autocomplete, Group, Stack } from "@mantine/core";
+import { Container, Text, Center, UnstyledButton, Autocomplete, Group, Stack } from "@mantine/core";
 import { Search, AlertCircle, Help, Eye, ChevronRight } from 'tabler-icons-react';
+import TopHeader from "../Components/TopHeader";
 
 
 function Settings() {
@@ -10,13 +11,11 @@ function Settings() {
         <Container 
           style={{marginTop:50}}
         >
-          <Center>
-            <Title order={1}>Setting</Title>
-          </Center> 
+          <TopHeader header="Setting" /> 
         </Container>
 
         <Container 
-          style={{marginTop:50}}
+          style={{marginTop:100}}
         >
           <Center>
             <Autocomplete 
