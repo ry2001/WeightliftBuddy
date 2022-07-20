@@ -13,6 +13,7 @@ import Display from "./routes/Display";
 import Help from "./routes/Help";
 import Review from "./routes/Review";
 import ReviewandSave from "./routes/ReviewandSave";
+import ReviewDummy from ".routes/ReviewDummy"
 import Navigation from "./Components/Navigation";
 //import TopHeader from "./Components/TopHeader";
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/help" element={<Help />} />
             <Route path="/review" element={<Review />} />
             <Route path="/reviewandsave" element={<ReviewandSave />} />
+            <Route path="/reviewdummy" element={<ReviewDummy />} />
           </Routes>
         </div>
       </>
