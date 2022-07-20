@@ -7,30 +7,27 @@ import {Container,
         Button,
         Image,
         Anchor} from '@mantine/core';
+import {Link, useNavigate} from 'react-router-dom';
 
 function Login() {
+
+    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState({
         user: "",
         password: ""
-    })
-
+        })
     const [users, setUsers] = useState([{}]);
 
     useEffect(() => {
-        fetch("/login").then(
-            response => response.json()
-        ).then(
-            users => {
-                setUsers(users);
-            }
-        )
+        fetch("/login")
+        .then(response => response.json())
+        .then(users => { setUsers(users) });
     }, []);
 
     const checkLogin = () => {
-        const i = users.user.findIndex(users => {
-            return users === user;})
+        const i = users.user.findIndex(users => {return users === user;})
         if (i === -1) {
             setError({user: "User does not exist"});
         }
@@ -38,8 +35,7 @@ function Login() {
         else {
             const correctPassword = users.password[i];
             if (correctPassword === password){
-                setError({password:"success"})
-                // navigate next page
+                navigate("/home")
             }
             else {
                 setError({password: "Incorrect password"})
@@ -93,7 +89,7 @@ function Login() {
 
                 <Text color="dimmed" size="sm" align="center" mt={5}>
                     Do not have an account yet?{' '}
-                    <Anchor href="/register" size="sm">
+                    <Anchor component={Link} to="/register" size="sm">
                         {/* need to add route to register here */}
                         Register here
                     </Anchor>

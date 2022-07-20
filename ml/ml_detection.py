@@ -222,7 +222,6 @@ def main():
                     
                     # If you stay in bad posture for more than 3 minutes (180s) send an alert.
                     if bad_frames > 5:
-                        print
                         end_time = time.time()
                         bad_timings.append(end_time-start)
                         # bad = True

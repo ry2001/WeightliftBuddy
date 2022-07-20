@@ -1,7 +1,6 @@
 import React from "react"
 import './App.css';
-import { Routes, Route, Link} from "react-router-dom";
-import BottomNavbar from './Components/BottomNavbar';
+import { Routes, Route} from "react-router-dom";
 import Home from "./routes/Home";
 import NewActivity from "./routes/NewActivity";
 import Settings from "./routes/Settings";
@@ -21,28 +20,26 @@ import Navigation from "./Components/Navigation";
 function App() {
   
     return (
-        <>
+      <>
         <div>
-        <Navigation/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/profile" element={<Profile />}/>
-          <Route path="/history" element={<History/>} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/createactivity" element={<NewActivity />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/display" element={<Display />} />
-          <Route path="/help" element={<Help />} />
-          <Route path="/review" element={<Review />} />
-          <Route path="/reviewandsave" element={<ReviewandSave />} />
-
-        </Routes>
-        
+          <Navigation/>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />}/>
+            <Route path="/history" element={<History/>} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/createactivity" element={<NewActivity />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/display" element={<Display />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/review" element={<Review />} />
+            <Route path="/reviewandsave" element={<ReviewandSave />} />
+          </Routes>
         </div>
-        </>
+      </>
     );
   }
   
