@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Text, Title, Image, Center, Grid, Button } from "@mantine/core";
+import { Container, Text, Image, Center, Grid, Button } from "@mantine/core";
 import TopHeader from "../Components/TopHeader";
 
 function Profile() {
@@ -16,7 +16,6 @@ function Profile() {
   return (
     <>
       <div>
-      
         <Container 
           style={{marginTop:50}}
         >

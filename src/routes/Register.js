@@ -5,17 +5,40 @@ import { PasswordInput,
         Button,
         Image,
         Stack} from "@mantine/core";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate} from 'react-router-dom';
 
 
 
 function Register () {
 
+    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
+    function handleChangeUser(e) {
+        setUser(e.target.value);
+    }
+
+    function handleChangePassword(e) {
+        setPassword(e.target.value);
+    }
+
     const register = () => {
-        // do a post request here to backend
+        fetch('/register', {  
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                user: user,
+                password: password,
+            })
+        })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+
+        navigate("/login")
     }
 
     return (
@@ -31,7 +54,7 @@ function Register () {
                             width={150}
                         />
                     </Center>
-                    
+
                     <TextInput
                         label="Email"
                         required
@@ -40,13 +63,13 @@ function Register () {
                     <TextInput
                         label="Username"
                         required
-                        onChange={(event) => setUser(event.currentTarget.value)}
+                        onChange={handleChangeUser}
                     />
 
                     <PasswordInput
                         label="Password"
                         required
-                        onChange={(event) => setPassword(event.currentTarget.value)}
+                        onChange={handleChangePassword}
                     />
                     
                     <TextInput label="Age"/>

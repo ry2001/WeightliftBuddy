@@ -10,29 +10,24 @@ import {Container,
 import {Link, useNavigate} from 'react-router-dom';
 
 function Login() {
+
     const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState({
         user: "",
         password: ""
-    })
-
+        })
     const [users, setUsers] = useState([{}]);
 
     useEffect(() => {
-        fetch("/login").then(
-            response => response.json()
-        ).then(
-            users => {
-                setUsers(users);
-            }
-        )
+        fetch("/login")
+        .then(response => response.json())
+        .then(users => { setUsers(users) });
     }, []);
 
     const checkLogin = () => {
-        const i = users.user.findIndex(users => {
-            return users === user;})
+        const i = users.user.findIndex(users => {return users === user;})
         if (i === -1) {
             setError({user: "User does not exist"});
         }
@@ -41,7 +36,6 @@ function Login() {
             const correctPassword = users.password[i];
             if (correctPassword === password){
                 navigate("/home")
-                // navigate next page
             }
             else {
                 setError({password: "Incorrect password"})
