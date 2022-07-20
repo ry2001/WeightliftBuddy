@@ -9,6 +9,7 @@ import PieChart from "../Components/PieChart";
 import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 
 
@@ -69,7 +70,7 @@ function ReviewandSave() {
         className={styles.TopHeader} > 
        <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Review and Save</Title></Grid.Col>
        <Grid.Col  className={styles.SetHeaderIcon} span={1}>
-          <Center><FontAwesomeIcon  size="lg" icon={faTrash}/></Center></Grid.Col></Grid>
+          <Center><Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link></Center></Grid.Col></Grid>
          
          
          </Header>}>
@@ -158,7 +159,7 @@ function ReviewandSave() {
           <Divider my="sm" />
           <Text> Feedback from our AI</Text>
           <Center>
-            <Image src="https://cdn-icons-png.flaticon.com/512/3412/3412862.png"/>
+            <PieChart/>
           </Center>
           <Title order={3}> Issues: </Title>
           <List>
