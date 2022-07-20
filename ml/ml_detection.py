@@ -279,6 +279,9 @@ def main():
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 break
 
+            if cv2.getWindowProperty('Mediapipe Feed', 0) < 0:
+                break
+
         cap.release()
         cv2.destroyAllWindows()
         print(bad_timings)
