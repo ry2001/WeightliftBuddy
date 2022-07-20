@@ -1,7 +1,6 @@
 import React from "react"
 import './App.css';
-import { Routes, Route, Link} from "react-router-dom";
-import BottomNavbar from './Components/BottomNavbar';
+import { Routes, Route} from "react-router-dom";
 import Home from "./routes/Home";
 import NewActivity from "./routes/NewActivity";
 import Settings from "./routes/Settings";

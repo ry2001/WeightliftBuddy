@@ -113,9 +113,8 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             left_ankle_x = landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].x * w
             left_ankle_y = landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].y * h
 
-            
-
         except:
+            
             pass
 
         mp_drawing.draw_landmarks(image, keypoints.pose_landmarks, mp_pose.POSE_CONNECTIONS,
