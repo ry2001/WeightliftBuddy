@@ -160,6 +160,9 @@ function History() {
             </Container> ))}
         </Container>
       </Container>
+      <Container className={styles.MarginforNavbar}>
+
+        </Container >
     </>
   ); }
 

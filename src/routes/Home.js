@@ -116,6 +116,10 @@ function Home() {
               </Grid>
             </Container> ))}
         </Container>
+        <Container className={styles.MarginforNavbar}>
+
+        </Container >
+
       </Container>
     </>
   ); }

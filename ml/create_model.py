@@ -1,27 +1,27 @@
 import pandas as pd
 import numpy as np
-filename = "./ml/zenton_ethan.csv"
+# filename = "./ml/zenton_ethan.csv"
 
-data=pd.read_csv(filename, sep = ",", names=["torso_angle", "knee_angle"])
-# print(data)
+# data=pd.read_csv(filename, sep = ",", names=["torso_angle", "knee_angle"])
+# # print(data)
 
-params = {}
-datapoints = [15,20,25,30,35,40] # torso angle
-c = 0
+# params = {}
+# datapoints = [15,20,25,30,35,40] # torso angle
+# c = 0
 
 # decide paremeters based on data
-params = {}
-for i in datapoints:
-    knee = (data[(data['torso_angle'] > i-1) & (data['torso_angle'] < i+1)]).loc[:, ('knee_angle')]
-    if len(knee) > 5:
-        mean = np.mean(knee)
-        std = np.std(knee)
-        lower_bound = mean-std
-        upper_bound = mean+std
-        # print(f"{datapoints[c]}: {lower_bound} , {mean}, {upper_bound}")
-        params[i] = (lower_bound, upper_bound)
-    c+=1
-print(filename, params)
+# params = {}
+# for i in datapoints:
+#     knee = (data[(data['torso_angle'] > i-1) & (data['torso_angle'] < i+1)]).loc[:, ('knee_angle')]
+#     if len(knee) > 5:
+#         mean = np.mean(knee)
+#         std = np.std(knee)
+#         lower_bound = mean-std
+#         upper_bound = mean+std
+#         # print(f"{datapoints[c]}: {lower_bound} , {mean}, {upper_bound}")
+#         params[i] = (lower_bound, upper_bound)
+#     c+=1
+# print(filename, params)
 
 # zenton_ethan 
 params = {15: (115.69995802367308, 176.92575293383678), 20: (125.84640210966039, 172.21735754226745), 25: (88.89068727354515, 175.1280447087127), 30: (90.94999087111344, 166.2771561069063), 35: (104.26478783029441, 166.04326235420538), 40: (66.75491286859872, 135.60064258541212)}
