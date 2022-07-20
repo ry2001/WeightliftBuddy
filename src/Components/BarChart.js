@@ -27,26 +27,26 @@ export const options = {
       },
       title: {
         display: true,
-        text: 'Chart.js Bar Chart',
+        text: 'PR Progress Chart',
       },
     },
   };
 
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  const values1 = [ 12, 33, 53, 23, 54, 44, 22]
-  const values2 = [ 10, 4, 50, 43, 5, 13, 20]
+  const values1 = [ 60, 65, 70, 75, 80, 85, 90]
+  const values2 = [ 55, 60, 70, 73, 77, 80, 85]
 
   export const data = {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: labels.map(() => values1),
+        label: 'Record',
+        data: values2,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
-        label: 'Dataset 2',
-        data: labels.map(() => values2),
+        label: 'Goal',
+        data: values1,
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
