@@ -125,3 +125,9 @@
 .MarginforNavbar {
     margin-bottom: 6rem;
 }
+
+.RestyleLink {
+    font-style:normal;
+    color: black;
+    text-decoration: none ;
+}

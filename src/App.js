@@ -13,8 +13,9 @@ import Display from "./routes/Display";
 import Help from "./routes/Help";
 import Review from "./routes/Review";
 import ReviewandSave from "./routes/ReviewandSave";
-import ReviewDummy from ".routes/ReviewDummy"
+import ReviewDummy from "./routes/ReviewDummy";
 import Navigation from "./Components/Navigation";
+
 //import TopHeader from "./Components/TopHeader";
 
 

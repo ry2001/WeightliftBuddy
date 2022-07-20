@@ -9,11 +9,7 @@ import numpy as np
 # datapoints = [15,20,25,30,35,40] # torso angle
 # c = 0
 
-<<<<<<< HEAD
-# decide paremeters based on data
-=======
 # # decide paremeters based on data
->>>>>>> 618c318a0f53bf9f2a261615970bf61acef5d961
 # params = {}
 # for i in datapoints:
 #     knee = (data[(data['torso_angle'] > i-1) & (data['torso_angle'] < i+1)]).loc[:, ('knee_angle')]

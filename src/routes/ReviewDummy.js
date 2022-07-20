@@ -2,9 +2,10 @@ import React from "react"
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import TopHeader from "../Components/TopHeader";
 
 
-function Review() {
+function ReviewDummy() {
 
   const review_dummy = {
     reviewInfo: [
@@ -50,6 +51,7 @@ function Review() {
   return (
     <>
       <Container> 
+      <TopHeader header="Review" /> 
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
@@ -136,4 +138,4 @@ function Review() {
     </>
   ); }
 
-  export default Review;
+  export default ReviewDummy;

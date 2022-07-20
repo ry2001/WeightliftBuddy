@@ -2,9 +2,20 @@ import React from "react"
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import { useLocation } from "react-router-dom";
+import TopHeader from "../Components/TopHeader";
 
 
 function Review() {
+
+  const location = useLocation();
+
+  const newReviewInfo = location.state
+  const newComment = location.state
+
+  console.log(newReviewInfo, "test")
+
+
 
   const review_dummy = {
     reviewInfo: [
@@ -50,6 +61,7 @@ function Review() {
   return (
     <>
       <Container> 
+      <TopHeader header="Review" /> 
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>

@@ -3,6 +3,7 @@ import { Container, Text, Grid, Button, Center, Title, Stack, Image } from "@man
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import TopHeader from "../Components/TopHeader";
+import { Link } from "react-router-dom";
 
 
 function Home() {
@@ -93,6 +94,7 @@ function Home() {
         <Container className={styles.homeRecentContainer}>
           <Title>Recent Activity</Title>
           {recent_dummy.recentInfo.map((recentInfo, index) => (
+            <Link to="/reviewdummy" className={styles.RestyleLink}>
             <Container className={styles.homeRecentIndivContainer} key={index} >
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
@@ -114,7 +116,7 @@ function Home() {
                   <Image radius="sm" className={styles.homeRecentImage} src={tempthumbnail}/>
                 </Grid.Col>
               </Grid>
-            </Container> ))}
+            </Container></Link> ))}
         </Container>
         <Container className={styles.MarginforNavbar}>
 

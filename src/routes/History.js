@@ -3,7 +3,7 @@ import { Container, Text, Grid, Title, Stack, Image } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import TopHeader from "../Components/TopHeader";
-
+import { Link } from "react-router-dom";
 
 function History() {
 
@@ -37,6 +37,7 @@ function History() {
         <Container className={styles.HistoryContainer}>
           <Title order={3}>This Week</Title>
           {recent_dummy.recentInfo.map((recentInfo, index) => (
+            <Link to="/reviewdummy" className={styles.RestyleLink}>
             <Container className={styles.homeRecentIndivContainer} key={index} >
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
@@ -73,7 +74,7 @@ function History() {
                   <Image radius="sm" className={styles.homeRecentImage} src={tempthumbnail}/>
                 </Grid.Col>
               </Grid>
-          </Container> ))}
+          </Container> </Link> ))}
         </Container>
 
         <Container className={styles.homeRecentContainer}>
