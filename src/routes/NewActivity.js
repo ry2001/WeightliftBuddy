@@ -15,8 +15,9 @@ function NewActivity () {
   const[opened, setOpened] = useState(true);
   const[volCheck, setVolCheck] = useState(true);
 
-  function openCamera(){
-    fetch("/camera")
+  async function openCamera(){
+    await fetch('/camera')
+    window.location = 'http://localhost:3000/reviewandsave'
   }
 
   // to be inserted, not sure where yet
