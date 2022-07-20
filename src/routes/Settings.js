@@ -2,6 +2,7 @@ import React from "react"
 import { Container, Text, Center, UnstyledButton, Autocomplete, Group, Stack } from "@mantine/core";
 import { Search, AlertCircle, Help, Eye, ChevronRight } from 'tabler-icons-react';
 import TopHeader from "../Components/TopHeader";
+import { Link } from "react-router-dom";
 
 
 function Settings() {
@@ -31,7 +32,7 @@ function Settings() {
             justify="space-around" 
             sx={() => ({ height: 300 })}
             style={{marginTop:50}}
-          >
+          > <Link to ="/display">
             <UnstyledButton 
               style={{width: '100%'}} 
               onClick={() => console.log('Go to Display page')}
@@ -50,8 +51,8 @@ function Settings() {
                   strokeWidth={2}
                 />
               </Group>
-            </UnstyledButton>
-
+            </UnstyledButton> </Link>
+            <Link to ="/help">
             <UnstyledButton 
               style={{width: '100%'}} 
               onClick={() => console.log('Go to Help page')}
@@ -70,8 +71,8 @@ function Settings() {
                   strokeWidth={2}
                 />
               </Group>
-            </UnstyledButton>
-
+            </UnstyledButton> </Link>
+            <Link to ="/about">
             <UnstyledButton 
               style={{width: '100%'}}
               onClick={() => console.log('Go to About page')}
@@ -90,7 +91,7 @@ function Settings() {
                   strokeWidth={2}
                 />
               </Group>
-            </UnstyledButton>
+            </UnstyledButton></Link>
           </Stack>
         </Center>
       </div>

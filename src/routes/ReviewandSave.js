@@ -10,10 +10,12 @@ import TopHeader from "../Components/TopHeader";
 function ReviewandSave() {
 
     const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
+    const [comment, setComment] = useState([{comment:""}])
     const navigate = useNavigate();
 
     function passtoReview(){
-      navigate('/review', { state: inputList });
+      navigate('/review', { state: inputList }, {state: comment});
+      //i forgot NEED HELP PS THANKS AHHAH 
     }
 
     const handleWeightInputChange = (e, index) => {
@@ -35,11 +37,11 @@ function ReviewandSave() {
     console.log(inputList)
 
     const handleTextInputChange = (e, index) => {
-      console.log(e)
+      console.log(e,"test")
       const  value  = e.target.value;
-      const list = [...inputList];
-      list[0]["comment"] = value;
-      setInputList(list);
+      const comment = value;
+      setComment(value);
+      console.log(comment, "here")
     };
 
     const handleAddClick = () => {
