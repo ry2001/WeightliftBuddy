@@ -12,7 +12,7 @@ import TopHeader from "../Components/TopHeader";
 import styles from './styles.module.css';
 
 function NewActivity () {
-  const[opened, setOpened] = useState(true);
+  const[opened, setOpened] = useState(false);
   const[volCheck, setVolCheck] = useState(true);
 
   async function openCamera(){
@@ -51,13 +51,13 @@ function NewActivity () {
     return(
       <Modal
       opened={opened}
-      onClose={() => setOpened(false)}
+      withCloseButton={false}
       title="Audio Settings"
       >
         <Stack
         justify="center"
         spacing="xl"
-        style={{marginBottom: 25}}
+        style={{marginBottom: 15}}
         >
           <Stack
           spacing="sm"
@@ -88,6 +88,17 @@ function NewActivity () {
 
             <Volume/>
 
+            <Center>
+              <Button onClick={() => {
+                setOpened(false);
+                openCamera();
+              }}
+              style={{marginTop: 30}}
+              >
+                Confirm
+              </Button>
+            </Center>
+
             </Stack>
         </Stack>
       </Modal>
@@ -104,7 +115,7 @@ function NewActivity () {
         <Center>
           <Stack spacing={50}>
             <Button
-              onClick={() => openCamera()}
+              onClick={() => setOpened(true)}
               variant="light"
               style={{width: 200, height: 150}}
               color="dark"
