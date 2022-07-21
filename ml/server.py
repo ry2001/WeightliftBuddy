@@ -3,8 +3,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-users = ['ry', 'kw', 'st', 'abi', 'val']
-passwords = ['ry', 'kw', 'st', 'abi', 'val']
+users = ['ry', 'kw', 'st', 'abi', 'val', 'abc']
+passwords = ['ry', 'kw', 'st', 'abi', 'val','123']
 
 
 @app.route('/login')
