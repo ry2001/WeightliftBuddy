@@ -15,6 +15,8 @@ import Review from "./routes/Review";
 import ReviewandSave from "./routes/ReviewandSave";
 import ReviewDummy from "./routes/ReviewDummy";
 import Navigation from "./Components/Navigation";
+import EditReview from "./routes/EditReview";
+import EditReviewDummy from "./routes/EditReviewDummy";
 
 //import TopHeader from "./Components/TopHeader";
 
@@ -40,6 +42,8 @@ function App() {
             <Route path="/review" element={<Review />} />
             <Route path="/reviewandsave" element={<ReviewandSave />} />
             <Route path="/reviewdummy" element={<ReviewDummy />} />
+            <Route path="/editreview" element={<EditReview />} />
+            <Route path="/editreviewdummy" element={<EditReviewDummy />} />
           </Routes>
         </div>
       </>

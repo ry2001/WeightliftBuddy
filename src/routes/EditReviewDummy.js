@@ -2,58 +2,26 @@ import React from "react"
 import { useLayoutEffect } from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } from "@mantine/core";
 import styles from './styles.module.css';
+import { useLocation } from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import TopHeader from "../Components/TopHeader";
-import { Link } from "react-router-dom";
 import PieChart from "../Components/PieChart";
 import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen } from '@fortawesome/free-solid-svg-icons';
 
-function ReviewDummy() {
+function EditReviewDummy() {
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0) });
 
-  const review_dummy = {
-    reviewInfo: [
-        {
-           id: 1,
-           weight: 60, 
-           reps: 6,
-            
-        },
+    const location = useLocation();
 
-        {
-          id: 2,
-          weight: 60, 
-          reps: 6,
-            
-        },
-
-        {
-          id: 3,
-          weight: 65, 
-          reps: 5,
-            
-        },
-
-        {
-          id: 4,
-          weight: 70, 
-          reps: 3,
-            
-        },
-
-        {
-          id: 5,
-          weight: 70, 
-          reps: 3,
-            
-        },
-
-        
-    ]}
+    const newReviewInfo = location.state.sets
+    const newComment = location.state.comment
+  
+    console.log(newReviewInfo, "test")
+    console.log(newComment, "comment")
 
 
   return (
@@ -64,7 +32,7 @@ function ReviewDummy() {
         className={styles.TopHeader} > 
        <Grid><Grid.Col className={styles.SetReviewHeader} span={4}><Title>Review</Title></Grid.Col>
        <Grid.Col  className={styles.SetHeaderIcon} span={2}>
-          <Center><Link to="/editreview"><FontAwesomeIcon  size="lg" icon={faPen}/></Link></Center></Grid.Col></Grid>
+          <Center><FontAwesomeIcon  size="lg" icon={faPen}/></Center></Grid.Col></Grid>
          
          
          </Header>}>
@@ -94,10 +62,10 @@ function ReviewDummy() {
         <Container className={styles.ReviewSaveSetsContainer}>
           <Title order={2}>Sets</Title>
           <Divider my="sm" />
-          {review_dummy.reviewInfo.map((reviewInfo, index) => (
+          {newReviewInfo.map((newReviewInfo, index) => (
             <Grid>
               <Grid.Col span={2}>
-                <Title> {reviewInfo.id}</Title>
+                <Title> {newReviewInfo.id}</Title>
               </Grid.Col>
               <Grid.Col span={10}>
                 <Stack spacing ={1}> 
@@ -106,7 +74,7 @@ function ReviewDummy() {
                       <Title order={5}>WEIGHT:</Title>
                     </Grid.Col> 
                     <Grid.Col  span={3} >
-                      <Text> {reviewInfo.weight}</Text>
+                      <Text> {newReviewInfo.weight}</Text>
                     </Grid.Col> 
                     <Grid.Col span={1}>
                       <Title order={5}>KG</Title>
@@ -118,7 +86,7 @@ function ReviewDummy() {
                       <Title order={5}>REPS:</Title>
                     </Grid.Col> 
                     <Grid.Col  span={3}>
-                      <Text> {reviewInfo.reps}</Text>
+                      <Text> {newReviewInfo.reps}</Text>
                     </Grid.Col>
                   </Grid> 
                 </Stack>
@@ -132,7 +100,7 @@ function ReviewDummy() {
           <Divider my="sm" />
           <Container className={styles.ReviewCommentTextbox} > 
             <Text className={styles.ReviewCommentText}> 
-              Shag, but made good progress. yay!
+            {newComment}
             </Text>
           </Container>
         </Container>
@@ -155,4 +123,4 @@ function ReviewDummy() {
     </>
   ); }
 
-  export default ReviewDummy;
+  export default EditReviewDummy;

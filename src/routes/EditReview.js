@@ -13,14 +13,18 @@ import { Link } from "react-router-dom";
 
 
 
-function ReviewandSave() {
+function EditReview() {
 
-    const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
-    const [comment, setComment] = useState([{comment:""}])
-    const navigate = useNavigate();
 
-    function passtoReview(){
-      navigate('/review', { state: {sets: inputList, comment: comment } });
+
+
+
+  const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
+  const [comment, setComment] = useState([{comment:""}])
+  const navigate = useNavigate();
+
+    function passtoEditedReviewDummy(){
+      navigate('/editreviewdummy', { state: {sets: inputList, comment: comment } });
       //i forgot NEED HELP PS THANKS AHHAH 
     }
 
@@ -68,7 +72,7 @@ function ReviewandSave() {
       <AppShell
         header={<Header fixed position={{ top: 0, left: 0, right:0}} 
         className={styles.TopHeader} > 
-       <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Review and Save</Title></Grid.Col>
+       <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Edit Review</Title></Grid.Col>
        <Grid.Col  className={styles.SetHeaderIcon} span={1}>
           <Center><Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link></Center></Grid.Col></Grid>
          
@@ -124,6 +128,7 @@ function ReviewandSave() {
                   placeholder="KG"
                   label="WEIGHT"
                   required
+                  defaultValue={60}
                   value={x.weight}
                   onChange={e => handleWeightInputChange(e, i)}
                 />
@@ -131,9 +136,11 @@ function ReviewandSave() {
                   placeholder="No. of Reps"
                   label="REPS"
                   required
+                  defaultValue={6}
                   value={x.reps}
                   onChange={e => handleRepsInputChange(e, i)}
                 />
+                
               </Stack>
             </Grid.Col>
             </Grid> );
@@ -151,6 +158,7 @@ function ReviewandSave() {
           <Textarea
             placeholder= "Write a comment (optional)"
             onChange={e => handleTextInputChange(e)} 
+            defaultValue = "Shag, but made good progress. yay!"
           />
         </Container>
 
@@ -169,7 +177,7 @@ function ReviewandSave() {
           <Divider my="sm" />
           <Button 
             className={styles.ReviewSaveSaveButton} 
-            onClick={passtoReview}
+            onClick={passtoEditedReviewDummy}
           >
             Save
           </Button>
@@ -178,4 +186,4 @@ function ReviewandSave() {
     </>
   ); }
 
-  export default ReviewandSave;
+  export default EditReview;

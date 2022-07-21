@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import { useLocation } from "react-router-dom";
 import { useLayoutEffect } from "react";
+import { Link } from "react-router-dom";
 import TopHeader from "../Components/TopHeader";
 import PieChart from "../Components/PieChart";
 import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
@@ -15,10 +16,11 @@ function Review() {
 
   const location = useLocation();
 
-  const newReviewInfo = location.state
-  const newComment = location.state
+  const newReviewInfo = location.state.sets
+  const newComment = location.state.comment
 
   console.log(newReviewInfo, "test")
+  console.log(newComment, "comment")
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0) });
@@ -104,10 +106,10 @@ function Review() {
         <Container className={styles.ReviewSaveSetsContainer}>
           <Title order={2}>Sets</Title>
           <Divider my="sm" />
-          {review_dummy.reviewInfo.map((reviewInfo, index) => (
+          {newReviewInfo.map((newReviewInfo, index) => (
             <Grid>
               <Grid.Col span={2}>
-                <Title> {reviewInfo.id}</Title>
+                <Title> {newReviewInfo.id}</Title>
               </Grid.Col>
               <Grid.Col span={10}>
                 <Stack spacing ={1}> 
@@ -116,7 +118,7 @@ function Review() {
                       <Title order={5}>WEIGHT:</Title>
                     </Grid.Col> 
                     <Grid.Col  span={3} >
-                      <Text> {reviewInfo.weight}</Text>
+                      <Text> {newReviewInfo.weight}</Text>
                     </Grid.Col> 
                     <Grid.Col span={1}>
                       <Title order={5}>KG</Title>
@@ -128,7 +130,7 @@ function Review() {
                       <Title order={5}>REPS:</Title>
                     </Grid.Col> 
                     <Grid.Col  span={3}>
-                      <Text> {reviewInfo.reps}</Text>
+                      <Text> {newReviewInfo.reps}</Text>
                     </Grid.Col>
                   </Grid> 
                 </Stack>
@@ -141,9 +143,10 @@ function Review() {
           <Title order={2}>Comments</Title>
           <Divider my="sm" />
           <Container className={styles.ReviewCommentTextbox} > 
+        
             <Text className={styles.ReviewCommentText}> 
-              Shag, but made good progress. yay!
-            </Text>
+              {newComment}
+            </Text> 
           </Container>
         </Container>
 
