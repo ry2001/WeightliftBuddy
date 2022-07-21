@@ -15,16 +15,91 @@ import { Link } from "react-router-dom";
 
 function EditReview() {
 
+  const review_dummy = {
+    reviewInfo: [
+        {
+           weight: 60, 
+           reps: 6,
+            
+        },
+
+        {
+          weight: 60, 
+          reps: 6,
+            
+        },
+
+        {
+          weight: 65, 
+          reps: 5,
+            
+        },
+
+        {
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        {
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        
+    ]}
+ 
 
 
+  const [inputList, setInputList] = useState([
+        {
+           weight: 60, 
+           reps: 6,
+            
+        },
 
+        {
+          weight: 60, 
+          reps: 6,
+            
+        },
 
-  const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
-  const [comment, setComment] = useState([{comment:""}])
+        {
+          weight: 65, 
+          reps: 5,
+            
+        },
+
+        {
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        {
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        
+    ]);
+  const [comment, setComment] = useState([{comment:"Shag, but made good progress. yay!"}])
   const navigate = useNavigate();
 
+
     function passtoEditedReviewDummy(){
-      navigate('/editreviewdummy', { state: {sets: inputList, comment: comment } });
+
+
+      // inputList.map((inp) => {
+      //   inp.weight === ''? inp.weight = 60 : inp.weight;
+      //   inp.reps === ''? inp.reps = 5 : inp.reps
+      // })
+
+      // console.log(inputList,'sdsdsd')
+
+      navigate('/review', { state: {sets: inputList, comment: comment } });
       //i forgot NEED HELP PS THANKS AHHAH 
     }
 
@@ -128,7 +203,6 @@ function EditReview() {
                   placeholder="KG"
                   label="WEIGHT"
                   required
-                  defaultValue={60}
                   value={x.weight}
                   onChange={e => handleWeightInputChange(e, i)}
                 />
@@ -136,7 +210,6 @@ function EditReview() {
                   placeholder="No. of Reps"
                   label="REPS"
                   required
-                  defaultValue={6}
                   value={x.reps}
                   onChange={e => handleRepsInputChange(e, i)}
                 />

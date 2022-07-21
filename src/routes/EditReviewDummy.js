@@ -12,16 +12,58 @@ import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen } from '@fort
 
 function EditReviewDummy() {
 
+  const location = useLocation();
+
+  const newReviewInfo = location.state.sets
+  const newComment = location.state.comment
+
+  console.log(newReviewInfo, "test")
+  console.log(newComment, "comment")
+
   useLayoutEffect(() => {
     window.scrollTo(0, 0) });
 
-    const location = useLocation();
 
-    const newReviewInfo = location.state.sets
-    const newComment = location.state.comment
-  
-    console.log(newReviewInfo, "test")
-    console.log(newComment, "comment")
+
+  const review_dummy = {
+    reviewInfo: [
+        {
+           id: 1,
+           weight: 60, 
+           reps: 6,
+            
+        },
+
+        {
+          id: 2,
+          weight: 60, 
+          reps: 6,
+            
+        },
+
+        {
+          id: 3,
+          weight: 65, 
+          reps: 5,
+            
+        },
+
+        {
+          id: 4,
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        {
+          id: 5,
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        
+    ]}
 
 
   return (
@@ -99,9 +141,10 @@ function EditReviewDummy() {
           <Title order={2}>Comments</Title>
           <Divider my="sm" />
           <Container className={styles.ReviewCommentTextbox} > 
+        
             <Text className={styles.ReviewCommentText}> 
-            {newComment}
-            </Text>
+              {newComment}
+            </Text> 
           </Container>
         </Container>
 
@@ -122,5 +165,4 @@ function EditReviewDummy() {
       </Container>
     </>
   ); }
-
   export default EditReviewDummy;

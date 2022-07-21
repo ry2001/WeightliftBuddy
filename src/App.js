@@ -43,7 +43,7 @@ function App() {
             <Route path="/reviewandsave" element={<ReviewandSave />} />
             <Route path="/reviewdummy" element={<ReviewDummy />} />
             <Route path="/editreview" element={<EditReview />} />
-            <Route path="/editreviewdummy" element={<EditReviewDummy />} />
+            <Route path="/editreviewdummy" element={<EditReviewDummy/>} />
           </Routes>
         </div>
       </>
