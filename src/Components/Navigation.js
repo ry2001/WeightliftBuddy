@@ -3,6 +3,8 @@ import { Nav, NavItem} from 'reactstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faUserCircle, faGear, faClock, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { SimpleGrid,Text, Center, Stack} from '@mantine/core';
+
 
 function Navigation() {
   const location = useLocation()
@@ -41,21 +43,30 @@ function Navigation() {
     return (
       <div>
       <nav class="navbar fixed-bottom bg-light" role="navigation">
-          <Nav  >
-            <div className=" d-flex flex-row justify-content-around">
+          <Nav>
+            <SimpleGrid cols={5}>
               {
                 tabs.map((tab, index) =>(
                   <NavItem key={`tab-${index}`}>
                     <NavLink to={tab.route} className="nav-link" activeClassName="active">
-                      <div className="row d-flex flex-column justify-content-center align-items-center">
-                        <FontAwesomeIcon size="lg" icon={tab.icon}/>
-                        <div>{tab.label}</div>
-                      </div>
+                        <Stack
+                        spacing="xs"
+                        >
+                          <Center>
+                            <FontAwesomeIcon 
+                            size="lg" 
+                            icon={tab.icon}
+                            />
+                          </Center>
+                          <Center>
+                            <Text>{tab.label}</Text>
+                          </Center>
+                        </Stack>
                     </NavLink>
                   </NavItem>
                 ))
               }
-            </div>
+            </SimpleGrid>
           </Nav>
         </nav>
       </div>
