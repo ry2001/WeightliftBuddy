@@ -65,10 +65,10 @@
 
 .homeRecentImage {
     margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .backgroundCheck {
-    background-color: aqua;
 }
 
 .ReviewSaveHeaderContainer {
@@ -122,5 +122,30 @@
 }
 
 .MarginforNavbar {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
+}
+
+.RestyleLink {
+    font-style:normal;
+    color: black;
+    text-decoration: none ;
+}
+
+.TopHeader {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: aliceblue;
+
+}
+
+.SetHeaderIcon {
+    margin-top: 1rem;
+}
+
+.SetReviewHeader {
+    margin-left: 8rem;
+}
+
+.SetReviewandSaveHeader {
+    margin-left: 4rem;
 }

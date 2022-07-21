@@ -5,15 +5,23 @@ import styles from './styles.module.css';
 import { useNavigate} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import TopHeader from "../Components/TopHeader";
+import PieChart from "../Components/PieChart";
+import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
+
 
 
 function ReviewandSave() {
 
     const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
+    const [comment, setComment] = useState([{comment:""}])
     const navigate = useNavigate();
 
     function passtoReview(){
-      navigate('/review', { state: inputList });
+      navigate('/review', { state: inputList }, {state: comment});
+      //i forgot NEED HELP PS THANKS AHHAH 
     }
 
     const handleWeightInputChange = (e, index) => {
@@ -35,11 +43,11 @@ function ReviewandSave() {
     console.log(inputList)
 
     const handleTextInputChange = (e, index) => {
-      console.log(e)
+      console.log(e,"test")
       const  value  = e.target.value;
-      const list = [...inputList];
-      list[0]["comment"] = value;
-      setInputList(list);
+      const comment = value;
+      setComment(value);
+      console.log(comment, "here")
     };
 
     const handleAddClick = () => {
@@ -57,7 +65,16 @@ function ReviewandSave() {
   return (
     <>
       <Container> 
-        <TopHeader header="Review and Save" /> 
+      <AppShell
+        header={<Header fixed position={{ top: 0, left: 0, right:0}} 
+        className={styles.TopHeader} > 
+       <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Review and Save</Title></Grid.Col>
+       <Grid.Col  className={styles.SetHeaderIcon} span={1}>
+          <Center><Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link></Center></Grid.Col></Grid>
+         
+         
+         </Header>}>
+      </AppShell>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
@@ -142,7 +159,7 @@ function ReviewandSave() {
           <Divider my="sm" />
           <Text> Feedback from our AI</Text>
           <Center>
-            <Image src="https://cdn-icons-png.flaticon.com/512/3412/3412862.png"/>
+            <PieChart/>
           </Center>
           <Title order={3}> Issues: </Title>
           <List>

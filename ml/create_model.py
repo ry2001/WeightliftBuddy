@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 # import pandas as pd
 # import numpy as np
+=======
+import pandas as pd
+import numpy as np
+>>>>>>> 5f7cb86950f7124b76b6a65efba3ec456e81c303
 # filename = "./ml/zenton_ethan.csv"
 
 # data=pd.read_csv(filename, sep = ",", names=["torso_angle", "knee_angle"])

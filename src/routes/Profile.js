@@ -1,9 +1,14 @@
 import React from "react"
 import { Container, Text, Image, Center, Grid, Button } from "@mantine/core";
 import TopHeader from "../Components/TopHeader";
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
 
+  const navigate = useNavigate();
+  const logout = () => {
+    navigate("/login");
+  }
   const data = {
     name: "Anya Forger",
     age: 6,
@@ -60,7 +65,7 @@ function Profile() {
 
         <Container style={{marginTop:50}}>
           <Center>
-            <Button>Logout</Button>
+            <Button onClick={ logout }>Logout</Button>
           </Center> 
         </Container>
       </div>
