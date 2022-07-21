@@ -24,7 +24,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 # Initialize frame counters.
 good_frames = 0
 bad_frames = 0
-# bad = False
+bad_list = []
 bad_timings = []
 
 
@@ -59,22 +59,29 @@ def sendWarning(image, w, font, red, message):
     cv2.putText(image, message, (w - 150, 130), font, 0.9, red, 2)
 
 
-def determine_posture(knee_angle, torso_angle, params):
+def determine_posture(knee_angle, torso_angle, params, image):
     datapoints = [15, 20, 25, 30, 35, 40]
-    i = params[datapoints[round(torso_angle/5)-3]]
-    if knee_angle > i[0]:
-        if knee_angle < i[1]:
-            message = 'good posture'
-            # print(message)
-            return 0, message
+    print(torso_angle, knee_angle)
+    if torso_angle > 10:
+        
+        i = params[datapoints[round(torso_angle/5)-3]] # upper bound, lower bound
+        if knee_angle > i[0] and knee_angle < i[1]: # upper bound
+                return 0
+        
+        elif knee_angle > i[1]:
+                # print(message)
+                return 0
+        elif torso_angle > 65:
+            return (-1) # Straighten back
+
         else:
-            message = 'lower your back'
-            # print(message)
-            return 1, message
+            return 1 # Bend knee more
+
+
     else:
-        message = 'lift your back'
-        # print(message)
-        return -1, message
+        cv2.putText(image, "Please start your deadlift", (10, 60), font, 0.9, black, 2)
+        
+
 
 
 def main():
@@ -157,8 +164,7 @@ def main():
 
         # # Assist to align the camera to point at the side view of the person.
                 # Calculate distance between left shoulder and right shoulder points.
-                offset = findDistance(
-                    left_shoulder_x, left_shoulder_y, right_shoulder_x, right_shoulder_y)
+                offset = findDistance(left_shoulder_x, left_shoulder_y, right_shoulder_x, right_shoulder_y)
                 # cv2.rectangle(image, (0, h-60), (w, h), black, -1)
                 # cv2.rectangle(image, (0, 0), (0, 60), black, -1)
 
@@ -188,48 +194,71 @@ def main():
                             left_hip, left_knee, left_ankle)
                         torso_angle = findAngle(
                             left_hip_x, left_hip_y, left_shoulder_x, left_shoulder_y)
+                        torso_angle_2 = calculate_angle((left_hip_x, left_hip_y), (left_shoulder_x, left_shoulder_y), (left_hip_x, left_shoulder_y))
 
                     else:
                         right_hip = (right_hip_x, right_hip_y)
                         right_knee = (right_knee_x, right_knee_y)
                         right_ankle = (right_ankle_x, right_ankle_y)
+
+                        torso_angle_2 = calculate_angle(
+                            (right_hip_x, right_hip_y), (right_shoulder_x, right_shoulder_y), (right_hip_x, right_shoulder_y))
                         knee_angle = calculate_angle(
                             right_hip, right_knee, right_ankle)
                         torso_angle = findAngle(
                             right_hip_x, right_hip_y, right_shoulder_x, right_shoulder_y)
 
+                    # # if torso_angle == torso_angle_2:
+                    # #     print('true; angle is the same') 
+                    # # else:
+                    # #     print('not true', knee_angle,)     
+                    # print(knee_angle)
+
                 # # Put text, Posture and angle inclination.
                     angle_text_string = '  Torso angle: ' + str(int(torso_angle))
                     cv2.putText(image, angle_text_string, (10, 30), font, 0.9, black, 2)
 
-
-                    if knee_angle > 15:
+                    if knee_angle < 175:
                         
                     # if bad == True:
                     #     cv2.putText(image, message, (w - 150, 130), font, 0.9, red, 2)
                     # print('gg to determine posture')
 
                 # # Determine whether good posture or bad posture.
-                        posture, message = determine_posture(knee_angle, torso_angle, params)
+                        posture= determine_posture(knee_angle, torso_angle, params, image)
+                        print(posture)
+                        bad_list.append(posture)
+                        avg_posture = sum(bad_list[-10:-1])
+                        # cv2.putText(image, "Good Posture", (10, 60), font, 0.9, green, 2)
                         
-                        if posture == 0:
-                            bad_frames = 0
-                            good_frames += 1
-                            
-                            cv2.putText(image, message, (10, 60), font, 0.9, light_green, 2)
+
+                        if avg_posture > 8 :
+                            cv2.putText(image, "Bend your knees", (10, 60), font, 0.9, red, 2)
+                            print(avg_posture)
+                        elif avg_posture < -5:
+                            cv2.putText(image, "Straighten your back", (10, 60), font, 0.9, red, 2)
+                            print(avg_posture)
+                        else:
+                            pass
+                        #     cv2.putText(image, "Good Posture", (10, 60), font, 0.9, green, 2)
+
+                        # if posture == 0:
+                        #     bad_frames = 0
+                        #     good_frames += 1                            
+                            # cv2.putText(image, message, (10, 60), font, 0.9, light_green, 2)
                             # cv2.putText(image, angle_text_string, (10, 30), font, 0.9, green, 2)
                             # cv2.putText(image, str(int(torso_angle)), (left_hip_x + 10, left_hip_y), font, 0.9, green, 2)
                             # cv2.putText(image, str(int(knee_angle)), (left_hip_x + 10, left_hip_y+20), font, 0.9, green, 2)
             
-                        elif posture == 1 or posture == -1:
-                            good_frames = 0
-                            bad_frames += 1
-                            cv2.putText(image, message, (10, 60), font, 0.9, red, 2)
+                        # elif posture == 1 or posture == -1:
+                        #     good_frames = 0
+                        #     bad_frames += 1
+                            # cv2.putText(image, message, (10, 60), font, 0.9, red, 2)
                             # cv2.putText(image, angle_text_string, (10, 30), font, 0.9, red, 2)
                 
-                        else:
-                            pass
-
+                        # else:
+                        #     pass
+                        
                     # Calculate the time of remaining in a particular posture.
                     # fps = 15
                     # good_time = (1 / fps) * good_frames
@@ -244,17 +273,20 @@ def main():
                     # else:
                     #     time_string_bad = 'Bad Posture Time : ' + str(round(bad_time, 1)) + 's'
                     #     cv2.putText(image, time_string_bad, (10, h - 20), font, 0.9, red, 2)
-                    
+
                         # If you stay in bad posture for more than 3 minutes (180s) send an alert.
-                        if bad_frames > 5:
-                            end_time = time.time()
-                            bad_timings.append(end_time-start)
-                            # bad = True
-                            # bad_frames = 0
-                            sendWarning(image, offset, w, font, red, 'Bad Posture')
+                        # if bad_frames > 5:
+                        #     end_time = time.time()
+                        #     bad_timings.append(end_time-start)
+                        #     # bad = True
+                        #     # bad_frames = 0
+                        #     sendWarning(image, offset, w, font, red, 'Bad Posture')
                             
-                        else:
-                            cv2.putText(image, message, (10, 60), font, 0.9, light_green, 2)
+                        # else:
+                        #     cv2.putText(image, message, (10, 60), font, 0.9, light_green, 2)
+
+                    elif torso_angle > 15:
+                        cv2.putText(image, "Please bend your knees", (10, 60), font, 0.9, red, 2)
                 else:
                     cv2.putText(image, str(int(offset)) + ' Not Aligned', (w - 250, 30), font, 0.9, red, 3)
                    
