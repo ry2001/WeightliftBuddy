@@ -314,5 +314,3 @@ def main():
         cap.release()
         cv2.destroyAllWindows()
         print(bad_timings)
-
-main()
