@@ -13,13 +13,92 @@ import { Link } from "react-router-dom";
 
 
 
-function ReviewandSave() {
+function EditReview() {
 
-    const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
-    const [comment, setComment] = useState([{comment:""}])
-    const navigate = useNavigate();
+  const review_dummy = {
+    reviewInfo: [
+        {
+           weight: 60, 
+           reps: 6,
+            
+        },
 
-    function passtoReview(){
+        {
+          weight: 60, 
+          reps: 6,
+            
+        },
+
+        {
+          weight: 65, 
+          reps: 5,
+            
+        },
+
+        {
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        {
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        
+    ]}
+ 
+
+
+  const [inputList, setInputList] = useState([
+        {
+           weight: 60, 
+           reps: 6,
+            
+        },
+
+        {
+          weight: 60, 
+          reps: 6,
+            
+        },
+
+        {
+          weight: 65, 
+          reps: 5,
+            
+        },
+
+        {
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        {
+          weight: 70, 
+          reps: 3,
+            
+        },
+
+        
+    ]);
+  const [comment, setComment] = useState([{comment:"Shag, but made good progress. yay!"}])
+  const navigate = useNavigate();
+
+
+    function passtoEditedReviewDummy(){
+
+
+      // inputList.map((inp) => {
+      //   inp.weight === ''? inp.weight = 60 : inp.weight;
+      //   inp.reps === ''? inp.reps = 5 : inp.reps
+      // })
+
+      // console.log(inputList,'sdsdsd')
+
       navigate('/review', { state: {sets: inputList, comment: comment } });
       //i forgot NEED HELP PS THANKS AHHAH 
     }
@@ -68,7 +147,7 @@ function ReviewandSave() {
       <AppShell
         header={<Header fixed position={{ top: 0, left: 0, right:0}} 
         className={styles.TopHeader} > 
-       <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Review and Save</Title></Grid.Col>
+       <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Edit Review</Title></Grid.Col>
        <Grid.Col  className={styles.SetHeaderIcon} span={1}>
           <Center><Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link></Center></Grid.Col></Grid>
          
@@ -134,6 +213,7 @@ function ReviewandSave() {
                   value={x.reps}
                   onChange={e => handleRepsInputChange(e, i)}
                 />
+                
               </Stack>
             </Grid.Col>
             </Grid> );
@@ -151,6 +231,7 @@ function ReviewandSave() {
           <Textarea
             placeholder= "Write a comment (optional)"
             onChange={e => handleTextInputChange(e)} 
+            defaultValue = "Shag, but made good progress. yay!"
           />
         </Container>
 
@@ -169,7 +250,7 @@ function ReviewandSave() {
           <Divider my="sm" />
           <Button 
             className={styles.ReviewSaveSaveButton} 
-            onClick={passtoReview}
+            onClick={passtoEditedReviewDummy}
           >
             Save
           </Button>
@@ -178,4 +259,4 @@ function ReviewandSave() {
     </>
   ); }
 
-  export default ReviewandSave;
+  export default EditReview;
