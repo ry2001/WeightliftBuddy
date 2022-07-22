@@ -229,6 +229,7 @@ def main():
                         print(posture)
                         bad_list.append(posture)
                         avg_posture = sum(bad_list[-10:-1])
+                        
                         # cv2.putText(image, "Good Posture", (10, 60), font, 0.9, green, 2)
                         
 
@@ -285,8 +286,8 @@ def main():
                         # else:
                         #     cv2.putText(image, message, (10, 60), font, 0.9, light_green, 2)
 
-                    elif torso_angle > 15:
-                        cv2.putText(image, "Please bend your knees", (10, 60), font, 0.9, red, 2)
+                    # elif torso_angle > 15:
+                    #     cv2.putText(image, "Please bend your knees", (10, 60), font, 0.9, red, 2)
                 else:
                     cv2.putText(image, str(int(offset)) + ' Not Aligned', (w - 250, 30), font, 0.9, red, 3)
                    
@@ -314,3 +315,4 @@ def main():
         cap.release()
         cv2.destroyAllWindows()
         print(bad_timings)
+main()
