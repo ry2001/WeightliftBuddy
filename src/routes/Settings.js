@@ -32,7 +32,8 @@ function Settings() {
             justify="space-around" 
             sx={() => ({ height: 300 })}
             style={{marginTop:50}}
-          > <Link to ="/display">
+          > 
+          <Link to ="/display">
             <UnstyledButton 
               style={{width: '100%'}} 
               onClick={() => console.log('Go to Display page')}
@@ -51,47 +52,50 @@ function Settings() {
                   strokeWidth={2}
                 />
               </Group>
-            </UnstyledButton> </Link>
+              </UnstyledButton> 
+            </Link>
             <Link to ="/help">
-            <UnstyledButton 
-              style={{width: '100%'}} 
-              onClick={() => console.log('Go to Help page')}
-            >
-              <Group position="apart" >
-                <Help 
-                  size={48}
-                  strokeWidth={2}
-                />
-                <div>
-                  <Text>Help</Text>
-                  <Text size="xs" color="gray">Go to help page</Text>
-                </div>
-                <ChevronRight 
-                  size={48}
-                  strokeWidth={2}
-                />
-              </Group>
-            </UnstyledButton> </Link>
+              <UnstyledButton 
+                style={{width: '100%'}} 
+                onClick={() => console.log('Go to Help page')}
+              >
+                <Group position="apart" >
+                  <Help 
+                    size={48}
+                    strokeWidth={2}
+                  />
+                  <div>
+                    <Text>Help</Text>
+                    <Text size="xs" color="gray">Go to help page</Text>
+                  </div>
+                  <ChevronRight 
+                    size={48}
+                    strokeWidth={2}
+                  />
+                </Group>
+              </UnstyledButton> 
+            </Link>
             <Link to ="/about">
-            <UnstyledButton 
-              style={{width: '100%'}}
-              onClick={() => console.log('Go to About page')}
-            >
-              <Group position="apart" >
-                <AlertCircle 
-                  size={48}
-                  strokeWidth={2}
-                />
-                <div>
-                  <Text>About</Text>
-                  <Text size="xs" color="gray">Go to about page</Text>
-                </div>
-                <ChevronRight 
-                  size={48}
-                  strokeWidth={2}
-                />
-              </Group>
-            </UnstyledButton></Link>
+              <UnstyledButton 
+                style={{width: '100%'}}
+                onClick={() => console.log('Go to About page')}
+              >
+                <Group position="apart" >
+                  <AlertCircle 
+                    size={48}
+                    strokeWidth={2}
+                  />
+                  <div>
+                    <Text>About</Text>
+                    <Text size="xs" color="gray">Go to about page</Text>
+                  </div>
+                  <ChevronRight 
+                    size={48}
+                    strokeWidth={2}
+                  />
+                </Group>
+              </UnstyledButton>
+            </Link>
           </Stack>
         </Center>
       </div>
