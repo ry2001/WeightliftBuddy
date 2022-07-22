@@ -26,23 +26,22 @@ function NewActivity () {
       if (volCheck===true) {
       return(
         <Slider
-        marks={[
-          {value: 0, label: 'OFF'},
-          {value: 50, label: "50%"},
-          {value: 100, label: "100%"},
-        ]}
+          marks={[
+            {value: 0, label: 'OFF'},
+            {value: 50, label: "50%"},
+            {value: 100, label: "100%"},
+          ]}
         />
         )
       };
 
       return (
         <Slider
-        marks={[
-          {value: 0, label: 'OFF'},
-          {value: 50, label: "50%"},
-          {value: 100, label: "100%"},
-        ]}
-
+          marks={[
+            {value: 0, label: 'OFF'},
+            {value: 50, label: "50%"},
+            {value: 100, label: "100%"},
+          ]}
         disabled
         />
       )
@@ -50,56 +49,44 @@ function NewActivity () {
 
     return(
       <Modal
-      opened={opened}
-      withCloseButton={false}
-      title="Audio Settings"
+        opened={opened}
+        withCloseButton={false}
+        title="Audio Settings"
       >
         <Stack
-        justify="center"
-        spacing="xl"
-        style={{marginBottom: 15}}
+          justify="center"
+          spacing="xl"
+          style={{marginBottom: 15}}
         >
-          <Stack
-          spacing="sm"
-          >
-            <Text
-            size="sm"
-            >
+          <Stack spacing="sm">
+            <Text size="sm">
               Audio Cues
             </Text>
             <Switch
-            checked={volCheck}
-            onChange={() => setVolCheck(!volCheck)}
-            onLabel="ON"
-            offLabel="OFF"
-            size="md"
+              checked={volCheck}
+              onChange={() => setVolCheck(!volCheck)}
+              onLabel="ON"
+              offLabel="OFF"
+              size="md"
             />
-   
           </Stack>
-          
-          <Stack
-          spacing="sm"
-          >
-            <Text
-            size="sm"
-            >
+          <Stack spacing="sm" >
+            <Text size="sm">
               Volume
             </Text>
-
             <Volume/>
-
             <Center>
-              <Button onClick={() => {
-                setOpened(false);
-                openCamera();
-              }}
-              style={{marginTop: 30}}
+              <Button 
+                onClick={() => {
+                  setOpened(false);
+                  openCamera();
+                }}
+                style={{marginTop: 30}}
               >
                 Confirm
               </Button>
             </Center>
-
-            </Stack>
+          </Stack>
         </Stack>
       </Modal>
     )
@@ -109,9 +96,7 @@ function NewActivity () {
     <>
       <div className={styles.NewActivityContainer}>
       <TopHeader header="New Activity" />
-
         <VidModal/>
-
         <Center>
           <Stack spacing={50}>
             <Button

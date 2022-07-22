@@ -69,16 +69,23 @@ function EditReviewDummy() {
   return (
     <>
       <Container> 
-      <AppShell
-        header={<Header fixed position={{ top: 0, left: 0, right:0}} 
-        className={styles.TopHeader} > 
-       <Grid><Grid.Col className={styles.SetReviewHeader} span={4}><Title>Review</Title></Grid.Col>
-       <Grid.Col  className={styles.SetHeaderIcon} span={2}>
-          <Center><FontAwesomeIcon  size="lg" icon={faPen}/></Center></Grid.Col></Grid>
-         
-         
-         </Header>}>
-      </AppShell>
+        <AppShell
+          header={
+          <Header fixed position={{ top: 0, left: 0, right:0}} 
+                  className={styles.TopHeader} 
+          > 
+            <Grid>
+              <Grid.Col className={styles.SetReviewHeader} span={4}>
+                <Title>Review</Title>
+              </Grid.Col>
+              <Grid.Col  className={styles.SetHeaderIcon} span={2}>
+                <Center>
+                  <FontAwesomeIcon  size="lg" icon={faPen}/>
+                </Center>
+              </Grid.Col>
+            </Grid>
+          </Header>}>
+        </AppShell>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
@@ -95,9 +102,24 @@ function EditReviewDummy() {
             <Image radius="lg" className={styles.homeRecentImage} src={tempthumbnail}/>
           </Center>
           <Grid className={styles.ReviewSaveInfoGrid} justify="center">
-            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 5 </Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
-            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 209 </Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
-            <Grid.Col span={4} ><Stack  align="center" spacing={1}><Title order={2}> 30:20 </Title> <Text size="xs"> TIME</Text></Stack></Grid.Col>
+            <Grid.Col span={4} >
+              <Stack align="center" spacing={1}>
+                <Title order={2}> 5 </Title> 
+                <Text size="xs"> SETS</Text> 
+              </Stack>
+            </Grid.Col>
+            <Grid.Col span={4} >
+              <Stack align="center" spacing={1}>
+                <Title order={2}> 209 </Title> 
+                <Text size="xs"> KCAL</Text>
+              </Stack>
+            </Grid.Col>
+            <Grid.Col span={4} >
+              <Stack  align="center" spacing={1}>
+                <Title order={2}> 30:20 </Title> 
+                <Text size="xs"> TIME</Text>
+              </Stack>
+            </Grid.Col>
           </Grid> 
         </Container>
 
@@ -122,7 +144,6 @@ function EditReviewDummy() {
                       <Title order={5}>KG</Title>
                     </Grid.Col>
                   </Grid> 
-
                   <Grid>
                     <Grid.Col span={4}>
                       <Title order={5}>REPS:</Title>
@@ -141,7 +162,6 @@ function EditReviewDummy() {
           <Title order={2}>Comments</Title>
           <Divider my="sm" />
           <Container className={styles.ReviewCommentTextbox} > 
-        
             <Text className={styles.ReviewCommentText}> 
               {newComment}
             </Text> 
@@ -165,4 +185,5 @@ function EditReviewDummy() {
       </Container>
     </>
   ); }
+
   export default EditReviewDummy;

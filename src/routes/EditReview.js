@@ -85,20 +85,11 @@ function EditReview() {
 
         
     ]);
-  const [comment, setComment] = useState([{comment:"Shag, but made good progress. yay!"}])
+  const [comment, setComment] = useState(["Shag, but made good progress. yay!"])
   const navigate = useNavigate();
 
 
     function passtoEditedReviewDummy(){
-
-
-      // inputList.map((inp) => {
-      //   inp.weight === ''? inp.weight = 60 : inp.weight;
-      //   inp.reps === ''? inp.reps = 5 : inp.reps
-      // })
-
-      // console.log(inputList,'sdsdsd')
-
       navigate('/review', { state: {sets: inputList, comment: comment } });
       //i forgot NEED HELP PS THANKS AHHAH 
     }
@@ -145,14 +136,21 @@ function EditReview() {
     <>
       <Container> 
       <AppShell
-        header={<Header fixed position={{ top: 0, left: 0, right:0}} 
-        className={styles.TopHeader} > 
-       <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Edit Review</Title></Grid.Col>
-       <Grid.Col  className={styles.SetHeaderIcon} span={1}>
-          <Center><Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link></Center></Grid.Col></Grid>
-         
-         
-         </Header>}>
+        header={
+        <Header fixed position={{ top: 0, left: 0, right:0}} 
+                className={styles.TopHeader} 
+        > 
+          <Grid>
+            <Grid.Col className={styles.SetReviewandSaveHeader} span={8}>
+              <Title>Edit Review</Title>
+            </Grid.Col>
+            <Grid.Col  className={styles.SetHeaderIcon} span={1}>
+              <Center>
+                <Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link>
+              </Center>
+            </Grid.Col>
+          </Grid>
+        </Header>}>
       </AppShell>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
@@ -196,26 +194,27 @@ function EditReview() {
           <Divider my="sm" />
           {inputList.map((x, i) => { return (
             <Grid>
-              <Grid.Col span={2}><Title> {i+1}</Title></Grid.Col>
+              <Grid.Col span={2}>
+                <Title> {i+1}</Title>
+              </Grid.Col>
               <Grid.Col span={10}>
-              <Stack spacing ={1}> 
-                <NumberInput
-                  placeholder="KG"
-                  label="WEIGHT"
-                  required
-                  value={x.weight}
-                  onChange={e => handleWeightInputChange(e, i)}
-                />
-                <NumberInput
-                  placeholder="No. of Reps"
-                  label="REPS"
-                  required
-                  value={x.reps}
-                  onChange={e => handleRepsInputChange(e, i)}
-                />
-                
-              </Stack>
-            </Grid.Col>
+                <Stack spacing ={1}> 
+                  <NumberInput
+                    placeholder="KG"
+                    label="WEIGHT"
+                    required
+                    value={x.weight}
+                    onChange={e => handleWeightInputChange(e, i)}
+                  />
+                  <NumberInput
+                    placeholder="No. of Reps"
+                    label="REPS"
+                    required
+                    value={x.reps}
+                    onChange={e => handleRepsInputChange(e, i)}
+                  />
+                </Stack>
+              </Grid.Col>
             </Grid> );
           })}
           <Divider my="sm" />
