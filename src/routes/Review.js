@@ -73,40 +73,38 @@ function Review() {
     <>
       <Container> 
         <AppShell
-        header={<Header fixed position={{ top: 0, left: 0, right:0}} 
-        className={styles.TopHeader} > 
-          <Grid
-          justify="space-around"
-          >
-            <Grid.Col 
-            span={1}>
-              <Center>
-                <ArrowBackIcon
-                onClick={() => navigate('/home')}
-                size='lg'
-                style={{marginTop: 10}}
-                />
-              </Center>
-            </Grid.Col>
-            <Grid.Col span={4}>
-              <Title>
-                Review
-              </Title>
-            </Grid.Col>
-            <Grid.Col span={1}>
-              <Center>
-                <FontAwesomeIcon  
-                size="lg" 
-                icon={faPen}
-                style={{marginTop: 10}}
-                />
-              </Center>
-            </Grid.Col>
-        </Grid>
-         
-         
-         </Header>}>
-      </AppShell>
+          header={
+            <Header fixed position={{ top: 0, left: 0, right:0}} 
+                    className={styles.TopHeader} 
+            > 
+            <Grid justify="space-around">
+              <Grid.Col span={1}>
+                <Center>
+                  <ArrowBackIcon
+                    onClick={() => navigate('/home')}
+                    size='lg'
+                    style={{marginTop: 10}}
+                  />
+                </Center>
+              </Grid.Col>
+              <Grid.Col span={4}>
+                <Title>
+                  Review
+                </Title>
+              </Grid.Col>
+              <Grid.Col span={1}>
+                <Center>
+                  <FontAwesomeIcon  
+                    size="lg" 
+                    icon={faPen}
+                    style={{marginTop: 10}}
+                  />
+                </Center>
+              </Grid.Col>
+            </Grid>
+          </Header>}>
+        </AppShell>
+
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
@@ -123,9 +121,24 @@ function Review() {
             <Image radius="lg" className={styles.homeRecentImage} src={tempthumbnail}/>
           </Center>
           <Grid className={styles.ReviewSaveInfoGrid} justify="center">
-            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 5 </Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
-            <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 209 </Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
-            <Grid.Col span={4} ><Stack  align="center" spacing={1}><Title order={2}> 30:20 </Title> <Text size="xs"> TIME</Text></Stack></Grid.Col>
+            <Grid.Col span={4} >
+              <Stack align="center" spacing={1}>
+                <Title order={2}> 5 </Title> 
+                <Text size="xs"> SETS</Text> 
+              </Stack>
+            </Grid.Col>
+            <Grid.Col span={4} >
+              <Stack align="center" spacing={1}>
+                <Title order={2}> 209 </Title> 
+                <Text size="xs"> KCAL</Text>
+              </Stack>
+            </Grid.Col>
+            <Grid.Col span={4} >
+              <Stack  align="center" spacing={1}>
+                <Title order={2}> 30:20 </Title> 
+                <Text size="xs"> TIME</Text>
+              </Stack>
+            </Grid.Col>
           </Grid> 
         </Container>
 
@@ -169,7 +182,6 @@ function Review() {
           <Title order={2}>Comments</Title>
           <Divider my="sm" />
           <Container className={styles.ReviewCommentTextbox} > 
-        
             <Text className={styles.ReviewCommentText}> 
               {newComment}
             </Text> 

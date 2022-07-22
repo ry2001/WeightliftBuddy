@@ -15,8 +15,10 @@ import { Link } from "react-router-dom";
 
 function ReviewandSave() {
 
+    // const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
+    // const [comment, setComment] = useState([{comment:""}])
     const [inputList, setInputList] = useState([{ weight: "", reps: ""}]);
-    const [comment, setComment] = useState([{comment:""}])
+    const [comment, setComment] = useState([""])
     const navigate = useNavigate();
 
     function passtoReview(){
@@ -66,15 +68,22 @@ function ReviewandSave() {
     <>
       <Container> 
       <AppShell
-        header={<Header fixed position={{ top: 0, left: 0, right:0}} 
-        className={styles.TopHeader} > 
-       <Grid><Grid.Col className={styles.SetReviewandSaveHeader} span={8}><Title>Review and Save</Title></Grid.Col>
-       <Grid.Col  className={styles.SetHeaderIcon} span={1}>
-          <Center><Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link></Center></Grid.Col></Grid>
-         
-         
-         </Header>}>
-      </AppShell>
+        header={
+          <Header fixed position={{ top: 0, left: 0, right:0}} 
+                  className={styles.TopHeader} 
+          > 
+            <Grid>
+              <Grid.Col className={styles.SetReviewandSaveHeader} span={8}>
+                <Title>Review and Save</Title>
+              </Grid.Col>
+              <Grid.Col  className={styles.SetHeaderIcon} span={1}>
+                <Center>
+                  <Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link>
+                </Center>
+              </Grid.Col>
+            </Grid>
+          </Header>}>
+        </AppShell>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
@@ -117,25 +126,27 @@ function ReviewandSave() {
           <Divider my="sm" />
           {inputList.map((x, i) => { return (
             <Grid>
-              <Grid.Col span={2}><Title> {i+1}</Title></Grid.Col>
+              <Grid.Col span={2}>
+                <Title> {i+1}</Title>
+              </Grid.Col>
               <Grid.Col span={10}>
-              <Stack spacing ={1}> 
-                <NumberInput
-                  placeholder="KG"
-                  label="WEIGHT"
-                  required
-                  value={x.weight}
-                  onChange={e => handleWeightInputChange(e, i)}
-                />
-                <NumberInput
-                  placeholder="No. of Reps"
-                  label="REPS"
-                  required
-                  value={x.reps}
-                  onChange={e => handleRepsInputChange(e, i)}
-                />
-              </Stack>
-            </Grid.Col>
+                <Stack spacing ={1}> 
+                  <NumberInput
+                    placeholder="KG"
+                    label="WEIGHT"
+                    required
+                    value={x.weight}
+                    onChange={e => handleWeightInputChange(e, i)}
+                  />
+                  <NumberInput
+                    placeholder="No. of Reps"
+                    label="REPS"
+                    required
+                    value={x.reps}
+                    onChange={e => handleRepsInputChange(e, i)}
+                  />
+                </Stack>
+              </Grid.Col>
             </Grid> );
           })}
           <Divider my="sm" />
