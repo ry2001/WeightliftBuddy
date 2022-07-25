@@ -7,6 +7,7 @@ import { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import TopHeader from "../Components/TopHeader";
 import PieChart from "../Components/PieChart";
+import thumbnailabby from '../Components/thumbnailabby.jpg';
 import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
@@ -108,17 +109,17 @@ function Review() {
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
-              <Grid.Col span={3}>1/6/2022</Grid.Col>
-              <Grid.Col span={4}>10:11 - 11:17</Grid.Col>
+              <Grid.Col span={3}>25/7/2022</Grid.Col>
+              <Grid.Col span={4}>12:11 - 13:17</Grid.Col>
             </Grid>
-            <Title order={2}> Monday Morning Lift</Title>
+            <Title order={2}> Monday Afternoon Lift</Title>
           </Stack>
           <Divider my="sm" />
         </Container>
 
         <Container>
           <Center>
-            <Image radius="lg" className={styles.homeRecentImage} src={tempthumbnail}/>
+            <Image radius="lg" className={styles.homeRecentImage} src={thumbnailabby}/>
           </Center>
           <Grid className={styles.ReviewSaveInfoGrid} justify="center">
             <Grid.Col span={4} >
@@ -135,7 +136,7 @@ function Review() {
             </Grid.Col>
             <Grid.Col span={4} >
               <Stack  align="center" spacing={1}>
-                <Title order={2}> 30:20 </Title> 
+                <Title order={2}> 67:20 </Title> 
                 <Text size="xs"> TIME</Text>
               </Stack>
             </Grid.Col>
