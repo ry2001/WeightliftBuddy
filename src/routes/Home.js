@@ -3,6 +3,7 @@ import { useLayoutEffect } from "react";
 import { Container, Text, Grid, Button, Center, Title, Stack, Image } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import thumbnailabby from '../Components/thumbnailabby.jpg';
 import TopHeader from "../Components/TopHeader";
 import { Link } from "react-router-dom";
 import BarChart from "../Components/BarChart";
@@ -123,17 +124,16 @@ function Home() {
 
         <Container className={styles.homeRecentContainer}>
           <Title>Recent Activity</Title>
-          {recent_dummy.recentInfo.map((recentInfo, index) => (
-            <Link to="/reviewdummy" className={styles.RestyleLink}>
-            <Container className={styles.homeRecentIndivContainer} key={index} >
+
+          <Container className={styles.homeRecentIndivContainer}>
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
                   <Stack spacing={1} >
                     <Title order={4}>
-                      {recentInfo.title}
+                      Monday Afternoon Lift
                     </Title>
                     <Title order={5}>
-                      {recentInfo.day} {recentInfo.date}
+                      Monday 25/7/2022
                     </Title>
                     <Grid>
                       <Grid.Col className={styles.homeRecentIndivStat} span={2} >
@@ -150,7 +150,50 @@ function Home() {
                       </Grid.Col>
                       <Grid.Col className={styles.homeRecentIndivStat} span={2} >
                         <Stack  align="center" spacing={1}>
-                          <Title order={5}> 300</Title> 
+                          <Title order={5}> 67:20</Title> 
+                          <Text size="xs"> TIME</Text>
+                        </Stack>
+                      </Grid.Col>
+                    </Grid>
+                  </Stack>
+                </Grid.Col>
+                <Grid.Col className={styles.homeRecentImageCol} span = {3}>
+                  <Image radius="sm" className={styles.homeRecentImage} src={thumbnailabby}/>
+                </Grid.Col>
+              </Grid>
+            </Container>
+
+
+
+
+          {recent_dummy.recentInfo.map((recentInfo, index) => (
+            <Link to="/reviewdummy" className={styles.RestyleLink}>
+            <Container className={styles.homeRecentIndivContainer} key={index} >
+              <Grid>
+                <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
+                  <Stack spacing={1} >
+                    <Title order={4}>
+                      {recentInfo.title}
+                    </Title>
+                    <Title order={5}>
+                      {recentInfo.day} {recentInfo.date}
+                    </Title>
+                    <Grid>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} >
+                        <Stack align="center" spacing={1}>
+                          <Title order={5}> {recentInfo.sets}</Title> 
+                          <Text size="xs"> SETS</Text> 
+                        </Stack>
+                      </Grid.Col>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} >
+                        <Stack align="center" spacing={1}>
+                          <Title order={5}> {recentInfo.kcal}</Title> 
+                          <Text size="xs"> KCAL</Text>
+                        </Stack>
+                      </Grid.Col>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} >
+                        <Stack  align="center" spacing={1}>
+                          <Title order={5}> {recentInfo.time}</Title> 
                           <Text size="xs"> TIME</Text>
                         </Stack>
                       </Grid.Col>

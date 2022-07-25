@@ -13,7 +13,6 @@ function TopHeader(props) {
     <>
     <AppShell
     header={<Header fixed position={{ top: 0, left: 0, right:0}} className={styles.TopHeader} > 
-      <ArrowBackIcon/>
       <Center>
         <Title>{header}</Title>
       </Center> 
