@@ -34,7 +34,7 @@ function Navigation() {
   }];
 
   const NavBar = () => {
-    const noBar = ['/', '/register'];
+    const noBar = ['/login', '/register'];
     if (noBar.includes(location.pathname)){
       return ;
     };
@@ -42,7 +42,7 @@ function Navigation() {
       <div>
       <nav class="navbar fixed-bottom bg-light" role="navigation">
           <Nav  >
-            <div className=" d-flex flex-row justify-content-around w-100">
+            <div className=" d-flex flex-row justify-content-around ">
               {
                 tabs.map((tab, index) =>(
                   <NavItem key={`tab-${index}`}>

@@ -85,7 +85,7 @@ function EditReview() {
 
         
     ]);
-  const [comment, setComment] = useState([{comment:"Shag, but made good progress. yay!"}])
+  const [comment, setComment] = useState(["Shag, but made good progress. yay!"])
   const navigate = useNavigate();
 
 
