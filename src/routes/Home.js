@@ -67,10 +67,18 @@ function Home() {
           <Center>
             <Grid gutter={30}>
               <Center>
-                <Grid.Col span={3}><Button className={styles.homeTopButtons}>W</Button></Grid.Col>
-                <Grid.Col span={3}><Button className={styles.homeTopButtons}>M</Button></Grid.Col>
-                <Grid.Col span={3}><Button className={styles.homeTopButtons}>Y</Button></Grid.Col>
-                <Grid.Col span={3}><Button className={styles.homeTopButtons}>All</Button></Grid.Col>
+                <Grid.Col span={3}>
+                  <Button className={styles.homeTopButtons}>W</Button>
+                </Grid.Col>
+                <Grid.Col span={3}>
+                  <Button className={styles.homeTopButtons}>M</Button>
+                </Grid.Col>
+                <Grid.Col span={3}>
+                  <Button className={styles.homeTopButtons}>Y</Button>
+                </Grid.Col>
+                <Grid.Col span={3}>
+                  <Button className={styles.homeTopButtons}>All</Button>
+                </Grid.Col>
               </Center>
             </Grid>
           </Center>
@@ -83,9 +91,24 @@ function Home() {
               <Title align="center"> 100</Title>
               <Text align="center"> MINS</Text>
               <Grid justify="center">
-                <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 3</Title> <Text size="xs"> SESSIONS</Text> </Stack></Grid.Col>
-                <Grid.Col span={4} ><Stack align="center" spacing={1}><Title order={2}> 110</Title> <Text size="xs"> AVG.KG</Text></Stack></Grid.Col>
-                <Grid.Col span={4} ><Stack  align="center" spacing={1}><Title order={2}> 300</Title> <Text size="xs"> TOT.KG</Text></Stack></Grid.Col>
+                <Grid.Col span={4} >
+                  <Stack align="center" spacing={1}>
+                    <Title order={2}> 3</Title> 
+                    <Text size="xs"> SESSIONS</Text> 
+                  </Stack>
+                </Grid.Col>
+                <Grid.Col span={4} >
+                  <Stack align="center" spacing={1}>
+                    <Title order={2}> 110</Title> 
+                    <Text size="xs"> AVG.KG</Text>
+                  </Stack>
+                </Grid.Col>
+                <Grid.Col span={4} >
+                  <Stack  align="center" spacing={1}>
+                    <Title order={2}> 300</Title> 
+                    <Text size="xs"> TOT.KG</Text>
+                  </Stack>
+                </Grid.Col>
               </Grid>
             </Stack>
           </Center>
@@ -97,7 +120,6 @@ function Home() {
             <BarChart/>
           </Center>
         </Container>
-
 
         <Container className={styles.homeRecentContainer}>
           <Title>Recent Activity</Title>
@@ -114,9 +136,24 @@ function Home() {
                       {recentInfo.day} {recentInfo.date}
                     </Title>
                     <Grid>
-                      <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack align="center" spacing={1}><Title order={5}> 5</Title> <Text size="xs"> SETS</Text> </Stack></Grid.Col>
-                      <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack align="center" spacing={1}><Title order={5}> 256</Title> <Text size="xs"> KCAL</Text></Stack></Grid.Col>
-                      <Grid.Col className={styles.homeRecentIndivStat} span={2} ><Stack  align="center" spacing={1}><Title order={5}> 300</Title> <Text size="xs"> TIME</Text></Stack></Grid.Col>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} >
+                        <Stack align="center" spacing={1}>
+                          <Title order={5}> 5</Title> 
+                          <Text size="xs"> SETS</Text> 
+                        </Stack>
+                      </Grid.Col>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} >
+                        <Stack align="center" spacing={1}>
+                          <Title order={5}> 256</Title> 
+                          <Text size="xs"> KCAL</Text>
+                        </Stack>
+                      </Grid.Col>
+                      <Grid.Col className={styles.homeRecentIndivStat} span={2} >
+                        <Stack  align="center" spacing={1}>
+                          <Title order={5}> 300</Title> 
+                          <Text size="xs"> TIME</Text>
+                        </Stack>
+                      </Grid.Col>
                     </Grid>
                   </Stack>
                 </Grid.Col>
