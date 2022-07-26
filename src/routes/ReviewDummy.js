@@ -59,23 +59,6 @@ function ReviewDummy() {
   return (
     <>
       <Container> 
-        <AppShell
-          header={
-            <Header fixed position={{ top: 0, left: 0, right:0}} 
-                    className={styles.TopHeader} 
-            > 
-            <Grid>
-              <Grid.Col className={styles.SetReviewHeader} span={4}>
-                <Title>Review</Title>
-              </Grid.Col>
-              <Grid.Col  className={styles.SetHeaderIcon} span={2}>
-                <Center>
-                  <Link to="/editreview"><FontAwesomeIcon  size="lg" icon={faPen}/></Link>
-                </Center>
-              </Grid.Col>
-            </Grid>
-          </Header>}>
-        </AppShell>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>

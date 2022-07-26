@@ -45,17 +45,6 @@ function Register () {
 
     return (
         <div>
-
-            <AppShell
-                header={<Header fixed position={{ top: 0, left: 0, right:0}} className={styles.TopHeader} > 
-                        <ArrowBackIcon
-                        style={{marginLeft: 20}}/>
-                        <Center>
-                        <Title>Register</Title>
-                        </Center>
-                    </Header>}>
-                </AppShell>
-
             <Container
                 style={{width: 300, alignItems: "center", alignContent: "center" ,marginTop:70}}
             >

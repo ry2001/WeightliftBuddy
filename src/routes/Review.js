@@ -71,39 +71,6 @@ function Review() {
   return (
     <>
       <Container> 
-        <AppShell
-          header={
-            <Header fixed position={{ top: 0, left: 0, right:0}} 
-                    className={styles.TopHeader} 
-            > 
-            <Grid justify="space-around">
-              <Grid.Col span={1}>
-                <Center>
-                  <ArrowBackIcon
-                    onClick={() => navigate('/home')}
-                    size='lg'
-                    style={{marginTop: 10}}
-                  />
-                </Center>
-              </Grid.Col>
-              <Grid.Col span={4}>
-                <Title>
-                  Review
-                </Title>
-              </Grid.Col>
-              <Grid.Col span={1}>
-                <Center>
-                  <FontAwesomeIcon  
-                    size="lg" 
-                    icon={faPen}
-                    style={{marginTop: 10}}
-                  />
-                </Center>
-              </Grid.Col>
-            </Grid>
-          </Header>}>
-        </AppShell>
-
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
