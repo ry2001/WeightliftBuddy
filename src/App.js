@@ -17,8 +17,7 @@ import ReviewDummy from "./routes/ReviewDummy";
 import Navigation from "./Components/Navigation";
 import EditReview from "./routes/EditReview";
 import EditReviewDummy from "./routes/EditReviewDummy";
-
-//import TopHeader from "./Components/TopHeader";
+import TopHeader from "./Components/TopHeader";
 
 
 function App() {
@@ -26,6 +25,7 @@ function App() {
     return (
       <>
         <div>
+          <TopHeader/>
           <Navigation/>
           <Routes>
             <Route path="/" element={<Login />} />

@@ -1,6 +1,5 @@
 import React from "react"
 import { Container, Text, Image, Center, Grid, Button } from "@mantine/core";
-import TopHeader from "../Components/TopHeader";
 import { useNavigate } from 'react-router-dom';
 
 function Profile() {
@@ -23,8 +22,7 @@ function Profile() {
       <div>
         <Container 
           style={{marginTop:50}}
-        >
-          <TopHeader header="Profile" /> 
+        > 
         </Container>
 
         <Container 

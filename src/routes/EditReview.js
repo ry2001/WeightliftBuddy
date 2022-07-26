@@ -4,7 +4,6 @@ import { Container, Grid, Text, Stack, Title, Divider, Center, Image, NumberInpu
 import styles from './styles.module.css';
 import { useNavigate} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
-import TopHeader from "../Components/TopHeader";
 import PieChart from "../Components/PieChart";
 import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
