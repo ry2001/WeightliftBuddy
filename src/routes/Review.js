@@ -4,8 +4,6 @@ import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useLayoutEffect } from "react";
-import { Link } from "react-router-dom";
-import TopHeader from "../Components/TopHeader";
 import PieChart from "../Components/PieChart";
 import thumbnailabby from '../Components/thumbnailabby.jpg';
 import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';

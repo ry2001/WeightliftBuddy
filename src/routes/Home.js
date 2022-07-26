@@ -4,7 +4,6 @@ import { Container, Text, Grid, Button, Center, Title, Stack, Image } from "@man
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import thumbnailabby from '../Components/thumbnailabby.jpg';
-import TopHeader from "../Components/TopHeader";
 import { Link } from "react-router-dom";
 import BarChart from "../Components/BarChart";
 
@@ -63,7 +62,6 @@ function Home() {
   return (
     <>
       <Container>
-        <TopHeader header="Home" />
         <Container className={styles.homeTopButtonsContainer}>
           <Center>
             <Grid gutter={30}>

@@ -8,7 +8,6 @@ import { Text,
         Switch} from "@mantine/core";
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import UploadIcon from '@mui/icons-material/Upload';
-import TopHeader from "../Components/TopHeader";
 import styles from './styles.module.css';
 
 function NewActivity () {
@@ -95,7 +94,6 @@ function NewActivity () {
   return (
     <>
       <div className={styles.NewActivityContainer}>
-      <TopHeader header="New Activity" />
         <VidModal/>
         <Center>
           <Stack spacing={50}>
