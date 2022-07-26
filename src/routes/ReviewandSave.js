@@ -3,12 +3,11 @@ import { useState} from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, NumberInput, Button, Textarea, List } from "@mantine/core";
 import styles from './styles.module.css';
 import { useNavigate} from "react-router-dom";
-import tempthumbnail from '../Components/tempthumbnail.jpg';
 import thumbnailabby from '../Components/thumbnailabby.jpg';
 import PieChart from "../Components/PieChart";
-import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
+import { AppShell, Header } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
 

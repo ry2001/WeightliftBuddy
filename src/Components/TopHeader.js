@@ -1,12 +1,11 @@
-import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
-import { Text, Button, Center, Title, ActionIcon,Container, Grid} from '@mantine/core';
-import { Link} from "react-router-dom";
+import { Header } from '@mantine/core';
+import { Center, Title, Grid} from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {useNavigate, useLocation} from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import styles from './styles.module.css';
-import {faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function TopHeader() {
     const navigate = useNavigate()
@@ -31,8 +30,8 @@ function TopHeader() {
 
     //put the paths where you need these buttons here
     const backArrow = ['/register', '/review', '/reviewdummy']
-    const editButton=['/review', '/reviewdummy']
-    const deleteButton=['/']
+    const editButton = ['/review', '/reviewdummy']
+    const deleteButton = ['/']
 
     const SpecialButtons = () => {
       if (editButton.includes(location.pathname)) {
@@ -63,7 +62,7 @@ function TopHeader() {
 
     const BackButton = () => {
       if (backArrow.includes(location.pathname)) {
-        if (title=='/review'){
+        if (title==='/review'){
           return(                             
             < ArrowBackIcon 
             onClick={() => navigate('/home')} 
