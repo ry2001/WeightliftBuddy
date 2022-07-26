@@ -27,6 +27,7 @@ function Login() {
     }, []);
 
     const checkLogin = () => {
+        console.log(users)
         const i = users.user.findIndex(users => {return users === user;})
         if (i === -1) {
             setError({user: "User does not exist"});
