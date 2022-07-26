@@ -1,7 +1,6 @@
 import React from "react"
 import { Container, Text, Center, UnstyledButton, Autocomplete, Group, Stack } from "@mantine/core";
 import { Search, AlertCircle, Help, Eye, ChevronRight } from 'tabler-icons-react';
-import TopHeader from "../Components/TopHeader";
 import { Link } from "react-router-dom";
 
 
@@ -12,7 +11,6 @@ function Settings() {
         <Container 
           style={{marginTop:50}}
         >
-          <TopHeader header="Setting" /> 
         </Container>
 
         <Container 
