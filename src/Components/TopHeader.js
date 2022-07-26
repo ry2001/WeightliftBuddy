@@ -32,7 +32,7 @@ function TopHeader() {
     //put the paths where you need these buttons here
     const backArrow = ['/register', '/review', '/reviewdummy']
     const editButton=['/review', '/reviewdummy']
-    const deleteButton=['/home']
+    const deleteButton=['/']
 
     const SpecialButtons = () => {
       if (editButton.includes(location.pathname)) {
