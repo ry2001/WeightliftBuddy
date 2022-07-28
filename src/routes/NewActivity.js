@@ -15,8 +15,10 @@ function NewActivity () {
   const[volCheck, setVolCheck] = useState(true);
 
   async function openCamera(){
-    await fetch('/camera')
-    window.location = 'http://localhost:3000/reviewandsave'
+    await fetch('https://weightliftbuddy.herokuapp.com/camera')
+    let current_url = window.location.href
+    let changed_url = current_url.replace("/createactivity", "/reviewandsave")
+    window.location = changed_url
   }
 
   // to be inserted, not sure where yet
