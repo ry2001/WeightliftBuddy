@@ -9,14 +9,19 @@ import { Text,
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import UploadIcon from '@mui/icons-material/Upload';
 import styles from './styles.module.css';
+import {useNavigate} from 'react-router-dom';
 
 function NewActivity () {
   const[opened, setOpened] = useState(false);
   const[volCheck, setVolCheck] = useState(true);
 
   async function openCamera(){
-    await fetch('/camera')
-    window.location = 'http://localhost:3000/reviewandsave'
+    await fetch('https://weightliftbuddy.herokuapp.com/camera')
+    let current_url = window.location.href
+    console.log(current_url)
+    let changed_url = current_url.replace("/createactivity", "/reviewandsave")
+    console.log(changed_url)
+    window.location = changed_url
   }
 
   // to be inserted, not sure where yet

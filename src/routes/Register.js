@@ -24,7 +24,7 @@ function Register () {
     }
 
     const register = () => {
-        fetch('/register', {  
+        fetch('https://weightliftbuddy.herokuapp.com/register', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
