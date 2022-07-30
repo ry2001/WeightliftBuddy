@@ -9,7 +9,6 @@ import { Text,
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import UploadIcon from '@mui/icons-material/Upload';
 import styles from './styles.module.css';
-import {useNavigate} from 'react-router-dom';
 
 function NewActivity () {
   const[opened, setOpened] = useState(false);

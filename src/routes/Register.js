@@ -7,11 +7,9 @@ import { PasswordInput,
         Stack,
         } from "@mantine/core";
 import { useState } from 'react';
-import { useNavigate} from 'react-router-dom';
 
 function Register () {
 
-    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
@@ -23,8 +21,8 @@ function Register () {
         setPassword(e.target.value);
     }
 
-    const register = () => {
-        fetch('https://weightliftbuddy.herokuapp.com/register', {  
+    async function register() {
+        await fetch('https://weightliftbuddy.herokuapp.com/register', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +35,9 @@ function Register () {
         .then(response => response.json())
         .catch(error => console.log(error))
 
-        navigate("/login")
+        let current_url = window.location.href
+        let changed_url = current_url.replace("/register", "/login")
+        window.location = changed_url
     }
 
     return (
