@@ -10,7 +10,16 @@
 .TopHeader {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: aliceblue;
+    background-color: rgb(136, 125, 255);
+    color: white;
+
+
+}
+
+.TopHeaderText {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3rem;
+
 
 }
 

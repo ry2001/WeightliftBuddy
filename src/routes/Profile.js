@@ -1,6 +1,7 @@
 import React from "react"
 import { Container, Text, Image, Center, Grid, Button } from "@mantine/core";
 import { useNavigate } from 'react-router-dom';
+import styles from './styles.module.css';
 
 function Profile() {
 
@@ -19,6 +20,7 @@ function Profile() {
 
   return (
     <>
+    <Container className={styles.SettingsContainer}>
       <div>
         <Container 
           style={{marginTop:50}}
@@ -67,6 +69,7 @@ function Profile() {
           </Center> 
         </Container>
       </div>
+      </Container>
     </>
   ); }
 

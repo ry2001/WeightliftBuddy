@@ -2,11 +2,12 @@ import React from "react"
 import { Container, Text, Center, UnstyledButton, Autocomplete, Group, Stack } from "@mantine/core";
 import { Search, AlertCircle, Help, Eye, ChevronRight } from 'tabler-icons-react';
 import { Link } from "react-router-dom";
-
+import styles from './styles.module.css';
 
 function Settings() {
   return (
     <>
+    <Container className={styles.SettingsContainer}>
       <div>
         <Container 
           style={{marginTop:50}}
@@ -33,6 +34,7 @@ function Settings() {
           > 
           <Link to ="/display">
             <UnstyledButton 
+              className={styles.IndividualSettingsContainer}
               style={{width: '100%'}} 
               onClick={() => console.log('Go to Display page')}
             >
@@ -54,6 +56,7 @@ function Settings() {
             </Link>
             <Link to ="/help">
               <UnstyledButton 
+                className={styles.IndividualSettingsContainer}
                 style={{width: '100%'}} 
                 onClick={() => console.log('Go to Help page')}
               >
@@ -75,6 +78,7 @@ function Settings() {
             </Link>
             <Link to ="/about">
               <UnstyledButton 
+                className={styles.IndividualSettingsContainer}
                 style={{width: '100%'}}
                 onClick={() => console.log('Go to About page')}
               >
@@ -97,6 +101,7 @@ function Settings() {
           </Stack>
         </Center>
       </div>
+      </Container>
     </>
   ); }
 

@@ -5,7 +5,7 @@ import { Text,
         Stack,
         Modal,
         Slider,
-        Switch} from "@mantine/core";
+        Switch, Container} from "@mantine/core";
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import UploadIcon from '@mui/icons-material/Upload';
 import styles from './styles.module.css';
@@ -94,12 +94,15 @@ function NewActivity () {
   };
 
   return (
-    <>
-      <div className={styles.NewActivityContainer}>
+
+
+    <Container className={styles.NewActivityContainer}>
+      <div >
         <VidModal/>
         <Center>
           <Stack spacing={50}>
-            <Button
+            <Button 
+              className={styles.NewActivityButtons}
               onClick={() => setOpened(true)}
               variant="light"
               style={{width: 200, height: 150}}
@@ -114,6 +117,7 @@ function NewActivity () {
             </Button>
 
             <Button
+              className={styles.NewActivityButtons}
               variant="light"
               style={{width: 200, height: 150}}
               color="dark"
@@ -128,7 +132,8 @@ function NewActivity () {
           </Stack>
         </Center>
       </div>
-    </>
+      </Container>
+
   ); }
 
   export default NewActivity ;

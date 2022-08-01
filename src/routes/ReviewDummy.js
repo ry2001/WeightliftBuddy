@@ -56,14 +56,14 @@ function ReviewDummy() {
 
   return (
     <>
-      <Container> 
+      <Container className={styles.ReviewSaveContainer}> 
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
-              <Grid.Col span={3}>1/6/2022</Grid.Col>
-              <Grid.Col span={4}>10:11 - 11:17</Grid.Col>
+            <Grid.Col span={4} ><Text className={styles.ReviewDateText}>25/7/2022</Text></Grid.Col>
+            <Grid.Col span={5}><Text  className={styles.ReviewDateText}>12:11 - 13:17</Text></Grid.Col>
             </Grid>
-            <Title order={2}> Monday Morning Lift</Title>
+            <Title order={2} className={styles.ReviewTitle}> Monday Afternoon Lift</Title>
           </Stack>
           <Divider my="sm" />
         </Container>
@@ -75,27 +75,27 @@ function ReviewDummy() {
           <Grid className={styles.ReviewSaveInfoGrid} justify="center">
             <Grid.Col span={4} >
               <Stack align="center" spacing={1}>
-                <Title order={2}> 5 </Title> 
-                <Text size="xs"> SETS</Text> 
+                <Title className={styles.ReviewInfoText} order={2}> 5 </Title> 
+                <Text className={styles.ReviewInfoType} size="xs"> SETS</Text> 
               </Stack>
             </Grid.Col>
             <Grid.Col span={4} >
               <Stack align="center" spacing={1}>
-                <Title order={2}> 256 </Title> 
-                <Text size="xs"> KCAL</Text>
+                <Title className={styles.ReviewInfoText} order={2}> 256 </Title> 
+                <Text  className={styles.ReviewInfoType} size="xs"> KCAL</Text>
               </Stack>
             </Grid.Col>
             <Grid.Col span={4} >
               <Stack  align="center" spacing={1}>
-                <Title order={2}> 67:20 </Title> 
-                <Text size="xs"> TIME</Text>
+                <Title className={styles.ReviewInfoText} order={2}> 67:20 </Title> 
+                <Text className={styles.ReviewInfoType} size="xs"> TIME</Text>
               </Stack>
             </Grid.Col>
           </Grid> 
         </Container>
 
         <Container className={styles.ReviewSaveSetsContainer}>
-          <Title order={2}>Sets</Title>
+          <Title className={styles.ReviewInfoText} order={2}>Sets</Title>
           <Divider my="sm" />
           {review_dummy.reviewInfo.map((reviewInfo, index) => (
             <Grid>
@@ -131,7 +131,7 @@ function ReviewDummy() {
         </Container>
 
         <Container className={styles.ReviewSaveCommentsContainer}>
-          <Title order={2}>Comments</Title>
+          <Title className={styles.ReviewInfoText} order={2}>Comments</Title>
           <Divider my="sm" />
           <Container className={styles.ReviewCommentTextbox} > 
             <Text className={styles.ReviewCommentText}> 
@@ -143,14 +143,14 @@ function ReviewDummy() {
         <Container className={styles.ReviewSavePostureContainer}>
           <Title order={2}>Posture</Title>
           <Divider my="sm" />
-          <Text> Feedback from our AI</Text>
+          <Text  className={styles.ReviewInfoType}> Feedback from our AI</Text>
           <Center>
             <PieChart/>
           </Center>
-          <Title order={3}> Issues: </Title>
+          <Title className={styles.ReviewInfoText} order={3}> Issues: </Title>
           <List>
-            <List.Item>Back was not straight</List.Item>
-            <List.Item>Arms were bent</List.Item>
+            <List.Item  className={styles.ReviewInfoType}>Back was not straight</List.Item>
+            <List.Item  className={styles.ReviewInfoType}>Arms were bent</List.Item>
           </List>
           <Divider my="sm" />
         </Container>

@@ -136,7 +136,7 @@ function EditReview() {
 
   return (
     <>
-      <Container> 
+      <Container className={styles.ReviewSaveContainer}> 
       <AppShell
         header={
         <Header fixed position={{ top: 0, left: 0, right:0}} 
@@ -207,6 +207,7 @@ function EditReview() {
                     required
                     value={x.weight}
                     onChange={e => handleWeightInputChange(e, i)}
+                    hideControls
                   />
                   <NumberInput
                     placeholder="No. of Reps"
@@ -214,6 +215,7 @@ function EditReview() {
                     required
                     value={x.reps}
                     onChange={e => handleRepsInputChange(e, i)}
+                    hideControls
                   />
                 </Stack>
               </Grid.Col>

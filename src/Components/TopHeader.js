@@ -97,7 +97,7 @@ function TopHeader() {
         
         <Grid.Col span={4}>
           <Center>
-          <Title>
+          <Title className={styles.TopHeaderText}>
             {title}
           </Title>
           </Center>
