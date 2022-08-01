@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faUserCircle, faGear, faClock, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { SimpleGrid,Text, Center, Stack} from '@mantine/core';
+import { tab } from '@testing-library/user-event/dist/tab';
 
 
 function Navigation() {
@@ -40,6 +41,16 @@ function Navigation() {
     if (noBar.includes(location.pathname)){
       return ;
     };
+
+    const indicator = () =>{
+      if (location.pathname === tab.route){
+        console.log(location.pathname)
+        console.log(tab.route)
+        return "red";
+      }
+      return "blue";
+    }
+
     return (
       <div>
       <nav class="navbar fixed-bottom bg-light" role="navigation">
@@ -56,6 +67,7 @@ function Navigation() {
                             <FontAwesomeIcon 
                             size="lg" 
                             icon={tab.icon}
+                            color={indicator}
                             />
                           </Center>
                           <Center>

@@ -1,11 +1,12 @@
 import { Header } from '@mantine/core';
-import { Center, Title, Grid} from '@mantine/core';
+import { Center, Title, Grid, Text} from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate, useLocation } from "react-router-dom"
 import styles from './styles.module.css';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Container } from 'reactstrap';
 
 function TopHeader() {
     const navigate = useNavigate()
@@ -26,12 +27,14 @@ function TopHeader() {
       "/editreview": "Edit",
       "/reviewdummy": "Review"
   };
+
+  ///reduce font size of new activity, review and save
    const title=routeMap[location.pathname]
 
     //put the paths where you need these buttons here
-    const backArrow = ['/register', '/review', '/reviewdummy']
+    const backArrow = ['/register', '/reviewdummy']
     const editButton = ['/review', '/reviewdummy']
-    const deleteButton = ['/']
+    const deleteButton = ['/reviewandsave']
 
     const SpecialButtons = () => {
       if (editButton.includes(location.pathname)) {
@@ -95,13 +98,16 @@ function TopHeader() {
           </Center>
         </Grid.Col>
         
-        <Grid.Col span={4}>
+        <Grid.Col span={7}>
+          <Container>
           <Center>
-          <Title className={styles.TopHeaderText}>
+          <Title>
             {title}
           </Title>
           </Center>
+          </Container>
         </Grid.Col>
+        
 
         
         <Grid.Col span={1}>

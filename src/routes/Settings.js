@@ -13,18 +13,14 @@ function Settings() {
           style={{marginTop:50}}
         >
         </Container>
-
-        <Container 
-          style={{marginTop:100}}
-        >
-          <Center>
-            <Autocomplete 
-              icon={<Search />}
-              placeholder="Search for a setting"
-              data={['Display', 'Help', 'About']}
-            />
-          </Center> 
-        </Container>
+        
+        <Center>
+          <Autocomplete 
+            icon={<Search />}
+            placeholder="Search for a setting"
+            data={['Display', 'Help', 'About']}
+          />
+        </Center> 
 
         <Center>
           <Stack 

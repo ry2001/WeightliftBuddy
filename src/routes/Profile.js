@@ -27,9 +27,6 @@ function Profile() {
         > 
         </Container>
 
-        <Container 
-          style={{marginTop:100}}
-        >
           <Center>
             <Image
               width={200}
@@ -38,8 +35,7 @@ function Profile() {
               radius="lg"
               src="https://daxstreet.com/wp-content/uploads/2022/05/Anya-Forger.jpg"
             />
-          </Center> 
-        </Container>
+          </Center>
 
         <Container style={{marginTop:50}}>
           <Grid>
