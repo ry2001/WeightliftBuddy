@@ -6,30 +6,83 @@ import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 
 import {useWindowDimensions} from "./WindowSize.js"
+import { faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
+
+
 
 function Camera() {
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const textRef = useRef(null);
   // const landmarkRef = useRef(null);
   // const { height, width } = useWindowDimensions();
   const height = 700
-  const width = 400
+  const width = 350
   const [playing, setPlaying] = useState(false)
 
-  // const connect = window.drawConnectors;
-  var camera = null;
-
-  const startVideo = () => {
+  function startVideo () {
     setPlaying(true);
   };
+  
+  function stopVideo () {
+    setPlaying(false);
+  };
 
-  // stop video
-	const stopVideo = () => {
-		setPlaying(false);
-	};
+  function calculateAngle (a, b, c) {
+    const radians = Math.atan2(c[1]-b[1], c[0]-b[0]) - Math.atan2(a[1]-b[1], a[0]-b[0])
+    const angle = Math.abs(radians*180.0/Math.PI)
+    if (angle > 180.0){
+      angle = 360-angle
+    }
 
+    return angle
+  }
 
+  function calculateDistance(x1, y1, x2, y2) {
+    const dist = Math.SQRT2((x2-x1)**2+(y2-y1)**2)
+    return dist
+  }
+
+  function determinePosture(kneeAngle, torsoAngle){
+    const params = {15: (115.69995802367308, 176.92575293383678), 20: (125.84640210966039, 172.21735754226745), 25: (88.89068727354515, 175.1280447087127), 30: (90.94999087111344, 166.2771561069063), 35: (104.26478783029441, 166.04326235420538), 40: (66.75491286859872, 135.60064258541212)};
+    const datapoints = [15, 20, 25, 30, 35, 40];
+
+    // reinitialise canvas? is this neccessary?
+    const canvasElement = canvasRef.current;
+    const canvasCtx = canvasElement.getContext("2d");
+    const text = textRef.current;
+    // fillText(text, x, y [, maxWidth]) to draw on canvas
+
+    if (torsoAngle > 65) {
+      canvasCtx.fillText("Please straighten your back or knees", (10, 100))
+    };
+    
+    if (torsoAngle > 10 && kneeAngle > 90) {
+      const i = params[datapoints[Math.round(torsoAngle/5)-3]]
+
+      if (kneeAngle > i[0] && kneeAngle < i[1]) {
+        canvasCtx.fillText("Good Posture", (10, 100))
+      };
+      
+      if (kneeAngle > i[1]) {
+        canvasCtx.fillText("Straighten knees", (10, 100))
+      };
+    };
+
+    if (torsoAngle < 15 ) {
+      canvasCtx.fillText("Please start your deadlift", (10, 100))
+    };
+
+    if (kneeAngle < 40) {
+      canvasCtx.fillText("Please straighten your back or knees", (10, 100))
+    };
+
+  }
+
+  // const connect = window.drawConnectors;
+  var camera = null
+                             
   function onResults(results) {
 
     const videoWidth = webcamRef.current.video.videoWidth;
@@ -43,6 +96,8 @@ function Camera() {
     const canvasCtx = canvasElement.getContext("2d");
 
     // const grid = new LandmarkGrid(landmarkRef);
+    var camera = null;
+
 
     if (!results.poseLandmarks) {
       canvasCtx.save();
@@ -59,6 +114,29 @@ function Camera() {
       drawConnectors(canvasCtx,
         results.poseLandmarks, POSE_CONNECTIONS,
         { color: '#FFFFFF', lineWidth: 2 });
+      console.log(results.poseLandmarks)
+      const landmarks = results.poseLandmarks.landmark
+
+      const left_shoulder_x = results.poseLandmarks[11].x * width ;
+      const left_shoulder_y = results.poseLandmarks[11].y * height; 
+      const right_shoulder_x = results.poseLandmarks[12].x * width ;
+      const right_shoulder_y = results.poseLandmarks[12].y * height;
+                
+      const left_hip_x = results.poseLandmarks[23].x * width;
+      const left_hip_y = results.poseLandmarks[23].y * height;
+      const right_hip_x = results.poseLandmarks[24].x * width
+      const right_hip_y = results.poseLandmarks[24].y * height;
+
+          
+      const left_knee_x = results.poseLandmarks[25].x * width
+      const left_knee_y = results.poseLandmarks[25].y * height;
+      const right_knee_x = results.poseLandmarks[26].x * width
+      const right_knee_y = results.poseLandmarks[26].y * height;
+
+      const left_ankle_x = results.poseLandmarks[27].x * width
+      const left_ankle_y = results.poseLandmarks[27].y * height;
+      const right_ankle_x = results.poseLandmarks[28].x * width;
+      const right_ankle_y = results.poseLandmarks[28].y * height;
 
       // removed dots as it increased latency
       // // The dots are the landmarks 
@@ -73,6 +151,7 @@ function Camera() {
   useEffect(() => {
 
     setPlaying(true);
+    console.log()
 
     const pose = new Pose({
       locateFile: (file) => {
@@ -120,8 +199,8 @@ function Camera() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: height,
-            height: width,
+            width: width,
+            height: height,
           }}
         />{" "}
         <canvas
@@ -135,25 +214,33 @@ function Camera() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: height,
-            height: width,
+            width: width,
+            height: height,
           }}
         ></canvas>
       </div>
 
-      <div className = "camera_settings">
-        {playing ? (<button onClick={stopVideo}>Stop</button>) : (
-          <button onClick={startVideo}>Start</button>)}
+      <div className = "camera_settings"
+        style={{
+          textAlign: "center",
+          zindex: 8,
+        }}>
+        {/* {playing ? (<button onClick={stopVideo}>Stop</button>) : (
+          <button onClick={startVideo}>Start</button>)} */}
+          <button onClick={startVideo}>Start</button>
+          <button onClick={stopVideo}>Stop</button>
       </div>
 
-
+      <div className = "comments">
+        <text
+        ref={textRef}>
+        </text>
+      </div>
     </center>
-    
-
-    
-
   )
 };
+
+export default Camera;
 
 
 
@@ -209,6 +296,3 @@ function Camera() {
 // 		</div>
 // 	);
 // }
-
-
-export default Camera;
