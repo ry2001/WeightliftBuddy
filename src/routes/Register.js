@@ -5,16 +5,11 @@ import { PasswordInput,
         Button,
         Image,
         Stack,
-    AppShell,
-Navbar, Header, Title} from "@mantine/core";
+        } from "@mantine/core";
 import { useState } from 'react';
-import { useNavigate} from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import styles from './styles.module.css';
 
 function Register () {
 
-    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
@@ -40,7 +35,9 @@ function Register () {
         .then(response => response.json())
         .catch(error => console.log(error))
 
-        navigate("/login")
+        let current_url = window.location.href
+        let changed_url = current_url.replace("/register", "/login")
+        window.location = changed_url
     }
 
     return (
@@ -48,9 +45,6 @@ function Register () {
             <Container
                 style={{width: 300, alignItems: "center", alignContent: "center" ,marginTop:70}}
             >
-
-                
-
                 <Stack 
                 spacing="sm"
                 style={{marginTop: 30}}

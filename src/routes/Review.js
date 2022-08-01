@@ -1,20 +1,14 @@
 import React from "react"
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } from "@mantine/core";
 import styles from './styles.module.css';
-import tempthumbnail from '../Components/tempthumbnail.jpg';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useLayoutEffect } from "react";
 import PieChart from "../Components/PieChart";
 import thumbnailabby from '../Components/thumbnailabby.jpg';
-import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 function Review() {
 
   const location = useLocation();
-  const navigate = useNavigate();
 
   const newReviewInfo = location.state.sets
   const newComment = location.state.comment
@@ -24,49 +18,6 @@ function Review() {
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0) });
-
-
-
-  const review_dummy = {
-    reviewInfo: [
-        {
-           id: 1,
-           weight: 60, 
-           reps: 6,
-            
-        },
-
-        {
-          id: 2,
-          weight: 60, 
-          reps: 6,
-            
-        },
-
-        {
-          id: 3,
-          weight: 65, 
-          reps: 5,
-            
-        },
-
-        {
-          id: 4,
-          weight: 70, 
-          reps: 3,
-            
-        },
-
-        {
-          id: 5,
-          weight: 70, 
-          reps: 3,
-            
-        },
-
-        
-    ]}
-
 
   return (
     <>
