@@ -23,7 +23,8 @@ function Login() {
     useEffect(() => {
         fetch("https://weightliftbuddy.herokuapp.com/login")
         .then(response => response.json())
-        .then(users => { setUsers(users) });
+        .then(users => { setUsers(users) })
+        .then(console.log(users));
     }, []);
 
     const checkLogin = () => {
