@@ -4,15 +4,12 @@ import { PasswordInput,
         Center,
         Button,
         Image,
-        Stack} from "@mantine/core";
+        Stack,
+        } from "@mantine/core";
 import { useState } from 'react';
-import { useNavigate} from 'react-router-dom';
-
-
 
 function Register () {
 
-    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
@@ -25,7 +22,7 @@ function Register () {
     }
 
     const register = () => {
-        fetch('/register', {  
+        fetch('https://weightliftbuddy.herokuapp.com/register', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,15 +35,20 @@ function Register () {
         .then(response => response.json())
         .catch(error => console.log(error))
 
-        navigate("/login")
+        let current_url = window.location.href
+        let changed_url = current_url.replace("/register", "/login")
+        window.location = changed_url
     }
 
     return (
         <div>
             <Container
-                style={{width: 300, alignItems: "center", alignContent: "center" ,marginTop:50}}
+                style={{width: 300, alignItems: "center", alignContent: "center" ,marginTop:70}}
             >
-                <Stack spacing="sm">
+                <Stack 
+                spacing="sm"
+                style={{marginTop: 30}}
+                >
                     <Center>
                         <Image
                             src="https://i.pinimg.com/originals/65/45/d7/6545d7586aa48bdf487ea306d7cd853b.png"

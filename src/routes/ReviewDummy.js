@@ -3,12 +3,7 @@ import { useLayoutEffect } from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
-import TopHeader from "../Components/TopHeader";
-import { Link } from "react-router-dom";
 import PieChart from "../Components/PieChart";
-import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen } from '@fortawesome/free-solid-svg-icons';
 
 function ReviewDummy() {
  
@@ -59,23 +54,6 @@ function ReviewDummy() {
   return (
     <>
       <Container> 
-        <AppShell
-          header={
-            <Header fixed position={{ top: 0, left: 0, right:0}} 
-                    className={styles.TopHeader} 
-            > 
-            <Grid>
-              <Grid.Col className={styles.SetReviewHeader} span={4}>
-                <Title>Review</Title>
-              </Grid.Col>
-              <Grid.Col  className={styles.SetHeaderIcon} span={2}>
-                <Center>
-                  <Link to="/editreview"><FontAwesomeIcon  size="lg" icon={faPen}/></Link>
-                </Center>
-              </Grid.Col>
-            </Grid>
-          </Header>}>
-        </AppShell>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>

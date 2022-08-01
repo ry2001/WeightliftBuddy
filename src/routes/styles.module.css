@@ -111,8 +111,8 @@
 
 
 .TopHeader {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     background-color: aliceblue;
 
 }
@@ -131,12 +131,7 @@
     text-decoration: none ;
 }
 
-.TopHeader {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    background-color: aliceblue;
 
-}
 
 .SetHeaderIcon {
     margin-top: 1rem;

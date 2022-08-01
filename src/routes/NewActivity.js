@@ -8,7 +8,6 @@ import { Text,
         Switch} from "@mantine/core";
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import UploadIcon from '@mui/icons-material/Upload';
-import TopHeader from "../Components/TopHeader";
 import styles from './styles.module.css';
 import { Link } from "react-router-dom";
 
@@ -24,6 +23,12 @@ function NewActivity () {
     // window.location = 'http://localhost:3000/reviewandsave'
     )
   };
+  // async function openCamera(){
+  //   await fetch('https://weightliftbuddy.herokuapp.com/camera')
+  //   let current_url = window.location.href
+  //   let changed_url = current_url.replace("/createactivity", "/reviewandsave")
+  //   window.location = changed_url
+  // }
 
   // to be inserted, not sure where yet
   const VidModal = () => {
@@ -101,7 +106,6 @@ function NewActivity () {
   return (
     <>
       <div className={styles.NewActivityContainer}>
-      <TopHeader header="New Activity" />
         <VidModal/>
         <Center>
           <Stack spacing={50}>

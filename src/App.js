@@ -20,6 +20,7 @@ import EditReviewDummy from "./routes/EditReviewDummy";
 import Camera from "./routes/Camera"
 
 //import TopHeader from "./Components/TopHeader";
+import TopHeader from "./Components/TopHeader";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     return (
       <>
         <div>
+          <TopHeader/>
           <Navigation/>
           <Routes>
             <Route path="/" element={<Login />} />

@@ -4,11 +4,10 @@ import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } fro
 import styles from './styles.module.css';
 import { useLocation } from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
-import TopHeader from "../Components/TopHeader";
 import PieChart from "../Components/PieChart";
-import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
+import { AppShell, Header } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 function EditReviewDummy() {
  
@@ -22,49 +21,6 @@ function EditReviewDummy() {
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0) });
-
-
-
-  const review_dummy = {
-    reviewInfo: [
-        {
-           id: 1,
-           weight: 60, 
-           reps: 6,
-            
-        },
-
-        {
-          id: 2,
-          weight: 60, 
-          reps: 6,
-            
-        },
-
-        {
-          id: 3,
-          weight: 65, 
-          reps: 5,
-            
-        },
-
-        {
-          id: 4,
-          weight: 70, 
-          reps: 3,
-            
-        },
-
-        {
-          id: 5,
-          weight: 70, 
-          reps: 3,
-            
-        },
-
-        
-    ]}
-
 
   return (
     <>
