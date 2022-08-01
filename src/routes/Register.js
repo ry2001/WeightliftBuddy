@@ -21,8 +21,8 @@ function Register () {
         setPassword(e.target.value);
     }
 
-    async function register() {
-        await fetch('https://weightliftbuddy.herokuapp.com/register', {  
+    const register = () => {
+        fetch('https://weightliftbuddy.herokuapp.com/register', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

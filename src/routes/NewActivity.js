@@ -17,9 +17,7 @@ function NewActivity () {
   async function openCamera(){
     await fetch('https://weightliftbuddy.herokuapp.com/camera')
     let current_url = window.location.href
-    console.log(current_url)
     let changed_url = current_url.replace("/createactivity", "/reviewandsave")
-    console.log(changed_url)
     window.location = changed_url
   }
 
