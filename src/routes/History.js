@@ -4,7 +4,6 @@ import { Container, Text, Grid, Title, Stack, Image } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import thumbnailabby from '../Components/thumbnailabby.jpg';
-import TopHeader from "../Components/TopHeader";
 import { Link } from "react-router-dom";
 
 function History() {
@@ -38,7 +37,6 @@ function History() {
   return (
     <>
       <Container>
-        <TopHeader header="History" />
         <Container className={styles.HistoryContainer}>
           <Title order={3}>This Week</Title>
 

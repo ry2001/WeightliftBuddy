@@ -4,11 +4,13 @@ import { PasswordInput,
         Center,
         Button,
         Image,
-        Stack} from "@mantine/core";
+        Stack,
+    AppShell,
+Navbar, Header, Title} from "@mantine/core";
 import { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
-
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import styles from './styles.module.css';
 
 function Register () {
 
@@ -25,7 +27,7 @@ function Register () {
     }
 
     const register = () => {
-        fetch('/register', {  
+        fetch('https://weightliftbuddy.herokuapp.com/register', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -44,9 +46,15 @@ function Register () {
     return (
         <div>
             <Container
-                style={{width: 300, alignItems: "center", alignContent: "center" ,marginTop:50}}
+                style={{width: 300, alignItems: "center", alignContent: "center" ,marginTop:70}}
             >
-                <Stack spacing="sm">
+
+                
+
+                <Stack 
+                spacing="sm"
+                style={{marginTop: 30}}
+                >
                     <Center>
                         <Image
                             src="https://i.pinimg.com/originals/65/45/d7/6545d7586aa48bdf487ea306d7cd853b.png"
