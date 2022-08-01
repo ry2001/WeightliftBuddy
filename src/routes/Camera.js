@@ -1,19 +1,34 @@
 // import React, { useState } from 'react'
-import React, { useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { drawConnectors} from '@mediapipe/drawing_utils'
 import { Pose, POSE_CONNECTIONS } from '@mediapipe/pose'
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
+
+import {useWindowDimensions} from "./WindowSize.js"
 
 function Camera() {
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   // const landmarkRef = useRef(null);
+  // const { height, width } = useWindowDimensions();
+  const height = 700
+  const width = 400
+  const [playing, setPlaying] = useState(false)
 
-  const connect = window.drawConnectors;
-
+  // const connect = window.drawConnectors;
   var camera = null;
+
+  const startVideo = () => {
+    setPlaying(true);
+  };
+
+  // stop video
+	const stopVideo = () => {
+		setPlaying(false);
+	};
+
 
   function onResults(results) {
 
@@ -39,6 +54,7 @@ function Camera() {
         canvasElement.height
       )
     };
+
     if (results.poseLandmarks) {
       drawConnectors(canvasCtx,
         results.poseLandmarks, POSE_CONNECTIONS,
@@ -55,6 +71,9 @@ function Camera() {
   }
   
   useEffect(() => {
+
+    setPlaying(true);
+
     const pose = new Pose({
       locateFile: (file) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
@@ -80,8 +99,8 @@ function Camera() {
           onFrame: async () => {
             await pose.send({ image: webcamRef.current.video });
           },
-          width: 400,
-          height: 400,
+          width: width,
+          height: height,
         });
         camera.start();
         }
@@ -101,8 +120,8 @@ function Camera() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: 400,
-            height: 400,
+            width: height,
+            height: width,
           }}
         />{" "}
         <canvas
@@ -116,18 +135,22 @@ function Camera() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: 400,
-            height: 400,
+            width: height,
+            height: width,
           }}
         ></canvas>
       </div>
-      <button>
-          Start
-        </button>
-        <button>
-          Stop
-        </button>
+
+      <div className = "camera_settings">
+        {playing ? (<button onClick={stopVideo}>Stop</button>) : (
+          <button onClick={startVideo}>Start</button>)}
+      </div>
+
+
     </center>
+    
+
+    
 
   )
 };
@@ -189,67 +212,3 @@ function Camera() {
 
 
 export default Camera;
-
-// ReactDOM.render(<WebcamStreamCapture />, document.getElementById("root"));
-
-// function onResults(results) {
-//   const videoWidth = webcamRef.current.video.videoWidth
-//   const videoHeight = webcamRef.current.video.videoHeight
-
-//   canvasRef.current.width = videoWidth
-//   canvasRef.current.height = videoHeight
-//   const canvasElement = canvasRef.current
-//   const canvasCtx = canvasElement.getContext("2d")
-
-//   canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height)
-//   canvasCtx.drawImage(
-//     results.image,
-//     0,
-//     0,
-//     canvasElement.width,
-//     canvasElement.height
-//   );
-  
-//   // Only overwrite existing pixels.
-//   canvasCtx.globalCompositeOperation = 'source-in';
-//   canvasCtx.fillStyle = '#00000';
-//   canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
-
-//   // Only overwrite missing pixels.
-//   canvasCtx.globalCompositeOperation = 'destination-atop';
-//   canvasCtx.drawImage(results.image, 0, 0, canvasElement.width, canvasElement.height);
-
-//   canvasCtx.globalCompositeOperation = 'source-over';
-//   connect(canvasCtx, results.poseLandmarks, {color: '#00FF00', lineWidth: 4});
-
-//   canvasCtx.restore();
-// }
-
-// const MPPoseDetection = () => {
-//   const webcamRef = useRef(null);
-//   const canvasRef = useRef(null);
-
-//   useEffect(() => {
-//     const poseDetection = new poseDetection({
-//       locateFile: (file) => {
-//         console.log(`${file}`);
-//         return `https://cdn.jsdelivr.net/npm/@mediapipe/pose@${mpPose.VERSION}/${file}`;
-//       }
-//     })
-//     poseDetection.setOptions({
-//       minDetectionConfidence: 0.5,
-//       minTrackingConfidence: 0.5,
-//     })
-//     poseDetection.onResults(onResults);
-//     camera.start();
-//   })
-
-// }
-
-// const camera = new Camera(videoElement, {
-//   onFrame: async () => {
-//     await poseDetection.send({image: videoElement});
-//   },
-//   width: 1280,
-//   height: 720
-// });
