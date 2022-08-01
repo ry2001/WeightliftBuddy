@@ -2,6 +2,7 @@ import React from "react"
 import { useState} from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, NumberInput, Button, Textarea, List } from "@mantine/core";
 import styles from './styles.module.css';
+import { useLayoutEffect } from "react";
 import { useNavigate} from "react-router-dom";
 import tempthumbnail from '../Components/tempthumbnail.jpg';
 import TopHeader from "../Components/TopHeader";
@@ -10,10 +11,12 @@ import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
+import thumbnailabby from '../Components/thumbnailabby.jpg';
 
 
 
 function EditReview() {
+
 
   const review_dummy = {
     reviewInfo: [
@@ -54,38 +57,38 @@ function EditReview() {
 
   const [inputList, setInputList] = useState([
         {
-           weight: 60, 
-           reps: 6,
+           weight: 50, 
+           reps: 10,
             
         },
 
         {
-          weight: 60, 
-          reps: 6,
-            
-        },
-
-        {
-          weight: 65, 
+          weight: 55, 
           reps: 5,
             
         },
 
         {
-          weight: 70, 
+          weight: 55, 
+          reps: 5,
+            
+        },
+
+        {
+          weight: 60, 
           reps: 3,
             
         },
 
         {
-          weight: 70, 
+          weight: 60, 
           reps: 3,
             
         },
 
         
     ]);
-  const [comment, setComment] = useState(["Shag, but made good progress. yay!"])
+  const [comment, setComment] = useState(["tired but happy with my progress! a lot of improvement on form too!!"])
   const navigate = useNavigate();
 
 
@@ -165,24 +168,24 @@ function EditReview() {
 
         <Container>
           <Center>
-            <Image radius="lg" className={styles.homeRecentImage} src={tempthumbnail}/>
+            <Image radius="lg" className={styles.homeRecentImage} src={thumbnailabby}/>
           </Center>
           <Grid className={styles.ReviewSaveInfoGrid} justify="center">
             <Grid.Col span={4} >
               <Stack align="center" spacing={1}>
-                <Title order={2}> - </Title> 
+                <Title order={2}> 5 </Title> 
                 <Text size="xs"> SETS</Text> 
               </Stack>
             </Grid.Col>
             <Grid.Col span={4} >
               <Stack align="center" spacing={1}>
-                <Title order={2}> - </Title> 
+                <Title order={2}> 256 </Title> 
                 <Text size="xs"> KCAL</Text>
               </Stack>
             </Grid.Col>
             <Grid.Col span={4} >
               <Stack  align="center" spacing={1}>
-                <Title order={2}> 30:20 </Title> 
+                <Title order={2}> 67:20 </Title> 
                 <Text size="xs"> TIME</Text>
               </Stack>
             </Grid.Col>
@@ -230,7 +233,7 @@ function EditReview() {
           <Textarea
             placeholder= "Write a comment (optional)"
             onChange={e => handleTextInputChange(e)} 
-            defaultValue = "Shag, but made good progress. yay!"
+            defaultValue = "tired but happy with my progress! a lot of improvement on form too!!"
           />
         </Container>
 

@@ -125,6 +125,7 @@ function Home() {
         <Container className={styles.homeRecentContainer}>
           <Title>Recent Activity</Title>
 
+          <Link to="/reviewdummy" className={styles.RestyleLink}>
           <Container className={styles.homeRecentIndivContainer}>
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
@@ -161,7 +162,7 @@ function Home() {
                   <Image radius="sm" className={styles.homeRecentImage} src={thumbnailabby}/>
                 </Grid.Col>
               </Grid>
-            </Container>
+            </Container></Link>
 
 
 

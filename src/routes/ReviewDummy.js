@@ -3,6 +3,7 @@ import { useLayoutEffect } from "react";
 import { Container, Grid, Text, Stack, Title, Divider, Center, Image, List } from "@mantine/core";
 import styles from './styles.module.css';
 import tempthumbnail from '../Components/tempthumbnail.jpg';
+import thumbnailabby from '../Components/thumbnailabby.jpg';
 import TopHeader from "../Components/TopHeader";
 import { Link } from "react-router-dom";
 import PieChart from "../Components/PieChart";
@@ -19,35 +20,35 @@ function ReviewDummy() {
     reviewInfo: [
         {
           id: 1,
-          weight: 60, 
-          reps: 6,
+          weight: 50, 
+          reps: 10,
             
         },
 
         {
           id: 2,
-          weight: 60, 
-          reps: 6,
+          weight: 55, 
+          reps: 5,
             
         },
 
         {
           id: 3,
-          weight: 65, 
+          weight: 55, 
           reps: 5,
             
         },
 
         {
           id: 4,
-          weight: 70, 
+          weight: 60, 
           reps: 3,
             
         },
 
         {
           id: 5,
-          weight: 70, 
+          weight: 60, 
           reps: 3,
             
         },
@@ -89,7 +90,7 @@ function ReviewDummy() {
 
         <Container>
           <Center>
-            <Image radius="lg" className={styles.homeRecentImage} src={tempthumbnail}/>
+            <Image radius="lg" className={styles.homeRecentImage} src={thumbnailabby}/>
           </Center>
           <Grid className={styles.ReviewSaveInfoGrid} justify="center">
             <Grid.Col span={4} >
@@ -100,13 +101,13 @@ function ReviewDummy() {
             </Grid.Col>
             <Grid.Col span={4} >
               <Stack align="center" spacing={1}>
-                <Title order={2}> 209 </Title> 
+                <Title order={2}> 256 </Title> 
                 <Text size="xs"> KCAL</Text>
               </Stack>
             </Grid.Col>
             <Grid.Col span={4} >
               <Stack  align="center" spacing={1}>
-                <Title order={2}> 30:20 </Title> 
+                <Title order={2}> 67:20 </Title> 
                 <Text size="xs"> TIME</Text>
               </Stack>
             </Grid.Col>
@@ -154,7 +155,7 @@ function ReviewDummy() {
           <Divider my="sm" />
           <Container className={styles.ReviewCommentTextbox} > 
             <Text className={styles.ReviewCommentText}> 
-              Shag, but made good progress. yay!
+              tired but happy with my progress! a lot of improvement on form too!!
             </Text>
           </Container>
         </Container>
