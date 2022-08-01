@@ -17,6 +17,7 @@ import ReviewDummy from "./routes/ReviewDummy";
 import Navigation from "./Components/Navigation";
 import EditReview from "./routes/EditReview";
 import EditReviewDummy from "./routes/EditReviewDummy";
+import Camera from "./routes/Camera"
 
 //import TopHeader from "./Components/TopHeader";
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/history" element={<History/>} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/createactivity" element={<NewActivity />} />
+            <Route path="/camera" element={<Camera />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/about" element={<About />} />

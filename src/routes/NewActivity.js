@@ -10,15 +10,20 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import UploadIcon from '@mui/icons-material/Upload';
 import TopHeader from "../Components/TopHeader";
 import styles from './styles.module.css';
+import { Link } from "react-router-dom";
 
 function NewActivity () {
   const[opened, setOpened] = useState(false);
   const[volCheck, setVolCheck] = useState(true);
 
-  async function openCamera(){
-    await fetch('/camera')
-    window.location = 'http://localhost:3000/reviewandsave'
-  }
+
+  function openCamera(){
+    return(
+    console.log('enter')
+    // await fetch('/camera')
+    // window.location = 'http://localhost:3000/reviewandsave'
+    )
+  };
 
   // to be inserted, not sure where yet
   const VidModal = () => {
@@ -79,6 +84,7 @@ function NewActivity () {
               <Button 
                 onClick={() => {
                   setOpened(false);
+                  console.log('opening camera')
                   openCamera();
                 }}
                 style={{marginTop: 30}}
