@@ -7,9 +7,6 @@ import thumbnailabby from '../Components/thumbnailabby.jpg';
 import TopHeader from "../Components/TopHeader";
 import { Link } from "react-router-dom";
 import PieChart from "../Components/PieChart";
-import { AppShell, Navbar, Header, Aside, Footer } from '@mantine/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHome, faUserCircle, faGear, faClock, faPlusCircle, faPen } from '@fortawesome/free-solid-svg-icons';
 
 function ReviewDummy() {
  
