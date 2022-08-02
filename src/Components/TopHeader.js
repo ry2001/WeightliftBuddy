@@ -33,7 +33,7 @@ function TopHeader() {
 
     //put the paths where you need these buttons here
     const backArrow = ['/register', '/reviewdummy','/review', '/display', '/help', '/about']
-    const editButton = ['/review', '/reviewdummy']
+    const editButton = ['/reviewdummy']
     const deleteButton = ['/reviewandsave', '/editreview']
 
     const SpecialButtons = () => {
@@ -79,13 +79,13 @@ function TopHeader() {
             /> 
           );
         };
-          return( 
-              < ArrowBackIcon 
-              onClick={() => navigate(-1)} 
-              size='lg'
-              style={{marginTop: 10}} 
-              /> 
-           );
+        return( 
+            < ArrowBackIcon 
+            onClick={() => navigate(-1)} 
+            size='lg'
+            style={{marginTop: 10}} 
+            /> 
+          );
       };
       return;
     };
