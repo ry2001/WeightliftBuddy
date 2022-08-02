@@ -1,15 +1,10 @@
 // import React, { useState } from 'react'
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useCallback } from "react"
 import { drawConnectors} from '@mediapipe/drawing_utils'
 import { Pose, POSE_CONNECTIONS } from '@mediapipe/pose'
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import { Container } from "@mantine/core";
-import { type } from "@testing-library/user-event/dist/type";
-
-
-
-
 
 function Camera() {
 
@@ -20,15 +15,28 @@ function Camera() {
   // const { height, width } = useWindowDimensions();
   const height =550;
   const width = 350;
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
+  // let playing = false
 
-  function startVideo () {
-    setPlaying(true);
-  }
-  
-  function stopVideo () {
-    setPlaying(false);
-  }
+  // const startVideo = event => {
+  //   setPlaying(true);
+  //   console.log(playing)
+  // };
+
+  // const stopVideo = event => {
+  //   setPlaying(false);
+  //   console.log(playing)
+  // };
+
+  const toggleVideo = useCallback(
+  () => {
+    if (playing == true) {
+      setPlaying(false)
+    } else{
+      setPlaying(true)
+    }; 
+  }, [playing]
+  );
 
 
   function findTorso (x1, y1, x2, y2) {
@@ -123,7 +131,9 @@ function Camera() {
     const canvasCtx = canvasElement.getContext("2d");
 
     // const grid = new LandmarkGrid(landmarkRef);
-
+    if (playing === false){
+      return
+    }
 
     if (!results.poseLandmarks) {
       canvasCtx.save();
@@ -140,7 +150,8 @@ function Camera() {
       drawConnectors(canvasCtx,
         results.poseLandmarks, POSE_CONNECTIONS,
         { color: '#FFFFFF', lineWidth: 2 });
-      console.log(results.poseLandmarks);
+
+      // console.log(results.poseLandmarks);
 
       const left_shoulder_x = results.poseLandmarks[11].x * width ;
       const left_shoulder_y = results.poseLandmarks[11].y * height; 
@@ -222,41 +233,46 @@ function Camera() {
   
   useEffect(() => {
 
-    setPlaying(true);
-    console.log()
+      const pose = new Pose({
+        locateFile: (file) => {
+          return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+        },
+      });  
 
-    const pose = new Pose({
-      locateFile: (file) => {
-        return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
-      },
-    });  
+      pose.setOptions({
+        modelComplexity: 1,
+        smoothLandmarks: true,
+        enableSegmentation: true,
+        smoothSegmentation: true,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5
+      });
 
-    pose.setOptions({
-      modelComplexity: 1,
-      smoothLandmarks: true,
-      enableSegmentation: true,
-      smoothSegmentation: true,
-      minDetectionConfidence: 0.5,
-      minTrackingConfidence: 0.5
-    });
+      pose.onResults(onResults);
 
-    pose.onResults(onResults);
+      if (
+        typeof webcamRef.current !== "undefined" &&
+        webcamRef.current !== null
+        ) {
+          camera = new cam.Camera(webcamRef.current.video, {
+            onFrame: async () => {
+              await pose.send({ image: webcamRef.current.video });
+            },
+            width: width,
+            height: height,
+          });
 
-    if (
-      typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null
-      ) {
-        camera = new cam.Camera(webcamRef.current.video, {
-          onFrame: async () => {
-            await pose.send({ image: webcamRef.current.video });
-          },
-          width: width,
-          height: height,
-        });
-        camera.start();
-        }
+          console.log('playing')
+
+          if (playing == true){
+            camera.start();
+
+          } else {
+
+            camera.stop()
+          }};
   }, 
-  []);
+  [playing]);
 
   return(
     <center>
@@ -302,8 +318,14 @@ function Camera() {
           }}>
           {/* {playing ? (<button onClick={stopVideo}>Stop</button>) : (
             <button onClick={startVideo}>Start</button>)} */}
-            <button onClick={startVideo}>Start</button>
-            <button onClick={stopVideo}>Stop</button>
+            {/* <button onClick={startVideo}>Start</button>
+            <button onClick={stopVideo}>Stop</button> */}
+          <button
+            onClick={toggleVideo}
+          >
+          {playing ? 'Stop' : 'Start'}
+      </button>
+
         </div>
 
       </Container>
