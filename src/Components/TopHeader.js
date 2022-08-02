@@ -32,9 +32,9 @@ function TopHeader() {
    const title=routeMap[location.pathname]
 
     //put the paths where you need these buttons here
-    const backArrow = ['/register', '/reviewdummy','/review']
+    const backArrow = ['/register', '/reviewdummy','/review', '/display', '/help', '/about']
     const editButton = ['/review', '/reviewdummy']
-    const deleteButton = ['/reviewandsave']
+    const deleteButton = ['/reviewandsave', '/editreview']
 
     const SpecialButtons = () => {
       if (editButton.includes(location.pathname)) {
@@ -61,12 +61,11 @@ function TopHeader() {
               size="lg" 
               icon={faTrash}
               style={{marginTop: 10}}
+              onClick={() => navigate('/home')}
             />
           </Center>
         )
       }
-
-
     };
 
     const BackButton = () => {
