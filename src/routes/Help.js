@@ -1,18 +1,16 @@
 import React from "react"
 import { Container, Text, Center, Title, Stack, UnstyledButton, Group } from "@mantine/core";
 import { ChevronRight } from 'tabler-icons-react';
-
+import styles from './styles.module.css';
 
 function Help() {
   return (
     <>
         <div>
             <Container 
-                style={{marginTop:50}}
+                style={{marginTop:100}}
             >
-                <Center>
-                    <Title order={1}>Help</Title>
-                </Center> 
+
             </Container>
 
             <Center>
@@ -25,6 +23,7 @@ function Help() {
                     <UnstyledButton 
                         style={{width: '100%'}} 
                         onClick={() => console.log('Go to FAQ page')}
+                        className={styles.IndividualSettingsContainer}
                     >
                         <Group position="apart" >
                             <Text size="xl" weight='bold'>FAQ</Text>
@@ -38,6 +37,7 @@ function Help() {
                     <UnstyledButton 
                         style={{width: '100%'}} 
                         onClick={() => console.log('Go to Contact Us page')}
+                        className={styles.IndividualSettingsContainer}
                     >
                         <Group position="apart" >
                             <Text size="xl" weight='bold'>Contact Us</Text>
