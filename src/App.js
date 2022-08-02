@@ -1,6 +1,6 @@
 import React from "react"
 import './App.css';
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route, useLocation} from "react-router-dom";
 import Home from "./routes/Home";
 import NewActivity from "./routes/NewActivity";
 import Settings from "./routes/Settings";
@@ -22,11 +22,19 @@ import HomeDummy from "./routes/HomeDummy";
 
 
 function App() {
+  const location = useLocation();
+
+  const Header = () => {
+    if (location.pathname === "/"){
+      return; 
+    }
+    return <TopHeader/>;
+  }
   
     return (
       <>
         <div>
-          <TopHeader/>
+          <Header/>
           <Navigation/>
           <Routes>
             <Route path="/" element={<Login />} />

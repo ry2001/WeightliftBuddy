@@ -4,9 +4,6 @@ import { drawConnectors} from '@mediapipe/drawing_utils'
 import { Pose, POSE_CONNECTIONS } from '@mediapipe/pose'
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
-<<<<<<< HEAD
-import { Container } from "@mantine/core";
-=======
 import { Text, 
   Button,
   Center, 
@@ -15,7 +12,6 @@ import { Text,
   Slider,
   Switch, Container} from "@mantine/core";
   import GraphicEqIcon from '@mui/icons-material/GraphicEq';
->>>>>>> 608aeeb33e2dfc90614d2ee6a7faf800df162058
 
 function Camera() {
   const[opened, setOpened] = useState(true);
