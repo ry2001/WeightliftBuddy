@@ -100,6 +100,7 @@ function Login() {
                 <Center>
                     <Button 
                         style={{marginTop: 30}}
+                        color="orange"
                         onClick={checkLogin}
                     >
                         Login

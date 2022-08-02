@@ -90,6 +90,7 @@ function Register () {
                     <Button 
                         style={{marginTop: 30}}
                         onClick={register}
+                        color="orange"
                     >
                         Register
                     </Button>
