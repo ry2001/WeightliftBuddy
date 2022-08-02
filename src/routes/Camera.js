@@ -4,6 +4,7 @@ import { drawConnectors} from '@mediapipe/drawing_utils'
 import { Pose, POSE_CONNECTIONS } from '@mediapipe/pose'
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
+import { Container } from "@mantine/core";
 
 
 
@@ -16,7 +17,7 @@ function Camera() {
   // const textRef = useRef(null);
   // const landmarkRef = useRef(null);
   // const { height, width } = useWindowDimensions();
-  const height = 700;
+  const height =550;
   const width = 350;
   const [playing, setPlaying] = useState(false);
 
@@ -149,11 +150,11 @@ function Camera() {
       console.log('calculated');
 
       if (offset > 50) {
-        canvasCtx.fillText("Please place the camera to the side", 10, 100);
+        canvasCtx.fillText("Please place the camera to the side", 10, 430);
         return
       }
       
-      canvasCtx.fillText("Aligned", 10, 100);
+      canvasCtx.fillText("Aligned", 10, 430);
 
       // Find the side
       if (results.poseLandmarks[23].visibility + results.poseLandmarks[11].visibility + results.poseLandmarks[25].visibility + results.poseLandmarks[27].visibility > 
@@ -182,9 +183,6 @@ function Camera() {
         };
 
       };
-
-
-
 
       // removed dots as it increased latency
       // // The dots are the landmarks 
@@ -236,54 +234,56 @@ function Camera() {
 
   return(
     <center>
-      <div className="Camera">
-        <Webcam
-          ref={webcamRef}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: width,
-            height: height,
-          }}
-        />{" "}
-        <canvas
-          ref={canvasRef}
-          className="output_canvas"
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: width,
-            height: height,
-          }}
-        ></canvas>
-      </div>
+      <Container>
+        <div className="Camera">
+          <Webcam
+            ref={webcamRef}
+            style={{
+              position: "absolute",
+              marginLeft: "auto",
+              marginRight: "auto",
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              zindex: 9,
+              width: width,
+              height: height,
+            }}
+          />{" "}
+          <canvas
+            ref={canvasRef}
+            className="output_canvas"
+            style={{
+              position: "absolute",
+              marginLeft: "auto",
+              marginRight: "auto",
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              zindex: 9,
+              width: width,
+              height: height,
+            }}
+          ></canvas>
+        </div>
 
-      <div className = "camera_settings"
-        style={{
-          textAlign: "center",
-          zindex: 8,
-        }}>
-        {/* {playing ? (<button onClick={stopVideo}>Stop</button>) : (
-          <button onClick={startVideo}>Start</button>)} */}
-          <button onClick={startVideo}>Start</button>
-          <button onClick={stopVideo}>Stop</button>
-      </div>
+        <div className = "camera_settings"
+          style={{
+            textAlign: "center",
+            zindex: 8,
+          }}>
+          {/* {playing ? (<button onClick={stopVideo}>Stop</button>) : (
+            <button onClick={startVideo}>Start</button>)} */}
+            <button onClick={startVideo}>Start</button>
+            <button onClick={stopVideo}>Stop</button>
+        </div>
 
       {/* <div className = "comments">
         <text
         ref={textRef}>
         </text>
       </div> */}
+      </Container>
     </center>
   )
 };
