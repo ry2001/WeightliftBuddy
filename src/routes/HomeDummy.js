@@ -68,6 +68,7 @@ function Home() {
 
 
   return (
+    <>
       <Container className={styles.homeContainer}>
         <Container className={styles.homeTopButtonsContainer}>
           <Center>
@@ -130,7 +131,7 @@ function Home() {
         <Container className={styles.homeRecentContainer}>
           <Title className={styles.homeTitles}>Recent Activity</Title>
 
-          {/* <Link to="/reviewdummy" className={styles.RestyleLink}>
+          <Link to="/reviewdummy" className={styles.RestyleLink}>
           <Container className={styles.homeRecentIndivContainer}>
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
@@ -167,7 +168,7 @@ function Home() {
                   <Image radius="sm" className={styles.homeRecentImage} src={thumbnailabby}/>
                 </Grid.Col>
               </Grid>
-            </Container></Link> */}
+            </Container></Link>
 
 
 
@@ -217,6 +218,7 @@ function Home() {
         </Container >
 
       </Container>
+    </>
   ); }
 
   export default Home;

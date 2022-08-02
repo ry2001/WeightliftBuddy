@@ -16,8 +16,9 @@ import ReviewandSave from "./routes/ReviewandSave";
 import ReviewDummy from "./routes/ReviewDummy";
 import Navigation from "./Components/Navigation";
 import EditReview from "./routes/EditReview";
-import EditReviewDummy from "./routes/EditReviewDummy";
+import Camera from "./routes/Camera"
 import TopHeader from "./Components/TopHeader";
+import HomeDummy from "./routes/HomeDummy";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/history" element={<History/>} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/createactivity" element={<NewActivity />} />
+            <Route path="/camera" element={<Camera />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/about" element={<About />} />
@@ -43,7 +45,7 @@ function App() {
             <Route path="/reviewandsave" element={<ReviewandSave />} />
             <Route path="/reviewdummy" element={<ReviewDummy />} />
             <Route path="/editreview" element={<EditReview />} />
-            <Route path="/editreviewdummy" element={<EditReviewDummy/>} />
+            <Route path="/homedummy" element ={<HomeDummy/>}/>
           </Routes>
         </div>
       </>

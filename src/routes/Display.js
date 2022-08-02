@@ -18,11 +18,9 @@ function Display() {
     <>
       <div>
         <Container 
-          style={{marginTop:50}}
+          style={{marginTop:100}}
         >
-          <Center>
-              <Title order={1}>Display</Title>
-          </Center> 
+
         </Container>
 
         <Stack
