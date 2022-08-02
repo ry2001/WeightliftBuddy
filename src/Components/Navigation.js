@@ -3,9 +3,7 @@ import { Nav, NavItem} from 'reactstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faUserCircle, faGear, faClock, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import { SimpleGrid,Text, Center, Stack} from '@mantine/core';
-import { tab } from '@testing-library/user-event/dist/tab';
-
+import { SimpleGrid,Text, Center, Stack, Paper} from '@mantine/core';
 
 function Navigation() {
   const location = useLocation()
@@ -37,18 +35,49 @@ function Navigation() {
   }];
 
   const NavBar = () => {
-    const noBar = ['/login', '/register','/'];
+    const noBar = ['/login', '/register','/', '/reviewandsave', '/review', '/reviewdummy'];
     if (noBar.includes(location.pathname)){
       return ;
     };
 
-    const indicator = () =>{
+    const navIcon = ({tab}) => {
+      console.log(tab)
       if (location.pathname === tab.route){
-        console.log(location.pathname)
-        console.log(tab.route)
-        return "red";
+        return   (
+          <Stack
+          spacing="xs"
+          >
+            <Center>
+              <FontAwesomeIcon 
+              size="lg" 
+              icon={tab.icon}
+              color="red"
+              />
+            </Center>
+            <Center>
+              <Text
+              color="red"
+              >{tab.label}</Text>
+            </Center>
+          </Stack>
+        )
       }
-      return "blue";
+      return (
+        <Stack
+        spacing="xs"
+        >
+          <Center>
+            <FontAwesomeIcon 
+            size="lg" 
+            icon={tab.icon}
+            color="blue"
+            />
+          </Center>
+          <Center>
+            <Text>{tab.label}</Text>
+          </Center>
+        </Stack>
+      )
     }
 
     return (
@@ -60,20 +89,8 @@ function Navigation() {
                 tabs.map((tab, index) =>(
                   <NavItem key={`tab-${index}`}>
                     <NavLink to={tab.route} className="nav-link" activeClassName="active">
-                        <Stack
-                        spacing="xs"
-                        >
-                          <Center>
-                            <FontAwesomeIcon 
-                            size="lg" 
-                            icon={tab.icon}
-                            color={indicator}
-                            />
-                          </Center>
-                          <Center>
-                            <Text>{tab.label}</Text>
-                          </Center>
-                        </Stack>
+                      {navIcon({tab})}
+                        
                     </NavLink>
                   </NavItem>
                 ))
