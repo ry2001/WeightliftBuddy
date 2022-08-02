@@ -4,9 +4,93 @@ import { drawConnectors} from '@mediapipe/drawing_utils'
 import { Pose, POSE_CONNECTIONS } from '@mediapipe/pose'
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
+<<<<<<< HEAD
 import { Container } from "@mantine/core";
+=======
+import { Text, 
+  Button,
+  Center, 
+  Stack,
+  Modal,
+  Slider,
+  Switch, Container} from "@mantine/core";
+  import GraphicEqIcon from '@mui/icons-material/GraphicEq';
+>>>>>>> 608aeeb33e2dfc90614d2ee6a7faf800df162058
 
 function Camera() {
+  const[opened, setOpened] = useState(true);
+  const[volCheck, setVolCheck] = useState(true);
+
+  const VidModal = () => {
+    const Volume = () =>{
+      if (volCheck===true) {
+      return(
+        <Slider
+          marks={[
+            {value: 0, label: 'OFF'},
+            {value: 50, label: "50%"},
+            {value: 100, label: "100%"},
+          ]}
+        />
+        )
+      };
+
+      return (
+        <Slider
+          marks={[
+            {value: 0, label: 'OFF'},
+            {value: 50, label: "50%"},
+            {value: 100, label: "100%"},
+          ]}
+        disabled
+        />
+      )
+    };
+    
+    return(
+      <Modal
+        opened={opened}
+        withCloseButton={false}
+        title="Audio Settings"
+      >
+        <Stack
+          justify="center"
+          spacing="xl"
+          style={{marginBottom: 15}}
+        >
+          <Stack spacing="sm">
+            <Text size="sm">
+              Audio Cues
+            </Text>
+            <Switch
+              checked={volCheck}
+              onChange={() => setVolCheck(!volCheck)}
+              onLabel="ON"
+              offLabel="OFF"
+              size="md"
+            />
+          </Stack>
+          <Stack spacing="sm" >
+            <Text size="sm">
+              Volume
+            </Text>
+            <Volume/>
+            <Center>
+              <Button 
+                onClick={() => {
+                  setOpened(false);
+                  console.log('opening camera')
+                  }}
+                style={{marginTop: 30}}
+              >
+                Confirm
+              </Button>
+            </Center>
+          </Stack>
+        </Stack>
+      </Modal>
+    )
+  };
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -261,6 +345,7 @@ function Camera() {
 
   return(
     <center>
+      <VidModal/>
       <Container>
 
         <div className="Camera">
@@ -295,6 +380,13 @@ function Camera() {
             }}
           ></canvas>
         </div>
+        {/* <Button
+        onClick={() => setOpened(true)}
+        >
+          <GraphicEqIcon
+              size="lg"          
+          />
+        </Button> */}
 
         <div className = "camera_settings"
           style={{

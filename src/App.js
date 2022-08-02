@@ -16,11 +16,9 @@ import ReviewandSave from "./routes/ReviewandSave";
 import ReviewDummy from "./routes/ReviewDummy";
 import Navigation from "./Components/Navigation";
 import EditReview from "./routes/EditReview";
-import EditReviewDummy from "./routes/EditReviewDummy";
 import Camera from "./routes/Camera"
-
-//import TopHeader from "./Components/TopHeader";
 import TopHeader from "./Components/TopHeader";
+import HomeDummy from "./routes/HomeDummy";
 
 
 function App() {
@@ -47,7 +45,7 @@ function App() {
             <Route path="/reviewandsave" element={<ReviewandSave />} />
             <Route path="/reviewdummy" element={<ReviewDummy />} />
             <Route path="/editreview" element={<EditReview />} />
-            <Route path="/editreviewdummy" element={<EditReviewDummy/>} />
+            <Route path="/homedummy" element ={<HomeDummy/>}/>
           </Routes>
         </div>
       </>

@@ -36,11 +36,11 @@ function History() {
 
   return (
     <>
-      <Container>
-        <Container className={styles.HistoryContainer}>
-          <Title order={3}>This Week</Title>
+      <Container className={styles.HistoryContainer}>
+        <Container >
+          <Title order={3} className={styles.homeTitles}>This Week</Title>
 
-          <Container className={styles.homeRecentIndivContainer}>
+          {/* <Container className={styles.homeRecentIndivContainer}>
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
                   <Stack spacing={1} >
@@ -76,7 +76,7 @@ function History() {
                   <Image radius="sm" className={styles.homeRecentImage} src={thumbnailabby}/>
                 </Grid.Col>
               </Grid>
-            </Container>
+            </Container> */}
 
 
 
@@ -86,29 +86,29 @@ function History() {
                 <Grid>
                   <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
                     <Stack spacing={1} >
-                      <Title order={4}>
+                      <Title order={4} className={styles.homeRecentIndivStatTitle} >
                         {recentInfo.title}
                       </Title>
-                      <Title order={5}>
+                      <Title order={5} className={styles.homeRecentIndivSubTitle}>
                         {recentInfo.day} {recentInfo.date}
                       </Title>
                       <Grid>
                         <Grid.Col className={styles.homeRecentIndivStat} span={2}>
                           <Stack align="center" spacing={1}>
-                            <Title order={5}> {recentInfo.sets}</Title> 
-                            <Text size="xs"> SETS</Text> 
+                            <Title order={5} className={styles.homeRecentIndivStatText}> {recentInfo.sets}</Title> 
+                            <Text size="xs" className={styles.homeRecentIndivStatType}> SETS</Text> 
                           </Stack>
                         </Grid.Col>
                         <Grid.Col className={styles.homeRecentIndivStat} span={2} >
                           <Stack align="center" spacing={1}>
-                            <Title order={5}> {recentInfo.kcal}</Title>
-                            <Text size="xs"> KCAL</Text>
+                            <Title order={5}  className={styles.homeRecentIndivStatText}> {recentInfo.kcal}</Title>
+                            <Text size="xs" className={styles.homeRecentIndivStatType}> KCAL</Text>
                           </Stack>
                         </Grid.Col>
                         <Grid.Col className={styles.homeRecentIndivStat} span={2} >
                           <Stack  align="center" spacing={1}>
-                            <Title order={5}> {recentInfo.time}</Title>
-                            <Text size="xs"> TIME</Text>
+                            <Title order={5}  className={styles.homeRecentIndivStatText}> {recentInfo.time}</Title>
+                            <Text size="xs" className={styles.homeRecentIndivStatType}> TIME</Text>
                           </Stack>
                         </Grid.Col>
                       </Grid>
@@ -123,35 +123,35 @@ function History() {
         </Container>
 
         <Container className={styles.homeRecentContainer}>
-          <Title order={3}>Last Week</Title>
+          <Title order={3} className={styles.homeTitles}>Last Week</Title>
           {recent_dummy.recentInfo.map((recentInfo, index) => (
             <Container className={styles.homeRecentIndivContainer} key={index} >
               <Grid>
                 <Grid.Col className={styles.homeRecentInfoCol} span = {9}>
                   <Stack spacing={1} >
-                    <Title order={4}>
+                    <Title order={4} className={styles.homeRecentIndivStatTitle}>
                       {recentInfo.title}
                     </Title>
-                    <Title order={5}>
+                    <Title order={5} className={styles.homeRecentIndivSubTitle}>
                       {recentInfo.day} {recentInfo.date}
                     </Title>
                     <Grid>
                       <Grid.Col className={styles.homeRecentIndivStat} span={2} >
                         <Stack align="center" spacing={1}>
-                          <Title order={5}> {recentInfo.sets}</Title> 
-                          <Text size="xs"> SETS</Text> 
+                          <Title order={5} className={styles.homeRecentIndivStatText}> {recentInfo.sets}</Title> 
+                          <Text size="xs" className={styles.homeRecentIndivStatType}> SETS</Text> 
                         </Stack>
                       </Grid.Col>
                       <Grid.Col className={styles.homeRecentIndivStat} span={2} >
                         <Stack align="center" spacing={1}>
-                          <Title order={5}> {recentInfo.kcal}</Title> 
-                          <Text size="xs"> KCAL</Text>
+                          <Title order={5} className={styles.homeRecentIndivStatText}> {recentInfo.kcal}</Title> 
+                          <Text size="xs" className={styles.homeRecentIndivStatType}> KCAL</Text>
                         </Stack>
                       </Grid.Col>
                       <Grid.Col className={styles.homeRecentIndivStat} span={2} >
                         <Stack  align="center" spacing={1}>
-                          <Title order={5}> {recentInfo.time}</Title> 
-                          <Text size="xs"> TIME</Text>
+                          <Title order={5} className={styles.homeRecentIndivStatText}> {recentInfo.time}</Title> 
+                          <Text size="xs" className={styles.homeRecentIndivStatType}> TIME</Text>
                         </Stack>
                       </Grid.Col>
                     </Grid>
