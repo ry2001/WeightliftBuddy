@@ -26,6 +26,7 @@ function TopHeader() {
       "/reviewandsave": "Review and Save",
       "/editreview": "Edit",
       "/reviewdummy": "Review",
+      '/camera': "Camera",
       "/homedummy" : "Home",
   };
 

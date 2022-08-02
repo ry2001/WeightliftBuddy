@@ -36,7 +36,7 @@ function Navigation() {
   }];
 
   const NavBar = () => {
-    const noBar = ['/login', '/register','/', '/reviewandsave', '/review', "/editreview", '/reviewdummy'];
+    const noBar = ['/login', '/register','/', '/reviewandsave', '/review', "/editreview", '/reviewdummy','/camera'];
     if (noBar.includes(location.pathname)){
       return ;
     };
