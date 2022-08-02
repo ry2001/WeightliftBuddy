@@ -25,7 +25,8 @@ function TopHeader() {
       "/review": "Review",
       "/reviewandsave": "Review and Save",
       "/editreview": "Edit",
-      "/reviewdummy": "Review"
+      "/reviewdummy": "Review",
+      "/homedummy" : "Home",
   };
 
   ///reduce font size of new activity, review and save
@@ -70,10 +71,10 @@ function TopHeader() {
 
     const BackButton = () => {
       if (backArrow.includes(location.pathname)) {
-        if (location.pathname === '/review' | location.pathname === '/reviewdummy'){
+        if (location.pathname === '/review'){
           return(                             
             < ArrowBackIcon 
-            onClick={() => navigate('/home')} 
+            onClick={() => navigate('/homedummy')} 
             size='lg'
             style={{marginTop: 10}} 
             /> 
