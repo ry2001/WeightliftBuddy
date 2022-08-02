@@ -30,9 +30,9 @@ function Camera() {
 
   const toggleVideo = useCallback(
   () => {
-    if (playing == true) {
+    if (playing === true) {
       setPlaying(false)
-    } else{
+    } else {
       setPlaying(true)
     }; 
   }, [playing]
@@ -131,9 +131,10 @@ function Camera() {
     const canvasCtx = canvasElement.getContext("2d");
 
     // const grid = new LandmarkGrid(landmarkRef);
-    if (playing === false){
-      return
-    }
+
+    // if (playing === false) {
+    //   return
+    // }
 
     if (!results.poseLandmarks) {
       canvasCtx.save();
@@ -152,6 +153,9 @@ function Camera() {
         { color: '#FFFFFF', lineWidth: 2 });
 
       // console.log(results.poseLandmarks);
+      if ( playing === false) {
+        return
+      }
 
       const left_shoulder_x = results.poseLandmarks[11].x * width ;
       const left_shoulder_y = results.poseLandmarks[11].y * height; 
@@ -188,7 +192,7 @@ function Camera() {
       console.log('calculating');
       // Find the side
 
-      try{
+      try {
         if (results.poseLandmarks[23].visibility + results.poseLandmarks[11].visibility + results.poseLandmarks[25].visibility + results.poseLandmarks[27].visibility > 
           results.poseLandmarks[24].visibility + results.poseLandmarks[12].visibility + results.poseLandmarks[26].visibility + results.poseLandmarks[28].visibility){
 
@@ -210,7 +214,7 @@ function Camera() {
           console.log('calculated torso');
           const torsoAngle = findTorso(right_hip_x, right_hip_y, right_shoulder_x, right_shoulder_y);
 
-          console.log(kneeAngle, torsoAngle);
+          // console.log(kneeAngle, torsoAngle);
 
           if (kneeAngle && torsoAngle){
             determinePosture(kneeAngle, torsoAngle)
@@ -247,30 +251,41 @@ function Camera() {
         minDetectionConfidence: 0.5,
         minTrackingConfidence: 0.5
       });
+      console.log('playing CAMERA')
 
-      pose.onResults(onResults);
+      if (playing === true){
 
-      if (
-        typeof webcamRef.current !== "undefined" &&
-        webcamRef.current !== null
-        ) {
-          camera = new cam.Camera(webcamRef.current.video, {
-            onFrame: async () => {
-              await pose.send({ image: webcamRef.current.video });
-            },
-            width: width,
-            height: height,
-          });
+        pose.onResults(onResults);
 
-          console.log('playing')
+        if (
+          typeof webcamRef.current !== "undefined" &&
+          webcamRef.current !== null
+          ) {
+            camera = new cam.Camera(webcamRef.current.video, {
+              onFrame: async () => {
+                await pose.send({ image: webcamRef.current.video });
+              },
+              width: width,
+              height: height,
+            });
 
-          if (playing == true){
-            camera.start();
+            console.log('playing')
 
-          } else {
+            if (playing === true){
+              camera.start();
 
-            camera.stop()
-          }};
+            } else {
+
+              camera.stop()
+            }
+          };
+
+      } else {
+        camera = null
+        
+      };
+
+      
   }, 
   [playing]);
 
@@ -313,6 +328,7 @@ function Camera() {
 
         <div className = "camera_settings"
           style={{
+            position: 'absolute',
             textAlign: "center",
             zindex: 8,
           }}>
