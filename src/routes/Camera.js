@@ -4,22 +4,25 @@ import { drawConnectors} from '@mediapipe/drawing_utils'
 import { Pose, POSE_CONNECTIONS } from '@mediapipe/pose'
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
-<<<<<<< HEAD
-import { Container } from "@mantine/core";
-=======
 import { Text, 
   Button,
   Center, 
   Stack,
   Modal,
   Slider,
-  Switch, Container} from "@mantine/core";
+  Switch, Container, Group} from "@mantine/core";
   import GraphicEqIcon from '@mui/icons-material/GraphicEq';
->>>>>>> 608aeeb33e2dfc90614d2ee6a7faf800df162058
+  import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+  import StopCircleIcon from '@mui/icons-material/StopCircle';
+  import {useNavigate} from "react-router-dom";
 
 function Camera() {
-  const[opened, setOpened] = useState(true);
+const navigate = useNavigate();
+  ///---------------------ui stuff ------------------------
+  const[opened, setOpened] = useState(false);
   const[volCheck, setVolCheck] = useState(true);
+  const [error, setError] = useState("");
+
 
   const VidModal = () => {
     const Volume = () =>{
@@ -92,24 +95,23 @@ function Camera() {
     )
   };
 
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
 
-  const height =550;
-  const width = 350;
   const [playing, setPlaying] = useState(true);
 
 
-  const toggleVideo = useCallback(
-  () => {
+  const toggleVideo = () => {
     if (playing === true) {
       setPlaying(false)
     } else {
       setPlaying(true)
     }; 
-  }, [playing]
-  );
+  }
+///------------------ camera and ml stuff----------------------
+  const webcamRef = useRef(null);
+  const canvasRef = useRef(null);
 
+  const height =550;
+  const width = 350;
 
   function findTorso (x1, y1, x2, y2) {
 
@@ -151,40 +153,39 @@ function Camera() {
     // reinitialise canvas
     const canvasElement = canvasRef.current;
     const canvasCtx = canvasElement.getContext("2d");
-   
-    console.log(typeof(torsoAngle))
-
+  
     if (torsoAngle > 65 && kneeAngle < 170) {
-      canvasCtx.fillText("Please straighten your back and bend your knees", 10, 100)
+      // canvasCtx.fillText("Please straighten your back and bend your knees", 10, 100)
+      setError("Please straighten your back and bend your knees")
     };
     
     if (torsoAngle < 48 && kneeAngle > 90  && torsoAngle > 12) {
 
       const i = params[datapoints[Math.round(Number(torsoAngle/5))-3]];
-      console.log(datapoints[Math.round(torsoAngle/5)-3]) 
-      console.log(i)
-      console.log(typeof(i))
 
       if (kneeAngle > i[0] && kneeAngle < i[1]) {
-        canvasCtx.fillText("Good Posture", 10, 100)
+        // canvasCtx.fillTextsetError("Good Posture", 10, 100)
+        setError("Good Posture")
       };
       
       if (kneeAngle > i[1]) {
-        canvasCtx.fillText("Please straighten your knees", 10, 100)
+        // canvasCtx.fillText("Please straighten your knees", 10, 100)
+        setError("Please straighten your knees")
       };
     };
 
     if (torsoAngle < 15 ) {
-      canvasCtx.fillText("Please start your deadlift", 10, 100)
+      // canvasCtx.fillText("Please start your deadlift", 10, 100)
+      setError("Please start your deadlift")
     };
 
     if (torsoAngle > 47) {
-      canvasCtx.fillText("Please straighten your back", 10, 100)
+      // canvasCtx.fillText("Please straighten your back", 10, 100)
+      setError("Please straighten your back")
     };
 
   }
 
-  // const connect = window.drawConnectors;
   var camera = null
                              
   function onResults(results) {
@@ -199,9 +200,9 @@ function Camera() {
     const canvasElement = canvasRef.current;
     const canvasCtx = canvasElement.getContext("2d");
 
-
+    console.log(playing)
     if (playing === false) {
-      return
+      return;
     }
 
     if (!results.poseLandmarks) {
@@ -248,30 +249,29 @@ function Camera() {
 
       if (offset > 50) {
       
-        canvasCtx.fillText("Please place the camera to the side", 10, 430);
+        // canvasCtx.fillText("Please place the camera to the side", 10, 430);
+        setError("Please place the camera to the side");
         return
       }
       
-      canvasCtx.fillText("Aligned", 10, 430);
+      // canvasCtx.fillText("Aligned", 10, 430);
+      setError("Aligned")
 
       // Find the side
       try {
         if (results.poseLandmarks[23].visibility + results.poseLandmarks[11].visibility + results.poseLandmarks[25].visibility + results.poseLandmarks[27].visibility > 
           results.poseLandmarks[24].visibility + results.poseLandmarks[12].visibility + results.poseLandmarks[26].visibility + results.poseLandmarks[28].visibility){
 
-          console.log('left');
           // left side
           const kneeAngle = calculateAngle (left_hip_x, left_hip_y, left_knee_x, left_knee_y, left_ankle_x, left_ankle_y);
  
           const torsoAngle = findTorso(left_hip_x, left_hip_y, left_shoulder_x, left_shoulder_y);
-          console.log(kneeAngle, torsoAngle);
           // determine posture
           if (kneeAngle && torsoAngle){
             determinePosture(kneeAngle, torsoAngle)
           };
 
         } else {
-          console.log('right');
 
           const kneeAngle = calculateAngle(right_hip_x, right_hip_y, right_knee_x, right_knee_y,right_ankle_x, right_ankle_y);
     
@@ -307,7 +307,7 @@ function Camera() {
         minDetectionConfidence: 0.5,
         minTrackingConfidence: 0.5
       });
-      console.log('playing CAMERA')
+      console.log(playing)
 
       if (playing === true){
 
@@ -325,7 +325,6 @@ function Camera() {
               height: height,
             });
 
-            console.log('playing')
 
             if (playing === true){
               camera.start();
@@ -343,68 +342,102 @@ function Camera() {
   }, 
   [playing]);
 
+  const Toggle = () => {
+    if (playing === false){
+    return (
+      <Group
+      position="center"
+      spacing="md"
+      >
+      <Button
+      onClick={() => toggleVideo()}
+      variant="subtle"
+      style={{width: 120, height: 100}}
+      >
+        <PlayCircleFilledIcon style={{color: 'green', fontSize: 75}}/>
+      </Button>
+
+      <Button
+      onClick={() => navigate('/reviewandsave')}
+      >
+        NEXT
+      </Button>
+      </Group>
+    )
+  } else {
+    return (
+      <Button
+      onClick={() => toggleVideo()}
+      variant="subtle"
+      style={{width: 120, height: 100}}
+      >
+      <StopCircleIcon style={{color: 'red', fontSize: 75}}/>
+      </Button>
+    )
+  }
+  }
+
   return(
-    <center>
+    <div>
       <VidModal/>
-      <Container>
-
-        <div className="Camera">
-          <Webcam
-            ref={webcamRef}
-            style={{
-              position: "absolute",
-              marginLeft: "auto",
-              marginRight: "auto",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zindex: 9,
-              width: width,
-              height: height,
-            }}
-          />{" "}
-
-          <canvas
-            ref={canvasRef}
-            className="output_canvas"
-            style={{
-              position: "absolute",
-              marginLeft: "auto",
-              marginRight: "auto",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zindex: 9,
-              width: width,
-              height: height,
-            }}
-          ></canvas>
-        </div>
-        {/* <Button
-        onClick={() => setOpened(true)}
+      <Stack
+      spacing={0}
+      >
+        <Group
+        position='right'
+        style={{marginTop: 5, marginRight: 5}}
         >
-          <GraphicEqIcon
-              size="lg"          
-          />
-        </Button> */}
-
-        <div className = "camera_settings"
-          style={{
-            position: 'absolute',
-            textAlign: "center",
-            zindex: 8,
-          }}>
-
-          <button
-            onClick={toggleVideo}
+          <Button
+          onClick={() => setOpened(true)}
+          size="md"
+          variant="subtle"
           >
-          {playing ? 'Stop' : 'Start'}
-      </button>
+            <GraphicEqIcon
+                size="lg"          
+            />
+          </Button>
+        </Group>
 
-        </div>
+        <Container
+        style={{height: 550, width: 350}}
+        >
+            <Webcam
+              ref={webcamRef}
+              style={{
+                position: "absolute",
+                marginLeft: "auto",
+                marginRight: "auto",
+                left: 0,
+                right: 0,
+                textAlign: "center",
+                zindex: 9,
+                width: width,
+                height: height,
+              }}
+            />{" "}
 
-      </Container>
-    </center>
+            <canvas
+              ref={canvasRef}
+              className="output_canvas"
+              style={{
+                position: "absolute",
+                marginLeft: "auto",
+                marginRight: "auto",
+                left: 0,
+                right: 0,
+                textAlign: "center",
+                zindex: 9,
+                width: width,
+                height: height,
+              }}
+            ></canvas>
+        </Container>
+        <Group
+        position="center">
+          <Toggle/>
+        </Group>
+      </Stack>
+    </div>
   )
 };
 
