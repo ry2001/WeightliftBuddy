@@ -70,7 +70,7 @@ function TopHeader() {
 
     const BackButton = () => {
       if (backArrow.includes(location.pathname)) {
-        if (title==='/review'){
+        if (location.pathname === '/review' | location.pathname === '/reviewdummy'){
           return(                             
             < ArrowBackIcon 
             onClick={() => navigate('/home')} 
