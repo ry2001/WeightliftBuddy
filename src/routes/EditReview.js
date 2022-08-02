@@ -6,6 +6,10 @@ import { useLayoutEffect } from "react";
 import { useNavigate} from "react-router-dom";
 import PieChart from "../Components/PieChart";
 import thumbnailabby from '../Components/thumbnailabby.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -201,8 +205,21 @@ function EditReview() {
           })}
           <Divider my="sm" />
           <Center>
-            <Button onClick={handleAddClick} variant ="subtle"> + </Button>
-            <Button onClick={handleRemoveClick} variant ="subtle"> - </Button>
+          <FontAwesomeIcon  
+              size="2x" 
+              icon={faPlusCircle}
+              color='orange'
+              onClick={handleAddClick}
+              className={styles.EditSetsButtons}
+            />
+            <FontAwesomeIcon  
+              size="2x" 
+              color='orange'
+              icon={faMinusCircle}
+              onClick={handleRemoveClick}
+              className={styles.EditSetsButtons}
+            />
+
           </Center>
         </Container>
 
@@ -230,6 +247,7 @@ function EditReview() {
           </List>
           <Divider my="sm" />
           <Button 
+          color = "orange"
             className={styles.ReviewSaveSaveButton} 
             onClick={passtoEditedReviewDummy}
           >
