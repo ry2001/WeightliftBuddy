@@ -25,7 +25,8 @@ function TopHeader() {
       "/review": "Review",
       "/reviewandsave": "Review and Save",
       "/editreview": "Edit",
-      "/reviewdummy": "Review"
+      "/reviewdummy": "Review",
+      '/camera': "Camera"
   };
 
   ///reduce font size of new activity, review and save
