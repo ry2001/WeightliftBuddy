@@ -18,6 +18,7 @@ import Navigation from "./Components/Navigation";
 import EditReview from "./routes/EditReview";
 import Camera from "./routes/Camera"
 import TopHeader from "./Components/TopHeader";
+import HomeDummy from "./routes/HomeDummy";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/reviewandsave" element={<ReviewandSave />} />
             <Route path="/reviewdummy" element={<ReviewDummy />} />
             <Route path="/editreview" element={<EditReview />} />
+            <Route path="/homedummy" element ={<HomeDummy/>}/>
           </Routes>
         </div>
       </>

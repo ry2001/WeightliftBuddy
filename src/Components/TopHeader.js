@@ -26,7 +26,8 @@ function TopHeader() {
       "/reviewandsave": "Review and Save",
       "/editreview": "Edit",
       "/reviewdummy": "Review",
-      '/camera': "Camera"
+      '/camera': "Camera",
+      "/homedummy" : "Home",
   };
 
   ///reduce font size of new activity, review and save
@@ -34,7 +35,7 @@ function TopHeader() {
 
     //put the paths where you need these buttons here
     const backArrow = ['/register', '/reviewdummy','/review', '/display', '/help', '/about']
-    const editButton = ['/review', '/reviewdummy']
+    const editButton = ['/reviewdummy']
     const deleteButton = ['/reviewandsave', '/editreview']
 
     const SpecialButtons = () => {
@@ -71,22 +72,22 @@ function TopHeader() {
 
     const BackButton = () => {
       if (backArrow.includes(location.pathname)) {
-        if (location.pathname === '/review' | location.pathname === '/reviewdummy'){
+        if (location.pathname === '/review'){
           return(                             
             < ArrowBackIcon 
-            onClick={() => navigate('/home')} 
+            onClick={() => navigate('/homedummy')} 
             size='lg'
             style={{marginTop: 10}} 
             /> 
           );
         };
-          return( 
-              < ArrowBackIcon 
-              onClick={() => navigate(-1)} 
-              size='lg'
-              style={{marginTop: 10}} 
-              /> 
-           );
+        return( 
+            < ArrowBackIcon 
+            onClick={() => navigate(-1)} 
+            size='lg'
+            style={{marginTop: 10}} 
+            /> 
+          );
       };
       return;
     };
