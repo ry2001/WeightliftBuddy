@@ -246,13 +246,15 @@ function EditReview() {
             <List.Item>Arms were bent</List.Item>
           </List>
           <Divider my="sm" />
+          <Center>
           <Button 
           color = "orange"
+          size="lg"
             className={styles.ReviewSaveSaveButton} 
             onClick={passtoEditedReviewDummy}
           >
             Save
-          </Button>
+          </Button></Center>
         </Container>
       </Container>
     </>

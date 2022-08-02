@@ -196,13 +196,15 @@ function ReviewandSave() {
             <List.Item className={styles.ReviewInfoType} >Arms were bent</List.Item>
           </List>
           <Divider my="sm" />
+          <Center>
           <Button 
           color = "orange"
             className={styles.ReviewSaveSaveButton} 
             onClick={passtoReview}
+            size="lg"
           >
             Save
-          </Button>
+          </Button></Center>
         </Container>
       </Container>
     </>
