@@ -10,7 +10,7 @@ import { Text,
   Stack,
   Modal,
   Slider,
-  Switch, Container, Group} from "@mantine/core";
+  Switch, Container, Group, Paper} from "@mantine/core";
   import GraphicEqIcon from '@mui/icons-material/GraphicEq';
   import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
   import StopCircleIcon from '@mui/icons-material/StopCircle';
@@ -102,8 +102,11 @@ const navigate = useNavigate();
   const toggleVideo = () => {
     if (playing === true) {
       setPlaying(false)
+      setError("Paused")
     } else {
       setPlaying(true)
+      setError("Resume")
+
     }; 
   }
 ///------------------ camera and ml stuff----------------------
@@ -200,7 +203,6 @@ const navigate = useNavigate();
     const canvasElement = canvasRef.current;
     const canvasCtx = canvasElement.getContext("2d");
 
-    console.log(playing)
     if (playing === false) {
       return;
     }
@@ -307,6 +309,7 @@ const navigate = useNavigate();
         minDetectionConfidence: 0.5,
         minTrackingConfidence: 0.5
       });
+
       console.log(playing)
 
       if (playing === true){
@@ -375,6 +378,29 @@ const navigate = useNavigate();
       </Button>
     )
   }
+  };
+
+  const Skeleton = () => {
+    if (playing === true) {
+    return (
+      <canvas
+      ref={canvasRef}
+      className="output_canvas"
+      style={{
+        position: "absolute",
+        marginLeft: "auto",
+        marginRight: "auto",
+        left: 0,
+        right: 0,
+        textAlign: "center",
+        zindex: 9,
+        width: width,
+        height: height,
+      }}
+    ></canvas>
+    )
+    }
+    return ;
   }
 
   return(
@@ -401,41 +427,34 @@ const navigate = useNavigate();
         <Container
         style={{height: 550, width: 350}}
         >
-            <Webcam
-              ref={webcamRef}
-              style={{
-                position: "absolute",
-                marginLeft: "auto",
-                marginRight: "auto",
-                left: 0,
-                right: 0,
-                textAlign: "center",
-                zindex: 9,
-                width: width,
-                height: height,
-              }}
-            />{" "}
-
-            <canvas
-              ref={canvasRef}
-              className="output_canvas"
-              style={{
-                position: "absolute",
-                marginLeft: "auto",
-                marginRight: "auto",
-                left: 0,
-                right: 0,
-                textAlign: "center",
-                zindex: 9,
-                width: width,
-                height: height,
-              }}
-            ></canvas>
+          <Webcam
+            ref={webcamRef}
+            style={{
+              position: "absolute",
+              marginLeft: "auto",
+              marginRight: "auto",
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              zindex: 9,
+              width: width,
+              height: height,
+            }}
+          />{" "}
+          <Skeleton/>
         </Container>
+        <Center>
+          <Paper shadow="xs" p="sm" withBorder style={{width: 300, height: 50}}>
+            <Text align="center">
+              {error}
+            </Text>
+          </Paper>
+        </Center>
         <Group
         position="center">
           <Toggle/>
         </Group>
+       
       </Stack>
     </div>
   )
