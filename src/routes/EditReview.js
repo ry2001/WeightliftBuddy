@@ -309,14 +309,15 @@ function EditReview() {
             defaultValue = "tired but happy with my progress! a lot of improvement on form too!!"
           />
 
-
+            <Center>
             <Button 
             className={styles.ReviewSaveSaveButton} 
             onClick={passtoEditedReviewDummy}
             color ='orange'
+            size = "lg"
           >
             Save
-          </Button>
+          </Button></Center>
         </Container>
 
 

@@ -261,13 +261,15 @@ function ReviewandSave() {
             placeholder= "Write a comment (optional)"
             onChange={e => handleTextInputChange(e)} 
           />
+          <Center>
             <Button 
             color="orange"
             className={styles.ReviewSaveSaveButton} 
             onClick={passtoReview}
+            size = "lg"
           >
             Save
-          </Button>
+          </Button></Center>
         </Container>
 
 
