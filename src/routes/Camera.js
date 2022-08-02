@@ -5,8 +5,7 @@ import { Pose, POSE_CONNECTIONS } from '@mediapipe/pose'
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 
-import {useWindowDimensions} from "./WindowSize.js"
-import { faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
+
 
 
 
@@ -14,33 +13,41 @@ function Camera() {
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const textRef = useRef(null);
+  // const textRef = useRef(null);
   // const landmarkRef = useRef(null);
   // const { height, width } = useWindowDimensions();
-  const height = 700
-  const width = 350
-  const [playing, setPlaying] = useState(false)
+  const height = 700;
+  const width = 350;
+  const [playing, setPlaying] = useState(false);
 
   function startVideo () {
     setPlaying(true);
-  };
+  }
   
   function stopVideo () {
     setPlaying(false);
-  };
+  }
+
+
+  function findTorso (x1, y1, x2, y2){
+    const theta = Math.acos((y2 - y1)*(-y1) /(Math.sqrt((x2 - x1)**2 + (y2 - y1)**2) * y1));
+    const degree = (180/Math.PI) * theta ;
+    return degree
+  }
 
   function calculateAngle (a, b, c) {
     const radians = Math.atan2(c[1]-b[1], c[0]-b[0]) - Math.atan2(a[1]-b[1], a[0]-b[0])
     const angle = Math.abs(radians*180.0/Math.PI)
     if (angle > 180.0){
-      angle = 360-angle
+      const degAngle = 360-angle
+      return degAngle
     }
 
     return angle
   }
 
   function calculateDistance(x1, y1, x2, y2) {
-    const dist = Math.SQRT2((x2-x1)**2+(y2-y1)**2)
+    const dist = Math.sqrt((x2-x1)**2+(y2-y1)**2)
     return dist
   }
 
@@ -51,11 +58,11 @@ function Camera() {
     // reinitialise canvas? is this neccessary?
     const canvasElement = canvasRef.current;
     const canvasCtx = canvasElement.getContext("2d");
-    const text = textRef.current;
+    // const text = textRef.current;
     // fillText(text, x, y [, maxWidth]) to draw on canvas
 
-    if (torsoAngle > 65) {
-      canvasCtx.fillText("Please straighten your back or knees", (10, 100))
+    if (torsoAngle > 65 && kneeAngle < 170) {
+      canvasCtx.fillText("Please straighten your back and bend your knees", (10, 100))
     };
     
     if (torsoAngle > 10 && kneeAngle > 90) {
@@ -66,7 +73,7 @@ function Camera() {
       };
       
       if (kneeAngle > i[1]) {
-        canvasCtx.fillText("Straighten knees", (10, 100))
+        canvasCtx.fillText("Please straighten your knees", (10, 100))
       };
     };
 
@@ -74,8 +81,8 @@ function Camera() {
       canvasCtx.fillText("Please start your deadlift", (10, 100))
     };
 
-    if (kneeAngle < 40) {
-      canvasCtx.fillText("Please straighten your back or knees", (10, 100))
+    if (torsoAngle > 65) {
+      canvasCtx.fillText("Please straighten your back", (10, 100))
     };
 
   }
@@ -96,7 +103,6 @@ function Camera() {
     const canvasCtx = canvasElement.getContext("2d");
 
     // const grid = new LandmarkGrid(landmarkRef);
-    var camera = null;
 
 
     if (!results.poseLandmarks) {
@@ -114,8 +120,7 @@ function Camera() {
       drawConnectors(canvasCtx,
         results.poseLandmarks, POSE_CONNECTIONS,
         { color: '#FFFFFF', lineWidth: 2 });
-      console.log(results.poseLandmarks)
-      const landmarks = results.poseLandmarks.landmark
+      console.log(results.poseLandmarks);
 
       const left_shoulder_x = results.poseLandmarks[11].x * width ;
       const left_shoulder_y = results.poseLandmarks[11].y * height; 
@@ -137,6 +142,49 @@ function Camera() {
       const left_ankle_y = results.poseLandmarks[27].y * height;
       const right_ankle_x = results.poseLandmarks[28].x * width;
       const right_ankle_y = results.poseLandmarks[28].y * height;
+      console.log('calculating');
+
+      // Alignment
+      const offset = calculateDistance(left_shoulder_x, left_shoulder_y, right_shoulder_x, right_shoulder_y);
+      console.log('calculated');
+
+      if (offset > 50) {
+        canvasCtx.fillText("Please place the camera to the side", 10, 100);
+        return
+      }
+      
+      canvasCtx.fillText("Aligned", 10, 100);
+
+      // Find the side
+      if (results.poseLandmarks[23].visibility + results.poseLandmarks[11].visibility + results.poseLandmarks[25].visibility + results.poseLandmarks[27].visibility > 
+        results.poseLandmarks[24].visibility + results.poseLandmarks[12].visibility + results.poseLandmarks[26].visibility + results.poseLandmarks[28].visibility){
+
+        console.log('left');
+        // left side
+        const kneeAngle = calculateAngle ((left_hip_x, left_hip_y), (left_knee_x, left_knee_y), (left_ankle_x, left_ankle_y))
+        const torsoAngle = findTorso((left_hip_x, left_hip_y), (left_shoulder_x, left_shoulder_y))
+        console.log(kneeAngle, torsoAngle)
+        // determine posture
+        if (kneeAngle && torsoAngle){
+          determinePosture(kneeAngle, torsoAngle)
+        };
+
+      } else {
+        console.log('right');
+
+        const kneeAngle = calculateAngle((right_hip_x, right_hip_y), (right_knee_x, right_knee_y),(right_ankle_x, right_ankle_y))
+        const torsoAngle = findTorso((right_hip_x, right_hip_y), (right_shoulder_x, right_shoulder_y))
+
+        console.log(kneeAngle, torsoAngle);
+
+        if (kneeAngle && torsoAngle){
+          determinePosture(kneeAngle, torsoAngle)
+        };
+
+      };
+
+
+
 
       // removed dots as it increased latency
       // // The dots are the landmarks 
@@ -231,11 +279,11 @@ function Camera() {
           <button onClick={stopVideo}>Stop</button>
       </div>
 
-      <div className = "comments">
+      {/* <div className = "comments">
         <text
         ref={textRef}>
         </text>
-      </div>
+      </div> */}
     </center>
   )
 };
