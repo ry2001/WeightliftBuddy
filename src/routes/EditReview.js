@@ -4,12 +4,7 @@ import { Container, Grid, Text, Stack, Title, Divider, Center, Image, NumberInpu
 import styles from './styles.module.css';
 import { useLayoutEffect } from "react";
 import { useNavigate} from "react-router-dom";
-import tempthumbnail from '../Components/tempthumbnail.jpg';
 import PieChart from "../Components/PieChart";
-import { AppShell, Header } from '@mantine/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Link } from "react-router-dom";
 import thumbnailabby from '../Components/thumbnailabby.jpg';
 
 
@@ -137,23 +132,6 @@ function EditReview() {
   return (
     <>
       <Container className={styles.ReviewSaveContainer}> 
-      <AppShell
-        header={
-        <Header fixed position={{ top: 0, left: 0, right:0}} 
-                className={styles.TopHeader} 
-        > 
-          <Grid>
-            <Grid.Col className={styles.SetReviewandSaveHeader} span={8}>
-              <Title>Edit Review</Title>
-            </Grid.Col>
-            <Grid.Col  className={styles.SetHeaderIcon} span={1}>
-              <Center>
-                <Link to="/home"><FontAwesomeIcon  size="lg" icon={faTrash}/></Link>
-              </Center>
-            </Grid.Col>
-          </Grid>
-        </Header>}>
-      </AppShell>
         <Container className={styles.ReviewSaveHeaderContainer}>
           <Stack spacing={1}> 
             <Grid>
