@@ -92,7 +92,6 @@ function TopHeader() {
     };
 
     return(
-    <div>
     <Header className={styles.TopHeader} >
       <Grid
       justify='space-around'
@@ -123,7 +122,6 @@ function TopHeader() {
 
     </Header>
     
-    </div>
 
 );
 
