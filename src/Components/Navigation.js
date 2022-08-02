@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faUserCircle, faGear, faClock, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { SimpleGrid,Text, Center, Stack, Paper} from '@mantine/core';
+import styles from './styles.module.css';
 
 function Navigation() {
   const location = useLocation()
@@ -40,43 +41,51 @@ function Navigation() {
       return ;
     };
 
-    const navIcon = ({tab}) => {
+    const navIcon = ({tab, index}) => {
       console.log(tab)
       if (location.pathname === tab.route){
         return   (
-          <Stack
-          spacing="xs"
-          >
-            <Center>
+          <NavItem key={`tab-${index}`} className={styles.backgroundCheck}>
+            <NavLink to={tab.route} className="nav-link" activeClassName="active">
+            <Stack 
+                spacing="xs">
+              <Center>
               <FontAwesomeIcon 
               size="lg" 
               icon={tab.icon}
-              color="red"
+              color="white"
               />
-            </Center>
-            <Center>
+              </Center>
+              <Center>
               <Text
-              color="red"
+              color="white"
               >{tab.label}</Text>
-            </Center>
-          </Stack>
+              </Center>
+            </Stack>
+          </NavLink>
+        </NavItem>
         )
       }
       return (
-        <Stack
-        spacing="xs"
-        >
+        <NavItem key={`tab-${index}`}>
+        <NavLink to={tab.route} className="nav-link" activeClassName="active">
+        <Stack 
+            spacing="xs">
           <Center>
-            <FontAwesomeIcon 
-            size="lg" 
-            icon={tab.icon}
-            color="blue"
-            />
+          <FontAwesomeIcon 
+          size="lg" 
+          icon={tab.icon}
+          color="orange"
+          />
           </Center>
           <Center>
-            <Text>{tab.label}</Text>
+          <Text
+          color="orange"
+          >{tab.label}</Text>
           </Center>
         </Stack>
+      </NavLink>
+    </NavItem>
       )
     }
 
@@ -89,7 +98,7 @@ function Navigation() {
                 tabs.map((tab, index) =>(
                   <NavItem key={`tab-${index}`}>
                     <NavLink to={tab.route} className="nav-link" activeClassName="active">
-                      {navIcon({tab})}
+                      {navIcon({tab, index})}
                         
                     </NavLink>
                   </NavItem>

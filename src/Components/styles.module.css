@@ -4,7 +4,9 @@
 }
 
 .backgroundCheck {
-    background-color: white;
+    background-color: rgb(255, 153, 70);
+    min-width: 4rem;
+    border-radius: 0.5rem;
 }
 
 .TopHeader {
