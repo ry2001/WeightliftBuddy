@@ -153,16 +153,17 @@
 
 
 .ReviewSaveCommentsContainer{
-    margin-top: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
 }
 
 .ReviewSavePostureContainer{
     margin-top: 2rem;
-    margin-bottom: 9rem;
 }
 
 .ReviewSaveSaveButton{
     float: right;
+    margin-top: 2rem;
 }
 
 .ReviewCommentTextbox{
@@ -262,3 +263,13 @@
     
 }
 
+.SetWeightBreadCrumb {
+    margin-left: 0.1rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.EditSetsButtons {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}

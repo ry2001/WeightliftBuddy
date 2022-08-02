@@ -61,7 +61,7 @@ function Profile() {
 
         <Container style={{marginTop:50}}>
           <Center>
-            <Button onClick={ logout }>Logout</Button>
+            <Button color='orange' onClick={ logout }>Logout</Button>
           </Center> 
         </Container>
       </div>

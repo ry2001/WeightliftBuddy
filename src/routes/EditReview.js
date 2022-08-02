@@ -1,11 +1,14 @@
 import React from "react"
 import { useState} from "react";
-import { Container, Grid, Text, Stack, Title, Divider, Center, Image, NumberInput, Button, Textarea, List } from "@mantine/core";
+import { Container, Grid, Text, Stack, Title, Divider, Center, Anchor, Image, NumberInput, Button, Textarea, List } from "@mantine/core";
 import styles from './styles.module.css';
 import { useLayoutEffect } from "react";
 import { useNavigate} from "react-router-dom";
 import PieChart from "../Components/PieChart";
 import thumbnailabby from '../Components/thumbnailabby.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -129,6 +132,54 @@ function EditReview() {
       console.log(inputList)
     };
 
+
+
+
+    const handleclick60 = index => {
+      console.log(index,"helloooo60")
+      console.log(inputList)
+      const list = [...inputList];
+      console.log(list, "list")
+      list[index]["weight"] = 60;
+      setInputList(list);
+      
+
+    };
+
+    const handleclick65 = index => {
+      const list = [...inputList];
+      list[index]["weight"] = 65;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+    const handleclick70 = index => {
+      const list = [...inputList];
+      list[index]["weight"] = 70;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo80")
+    };
+
+
+    const handleclick3 = index => {
+      const list = [...inputList];
+      list[index]["reps"] = 3;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+    const handleclick5 = index => {
+      const list = [...inputList];
+      list[index]["reps"] = 5;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+
   return (
     <>
       <Container className={styles.ReviewSaveContainer}> 
@@ -169,52 +220,6 @@ function EditReview() {
           </Grid>
         </Container>
 
-        <Container className={styles.ReviewSaveSetsContainer}>
-          <Title order={2}>Sets</Title>
-          <Divider my="sm" />
-          {inputList.map((x, i) => { return (
-            <Grid>
-              <Grid.Col span={2}>
-                <Title> {i+1}</Title>
-              </Grid.Col>
-              <Grid.Col span={10}>
-                <Stack spacing ={1}> 
-                  <NumberInput
-                    placeholder="KG"
-                    label="WEIGHT"
-                    required
-                    value={x.weight}
-                    onChange={e => handleWeightInputChange(e, i)}
-                    hideControls
-                  />
-                  <NumberInput
-                    placeholder="No. of Reps"
-                    label="REPS"
-                    required
-                    value={x.reps}
-                    onChange={e => handleRepsInputChange(e, i)}
-                    hideControls
-                  />
-                </Stack>
-              </Grid.Col>
-            </Grid> );
-          })}
-          <Divider my="sm" />
-          <Center>
-            <Button onClick={handleAddClick} variant ="subtle"> + </Button>
-            <Button onClick={handleRemoveClick} variant ="subtle"> - </Button>
-          </Center>
-        </Container>
-
-        <Container className={styles.ReviewSaveCommentsContainer}>
-          <Title order={2}>Comments</Title>
-          <Divider my="sm" />
-          <Textarea
-            placeholder= "Write a comment (optional)"
-            onChange={e => handleTextInputChange(e)} 
-            defaultValue = "tired but happy with my progress! a lot of improvement on form too!!"
-          />
-        </Container>
 
         <Container className={styles.ReviewSavePostureContainer}>
           <Title order={2}>Posture</Title>
@@ -229,14 +234,93 @@ function EditReview() {
             <List.Item>Arms were bent</List.Item>
           </List>
           <Divider my="sm" />
-          <Button 
+          </Container>
+
+
+
+        <Container className={styles.ReviewSaveSetsContainer}>
+          <Title order={2}>Sets</Title>
+          <Divider my="sm" />
+          {inputList.map((x, i) => { return (
+            <Grid>
+              <Grid.Col span={2}>
+                <Title> {i+1}</Title>
+              </Grid.Col>
+              <Grid.Col span={10}>
+                <Stack spacing ={1}> 
+                <Grid className={styles.SetWeightBreadCrumb}>
+                  <Grid.Col span ={1}><Center><Anchor onClick = { () => handleclick60(i)}>60</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick65(i)}>65</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick70(i)}>70</Anchor></Center></Grid.Col>
+                </Grid>
+                  <NumberInput
+                    placeholder="KG"
+                    label="WEIGHT"
+                    required
+                    value={x.weight}
+                    onChange={e => handleWeightInputChange(e, i)}
+                    hideControls
+                  />
+                  <Grid className={styles.SetWeightBreadCrumb}>
+                  <Grid.Col span ={1}><Center><Anchor onClick = { () => handleclick3(i)}>3</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick5(i)}>5</Anchor></Center></Grid.Col>
+                </Grid>
+                  <NumberInput
+                    placeholder="No. of Reps"
+                    label="REPS"
+                    required
+                    value={x.reps}
+                    onChange={e => handleRepsInputChange(e, i)}
+                    hideControls
+                  />
+                </Stack>
+              </Grid.Col>
+            </Grid> );
+          })}
+          <Divider my="sm" />
+          <Center>
+      <FontAwesomeIcon  
+              size="2x" 
+              icon={faPlusCircle}
+              color='orange'
+              onClick={handleAddClick}
+              className={styles.EditSetsButtons}
+            />
+            <FontAwesomeIcon  
+              size="2x" 
+              color='orange'
+              icon={faMinusCircle}
+              onClick={handleRemoveClick}
+              className={styles.EditSetsButtons}
+            />
+
+          </Center>
+        </Container>
+
+        <Container className={styles.ReviewSaveCommentsContainer}>
+          <Title order={2}>Comments</Title>
+          <Divider my="sm" />
+          <Textarea
+            placeholder= "Write a comment (optional)"
+            onChange={e => handleTextInputChange(e)} 
+            defaultValue = "tired but happy with my progress! a lot of improvement on form too!!"
+          />
+
+
+            <Button 
             className={styles.ReviewSaveSaveButton} 
             onClick={passtoEditedReviewDummy}
+            color ='orange'
           >
             Save
           </Button>
         </Container>
-      </Container>
+
+
+        </Container>
     </>
   ); }
 

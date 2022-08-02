@@ -65,6 +65,21 @@ function Review() {
           </Grid> 
         </Container>
 
+        <Container className={styles.ReviewSavePostureContainer}>
+          <Title className={styles.ReviewInfoText} order={2}>Posture</Title>
+          <Divider my="sm" />
+          <Text className={styles.ReviewInfoType} > Feedback from our AI</Text>
+          <Center>
+            <PieChart/>
+          </Center>
+          <Title className={styles.ReviewInfoText} order={3}> Issues: </Title>
+          <List>
+            <List.Item className={styles.ReviewInfoType} >Back was not straight</List.Item>
+            <List.Item className={styles.ReviewInfoType} >Arms were bent</List.Item>
+          </List>
+          <Divider my="sm" />
+        </Container>
+
         <Container className={styles.ReviewSaveSetsContainer}>
           <Title className={styles.ReviewInfoText} order={2}>Sets</Title>
           <Divider my="sm" />
@@ -111,20 +126,7 @@ function Review() {
           </Container>
         </Container>
 
-        <Container className={styles.ReviewSavePostureContainer}>
-          <Title className={styles.ReviewInfoText} order={2}>Posture</Title>
-          <Divider my="sm" />
-          <Text className={styles.ReviewInfoType} > Feedback from our AI</Text>
-          <Center>
-            <PieChart/>
-          </Center>
-          <Title className={styles.ReviewInfoText} order={3}> Issues: </Title>
-          <List>
-            <List.Item className={styles.ReviewInfoType} >Back was not straight</List.Item>
-            <List.Item className={styles.ReviewInfoType} >Arms were bent</List.Item>
-          </List>
-          <Divider my="sm" />
-        </Container>
+
       </Container>
     </>
   ); }
