@@ -1,4 +1,4 @@
-// import React, { useState } from 'react'
+
 import React, { useState, useEffect, useRef, useCallback } from "react"
 import { drawConnectors} from '@mediapipe/drawing_utils'
 import { Pose, POSE_CONNECTIONS } from '@mediapipe/pose'
@@ -10,23 +10,11 @@ function Camera() {
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  // const textRef = useRef(null);
-  // const landmarkRef = useRef(null);
-  // const { height, width } = useWindowDimensions();
+
   const height =550;
   const width = 350;
   const [playing, setPlaying] = useState(true);
-  // let playing = false
 
-  // const startVideo = event => {
-  //   setPlaying(true);
-  //   console.log(playing)
-  // };
-
-  // const stopVideo = event => {
-  //   setPlaying(false);
-  //   console.log(playing)
-  // };
 
   const toggleVideo = useCallback(
   () => {
@@ -40,19 +28,16 @@ function Camera() {
 
 
   function findTorso (x1, y1, x2, y2) {
-    // console.log('acos', (y2 - y1)*(-y1)/(Math.sqrt((x2 - x1)**2 + (y2 - y1)**2) * y1))
+
     const theta = Math.acos((y2 - y1)*(-y1) /(Math.sqrt((x2 - x1)**2 + (y2 - y1)**2) * y1));
-    // console.log('theta', theta)
     const degree = (180/Math.PI) * theta ;
-    // console.log('torso', degree)
     return degree
   }
 
   function calculateAngle (a1, a2, b1, b2, c1, c2) {
     const radians = Math.atan2((c2-b2), (c1-b1)) - Math.atan2(a2-b2, a1-b1)
-    // console.log('radians', radians)
     const angle = Math.abs(radians*180.0/Math.PI)
-    // console.log('angle', angle)
+
     if (angle > 180.0){
       const degAngle = 360-angle
       return degAngle
@@ -151,10 +136,6 @@ function Camera() {
         results.poseLandmarks, POSE_CONNECTIONS,
         { color: '#FFFFFF', lineWidth: 2 });
 
-      // console.log(results.poseLandmarks);
-      if ( playing === false) {
-        return
-      }
 
       const left_shoulder_x = results.poseLandmarks[11].x * width ;
       const left_shoulder_y = results.poseLandmarks[11].y * height; 
@@ -188,9 +169,8 @@ function Camera() {
       }
       
       canvasCtx.fillText("Aligned", 10, 430);
-      console.log('calculating');
-      // Find the side
 
+      // Find the side
       try {
         if (results.poseLandmarks[23].visibility + results.poseLandmarks[11].visibility + results.poseLandmarks[25].visibility + results.poseLandmarks[27].visibility > 
           results.poseLandmarks[24].visibility + results.poseLandmarks[12].visibility + results.poseLandmarks[26].visibility + results.poseLandmarks[28].visibility){
@@ -198,7 +178,7 @@ function Camera() {
           console.log('left');
           // left side
           const kneeAngle = calculateAngle (left_hip_x, left_hip_y, left_knee_x, left_knee_y, left_ankle_x, left_ankle_y);
-          console.log('calculated knee');
+ 
           const torsoAngle = findTorso(left_hip_x, left_hip_y, left_shoulder_x, left_shoulder_y);
           console.log(kneeAngle, torsoAngle);
           // determine posture
@@ -210,10 +190,9 @@ function Camera() {
           console.log('right');
 
           const kneeAngle = calculateAngle(right_hip_x, right_hip_y, right_knee_x, right_knee_y,right_ankle_x, right_ankle_y);
-          console.log('calculated torso');
+    
           const torsoAngle = findTorso(right_hip_x, right_hip_y, right_shoulder_x, right_shoulder_y);
 
-          // console.log(kneeAngle, torsoAngle);
 
           if (kneeAngle && torsoAngle){
             determinePosture(kneeAngle, torsoAngle)
@@ -224,12 +203,6 @@ function Camera() {
         console.error(error)
       };
 
-      // removed dots as it increased latency
-      // // The dots are the landmarks 
-      // drawLandmarks(canvasCtx, results.poseLandmarks,
-      //   { color: '#FFFFFF', lineWidth: 2, radius: 2 });
-      // drawLandmarks(canvasCtx, results.poseWorldLandmarks,
-      //   { color: '#FFFFFF', lineWidth: 2, radius: 2 });
       canvasCtx.restore();
     };
   }
@@ -329,10 +302,7 @@ function Camera() {
             textAlign: "center",
             zindex: 8,
           }}>
-          {/* {playing ? (<button onClick={stopVideo}>Stop</button>) : (
-            <button onClick={startVideo}>Start</button>)} */}
-            {/* <button onClick={startVideo}>Start</button>
-            <button onClick={stopVideo}>Stop</button> */}
+
           <button
             onClick={toggleVideo}
           >
@@ -349,56 +319,3 @@ function Camera() {
 export default Camera;
 
 
-
-
-// function Camera() {
-//   const [playing, setPlaying] = useState(false);
-
-// 	const HEIGHT = 500;
-// 	const WIDTH = 500;
-
-
-//   // start video
-//   const startVideo = () => {
-// 		setPlaying(true);
-// 		navigator.getUserMedia(
-// 			{
-// 				video: true,
-// 			},
-// 			(stream) => {
-// 				let video = document.getElementsByClassName('videoFeed')[0];
-// 				if (video) {
-// 					video.srcObject = stream;
-// 				}
-// 			},
-// 			(err) => console.error(err)
-// 		);
-// 	};
-//   // stop video
-// 	const stopVideo = () => {
-// 		setPlaying(false);
-// 		let video = document.getElementsByClassName('videoFeed')[0];
-// 		video.srcObject.getTracks()[0].stop();
-// 	};
-
-// 	return (
-// 		<div className="app">
-// 			<div className="app__container">
-// 				<video
-// 					height={HEIGHT}
-// 					width={WIDTH}
-// 					muted
-// 					autoPlay
-// 					className="videoFeed"
-// 				></video>
-// 			</div>
-// 			<div className="app__input">
-// 				{playing ? (
-// 					<button onClick={stopVideo}>Stop</button>    
-// 				) : (
-// 					<button onClick={startVideo}>Start</button>
-// 				)}
-// 			</div>
-// 		</div>
-// 	);
-// }
