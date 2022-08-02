@@ -68,7 +68,6 @@ function Home() {
 
 
   return (
-    <>
       <Container className={styles.homeContainer}>
         <Container className={styles.homeTopButtonsContainer}>
           <Center>
@@ -218,7 +217,6 @@ function Home() {
         </Container >
 
       </Container>
-    </>
   ); }
 
   export default Home;

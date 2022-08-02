@@ -93,7 +93,7 @@ function Navigation() {
       <div>
       <nav class="navbar fixed-bottom bg-light" role="navigation">
           <Nav>
-            <SimpleGrid cols={5}>
+            <SimpleGrid spacing = {1} cols={5}>
               {
                 tabs.map((tab, index) =>(
                   <NavItem key={`tab-${index}`}>

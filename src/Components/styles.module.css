@@ -33,3 +33,9 @@
 .PositionArrow {
     margin-left: 2rem;
 }
+
+.SetTab {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
