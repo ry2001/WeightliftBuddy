@@ -130,11 +130,10 @@ function Camera() {
     const canvasElement = canvasRef.current;
     const canvasCtx = canvasElement.getContext("2d");
 
-    // const grid = new LandmarkGrid(landmarkRef);
 
-    // if (playing === false) {
-    //   return
-    // }
+    if (playing === false) {
+      return
+    }
 
     if (!results.poseLandmarks) {
       canvasCtx.save();
@@ -275,7 +274,6 @@ function Camera() {
               camera.start();
 
             } else {
-
               camera.stop()
             }
           };
@@ -283,9 +281,8 @@ function Camera() {
       } else {
         camera = null
         
+        
       };
-
-      
   }, 
   [playing]);
 
