@@ -92,6 +92,21 @@ function TopHeader() {
       return;
     };
 
+    const Titles = () => {
+      if (location.pathname === "/reviewandsave"){
+        return(
+          <Title order={2}>
+            {title}
+          </Title>
+        )
+      }
+      return (
+        <Title>
+            {title}
+        </Title>
+      )
+    }
+
     return(
     <Header className={styles.TopHeader} >
       <Grid
@@ -105,13 +120,9 @@ function TopHeader() {
         </Grid.Col>
         
         <Grid.Col span={7}>
-          <Container>
           <Center>
-          <Title>
-            {title}
-          </Title>
+          <Titles/>
           </Center>
-          </Container>
         </Grid.Col>
         
 
