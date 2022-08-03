@@ -80,17 +80,17 @@ function ReviewandSave() {
 
     };
 
-    const handleclick65 = index => {
+    const handleclick55 = index => {
       const list = [...inputList];
-      list[index]["weight"] = 65;
+      list[index]["weight"] = 55;
       setInputList(list);
       console.log(inputList)
       console.log(index,"helloooo70")
     };
 
-    const handleclick70 = index => {
+    const handleclick50 = index => {
       const list = [...inputList];
-      list[index]["weight"] = 70;
+      list[index]["weight"] = 50;
       setInputList(list);
       console.log(inputList)
       console.log(index,"helloooo80")
@@ -204,11 +204,11 @@ function ReviewandSave() {
                 {weightoptions}
                 </Breadcrumbs> */}
                 <Grid className={styles.SetWeightBreadCrumb}>
-                  <Grid.Col span ={1}><Center><Anchor onClick = { () => handleclick60(i)}>60</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick = { () => handleclick50(i)}>50</Anchor></Center></Grid.Col>
                   <Grid.Col span ={1}>|</Grid.Col>
-                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick65(i)}>65</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick55(i)}>55</Anchor></Center></Grid.Col>
                   <Grid.Col span ={1}>|</Grid.Col>
-                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick70(i)}>70</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick60(i)}>60</Anchor></Center></Grid.Col>
                 </Grid>
                   <NumberInput
                     placeholder="KG"
