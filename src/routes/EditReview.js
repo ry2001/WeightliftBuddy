@@ -7,6 +7,7 @@ import { useNavigate} from "react-router-dom";
 import PieChart from "../Components/PieChart";
 import thumbnailabby from '../Components/thumbnailabby.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -282,6 +283,7 @@ function EditReview() {
           })}
           <Divider my="sm" />
           <Center>
+        
       <FontAwesomeIcon  
               size="2x" 
               icon={faPlusCircle}
@@ -309,18 +311,33 @@ function EditReview() {
             defaultValue = "tired but happy with my progress! a lot of improvement on form too!!"
           />
 
-            <Center>
-            <Button 
-            className={styles.ReviewSaveSaveButton} 
-            onClick={passtoEditedReviewDummy}
-            color ='orange'
-            size = "lg"
-          >
+        <Container className={styles.ReviewSavePostureContainer}>
+          <Title order={2}>Posture</Title>
+          <Divider my="sm" />
+          <Text> Feedback from our AI</Text>
+          <Center>
+            <PieChart/>
+          </Center>
+          <Title order={3}> Issues: </Title>
+          <List>
+            <List.Item>Back was not straight</List.Item>
+            <List.Item>Arms were bent</List.Item>
+          </List>
+          <Divider my="sm" />
+          <Center>
+          <Button 
+          color = "orange"
+          size="lg"
+          className={styles.ReviewSaveSaveButton} 
+            onClick={passtoEditedReviewDummy}>
+           
             Save
-          </Button></Center>
+          </Button>
+          </Center>
         </Container>
 
 
+        </Container>
         </Container>
     </>
   ); }

@@ -7,6 +7,7 @@ import thumbnailabby from '../Components/thumbnailabby.jpg';
 import PieChart from "../Components/PieChart";
 import { AppShell, Header } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
@@ -236,6 +237,8 @@ function ReviewandSave() {
           })}
           <Divider my="sm" />
           <Center>
+            
+    
           <FontAwesomeIcon  
               size="2x" 
               icon={faPlusCircle}
@@ -250,6 +253,7 @@ function ReviewandSave() {
               onClick={handleRemoveClick}
               className={styles.EditSetsButtons}
             />
+
             
           </Center>
         </Container>
@@ -261,12 +265,14 @@ function ReviewandSave() {
             placeholder= "Write a comment (optional)"
             onChange={e => handleTextInputChange(e)} 
           />
+          
+          <Divider my="sm" />
           <Center>
-            <Button 
-            color="orange"
+          <Button 
+          color = "orange"
             className={styles.ReviewSaveSaveButton} 
             onClick={passtoReview}
-            size = "lg"
+            size="lg"
           >
             Save
           </Button></Center>
