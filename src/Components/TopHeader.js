@@ -108,7 +108,7 @@ function TopHeader() {
     }
 
     return(
-    <Header className={styles.TopHeader} >
+    <Header fixed className={styles.TopHeader} >
       <Grid
       justify='space-around'
       align='center'
