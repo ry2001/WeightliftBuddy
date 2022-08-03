@@ -46,7 +46,7 @@ function Review() {
           <Grid className={styles.ReviewSaveInfoGrid} justify="center">
             <Grid.Col span={4} >
               <Stack align="center" spacing={1}>
-                <Title className={styles.ReviewInfoText} order={2}> 2 </Title> 
+                <Title className={styles.ReviewInfoText} order={2}> 5 </Title> 
                 <Text className={styles.ReviewInfoType}  size="xs"> SETS</Text> 
               </Stack>
             </Grid.Col>
