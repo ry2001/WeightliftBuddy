@@ -12,6 +12,7 @@
 
 .homeContainer {
     padding-top: 2rem;
+    margin-top: 4rem;
     padding-bottom: 2rem;
     background-color: white;
     /* background-color: rgb(248, 245, 255); */
@@ -77,6 +78,7 @@
 }
 
 .HistoryContainer{
+    margin-top: 4rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
     background-color: white;
@@ -134,6 +136,7 @@
 
 
 .ReviewSaveContainer {
+    margin-top: 4rem;
     padding-top: 0.1rem;
     padding-bottom: 1rem;
     background-color:white ;
@@ -186,6 +189,7 @@
 }
 
 .NewActivityContainer {
+    margin-top: 4rem;
     background-color: white;
     padding-top: 5rem ;
     padding-bottom: 12rem;
@@ -222,6 +226,7 @@
 }
 
 .SettingsContainer {
+    margin-top: 4rem;
     background-color:white;
     padding-top: 0.1rem;
     padding-bottom: 16rem;
