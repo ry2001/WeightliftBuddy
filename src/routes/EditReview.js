@@ -1,6 +1,6 @@
 import React from "react"
 import { useState} from "react";
-import { Container, Grid, Text, Stack, Title, Divider, Center, Image, NumberInput, Button, Textarea, List } from "@mantine/core";
+import { Container, Grid, Text, Stack, Title, Divider, Center, Anchor, Image, NumberInput, Button, Textarea, List } from "@mantine/core";
 import styles from './styles.module.css';
 import { useLayoutEffect } from "react";
 import { useNavigate} from "react-router-dom";
@@ -133,6 +133,54 @@ function EditReview() {
       console.log(inputList)
     };
 
+
+
+
+    const handleclick60 = index => {
+      console.log(index,"helloooo60")
+      console.log(inputList)
+      const list = [...inputList];
+      console.log(list, "list")
+      list[index]["weight"] = 60;
+      setInputList(list);
+      
+
+    };
+
+    const handleclick65 = index => {
+      const list = [...inputList];
+      list[index]["weight"] = 65;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+    const handleclick70 = index => {
+      const list = [...inputList];
+      list[index]["weight"] = 70;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo80")
+    };
+
+
+    const handleclick3 = index => {
+      const list = [...inputList];
+      list[index]["reps"] = 3;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+    const handleclick5 = index => {
+      const list = [...inputList];
+      list[index]["reps"] = 5;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+
   return (
     <>
       <Container className={styles.ReviewSaveContainer}> 
@@ -173,6 +221,24 @@ function EditReview() {
           </Grid>
         </Container>
 
+
+        <Container className={styles.ReviewSavePostureContainer}>
+          <Title order={2}>Posture</Title>
+          <Divider my="sm" />
+          <Text> Feedback from our AI</Text>
+          <Center>
+            <PieChart/>
+          </Center>
+          <Title order={3}> Issues: </Title>
+          <List>
+            <List.Item>Back was not straight</List.Item>
+            <List.Item>Arms were bent</List.Item>
+          </List>
+          <Divider my="sm" />
+          </Container>
+
+
+
         <Container className={styles.ReviewSaveSetsContainer}>
           <Title order={2}>Sets</Title>
           <Divider my="sm" />
@@ -183,6 +249,13 @@ function EditReview() {
               </Grid.Col>
               <Grid.Col span={10}>
                 <Stack spacing ={1}> 
+                <Grid className={styles.SetWeightBreadCrumb}>
+                  <Grid.Col span ={1}><Center><Anchor onClick = { () => handleclick60(i)}>60</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick65(i)}>65</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick70(i)}>70</Anchor></Center></Grid.Col>
+                </Grid>
                   <NumberInput
                     placeholder="KG"
                     label="WEIGHT"
@@ -191,6 +264,11 @@ function EditReview() {
                     onChange={e => handleWeightInputChange(e, i)}
                     hideControls
                   />
+                  <Grid className={styles.SetWeightBreadCrumb}>
+                  <Grid.Col span ={1}><Center><Anchor onClick = { () => handleclick3(i)}>3</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick5(i)}>5</Anchor></Center></Grid.Col>
+                </Grid>
                   <NumberInput
                     placeholder="No. of Reps"
                     label="REPS"
@@ -205,7 +283,8 @@ function EditReview() {
           })}
           <Divider my="sm" />
           <Center>
-          <FontAwesomeIcon  
+        
+      <FontAwesomeIcon  
               size="2x" 
               icon={faPlusCircle}
               color='orange'
@@ -231,7 +310,6 @@ function EditReview() {
             onChange={e => handleTextInputChange(e)} 
             defaultValue = "tired but happy with my progress! a lot of improvement on form too!!"
           />
-        </Container>
 
         <Container className={styles.ReviewSavePostureContainer}>
           <Title order={2}>Posture</Title>
@@ -250,13 +328,17 @@ function EditReview() {
           <Button 
           color = "orange"
           size="lg"
-            className={styles.ReviewSaveSaveButton} 
-            onClick={passtoEditedReviewDummy}
-          >
+          className={styles.ReviewSaveSaveButton} 
+            onClick={passtoEditedReviewDummy}>
+           
             Save
-          </Button></Center>
+          </Button>
+          </Center>
         </Container>
-      </Container>
+
+
+        </Container>
+        </Container>
     </>
   ); }
 

@@ -1,6 +1,6 @@
 import React from "react"
 import { useState} from "react";
-import { Container, Grid, Text, Stack, Title, Divider, Center, Image, NumberInput, Button, Textarea, List } from "@mantine/core";
+import { Container, Grid, Text, Stack, Title, Divider, Center, Image, NumberInput, Button, Textarea, List, Breadcrumbs, Anchor } from "@mantine/core";
 import styles from './styles.module.css';
 import { useNavigate} from "react-router-dom";
 import thumbnailabby from '../Components/thumbnailabby.jpg';
@@ -66,6 +66,55 @@ function ReviewandSave() {
       console.log(inputList)
     };
 
+
+  
+
+    const handleclick60 = index => {
+      console.log(index,"helloooo60")
+      console.log(inputList)
+      const list = [...inputList];
+      console.log(list, "list")
+      list[index]["weight"] = 60;
+      setInputList(list);
+      
+
+    };
+
+    const handleclick65 = index => {
+      const list = [...inputList];
+      list[index]["weight"] = 65;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+    const handleclick70 = index => {
+      const list = [...inputList];
+      list[index]["weight"] = 70;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo80")
+    };
+
+
+    const handleclick3 = index => {
+      const list = [...inputList];
+      list[index]["reps"] = 3;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+    const handleclick5 = index => {
+      const list = [...inputList];
+      list[index]["reps"] = 5;
+      setInputList(list);
+      console.log(inputList)
+      console.log(index,"helloooo70")
+    };
+
+ 
+
   return (
     <>
       <Container className={styles.ReviewSaveContainer}> 
@@ -123,6 +172,23 @@ function ReviewandSave() {
           </Grid>
         </Container>
 
+
+
+        <Container className={styles.ReviewSavePostureContainer}>
+          <Title className={styles.ReviewInfoText} order={2}>Posture</Title>
+          <Divider my="sm" />
+          <Text className={styles.ReviewInfoType} > Feedback from our AI</Text>
+          <Center>
+            <PieChart/>
+          </Center>
+          <Title className={styles.ReviewInfoText} order={3}> Issues: </Title>
+          <List>
+            <List.Item className={styles.ReviewInfoType} >Back was not straight</List.Item>
+            <List.Item className={styles.ReviewInfoType} >Arms were bent</List.Item>
+          </List>
+          <Divider my="sm" />
+          </Container>
+
         <Container className={styles.ReviewSaveSetsContainer}>
           <Title className={styles.ReviewInfoText} order={2}>Sets</Title>
           <Divider my="sm" />
@@ -133,6 +199,17 @@ function ReviewandSave() {
               </Grid.Col>
               <Grid.Col span={10}>
                 <Stack spacing ={1}> 
+                {/* <Breadcrumbs 
+                 index={i}>
+                {weightoptions}
+                </Breadcrumbs> */}
+                <Grid className={styles.SetWeightBreadCrumb}>
+                  <Grid.Col span ={1}><Center><Anchor onClick = { () => handleclick60(i)}>60</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick65(i)}>65</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick70(i)}>70</Anchor></Center></Grid.Col>
+                </Grid>
                   <NumberInput
                     placeholder="KG"
                     label="WEIGHT"
@@ -141,6 +218,11 @@ function ReviewandSave() {
                     onChange={e => handleWeightInputChange(e, i)}
                     hideControls
                   />
+                  <Grid className={styles.SetWeightBreadCrumb}>
+                  <Grid.Col span ={1}><Center><Anchor onClick = { () => handleclick3(i)}>3</Anchor></Center></Grid.Col>
+                  <Grid.Col span ={1}>|</Grid.Col>
+                  <Grid.Col span ={1}><Center><Anchor onClick={ () => handleclick5(i)}>5</Anchor></Center></Grid.Col>
+                </Grid>
                   <NumberInput
                     placeholder="No. of Reps"
                     label="REPS"
@@ -156,7 +238,8 @@ function ReviewandSave() {
           <Divider my="sm" />
           <Center>
             
-            <FontAwesomeIcon  
+    
+          <FontAwesomeIcon  
               size="2x" 
               icon={faPlusCircle}
               color='orange'
@@ -171,6 +254,7 @@ function ReviewandSave() {
               className={styles.EditSetsButtons}
             />
 
+            
           </Center>
         </Container>
 
@@ -181,20 +265,7 @@ function ReviewandSave() {
             placeholder= "Write a comment (optional)"
             onChange={e => handleTextInputChange(e)} 
           />
-        </Container>
-
-        <Container className={styles.ReviewSavePostureContainer}>
-          <Title className={styles.ReviewInfoText} order={2}>Posture</Title>
-          <Divider my="sm" />
-          <Text className={styles.ReviewInfoType} > Feedback from our AI</Text>
-          <Center>
-            <PieChart/>
-          </Center>
-          <Title className={styles.ReviewInfoText} order={3}> Issues: </Title>
-          <List>
-            <List.Item className={styles.ReviewInfoType} >Back was not straight</List.Item>
-            <List.Item className={styles.ReviewInfoType} >Arms were bent</List.Item>
-          </List>
+          
           <Divider my="sm" />
           <Center>
           <Button 
@@ -206,7 +277,11 @@ function ReviewandSave() {
             Save
           </Button></Center>
         </Container>
-      </Container>
+
+
+        
+        </Container>
+
     </>
   ); }
 
