@@ -310,19 +310,6 @@ function EditReview() {
             onChange={e => handleTextInputChange(e)} 
             defaultValue = "tired but happy with my progress! a lot of improvement on form too!!"
           />
-
-        <Container className={styles.ReviewSavePostureContainer}>
-          <Title order={2}>Posture</Title>
-          <Divider my="sm" />
-          <Text> Feedback from our AI</Text>
-          <Center>
-            <PieChart/>
-          </Center>
-          <Title order={3}> Issues: </Title>
-          <List>
-            <List.Item>Back was not straight</List.Item>
-            <List.Item>Arms were bent</List.Item>
-          </List>
           <Divider my="sm" />
           <Center>
           <Button 
@@ -334,7 +321,9 @@ function EditReview() {
             Save
           </Button>
           </Center>
-        </Container>
+
+        
+     
 
 
         </Container>
