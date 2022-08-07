@@ -58,7 +58,7 @@ function Review() {
             </Grid.Col>
             <Grid.Col span={4} >
               <Stack  align="center" spacing={1}>
-                <Title className={styles.ReviewInfoText} order={2}> 67:20 </Title> 
+                <Title className={styles.ReviewInfoText} order={2}> 37:20 </Title> 
                 <Text className={styles.ReviewInfoType} size="xs"> TIME</Text>
               </Stack>
             </Grid.Col>

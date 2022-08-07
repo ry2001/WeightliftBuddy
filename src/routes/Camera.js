@@ -411,7 +411,7 @@ const navigate = useNavigate();
       >
         <Group
         position='right'
-        style={{marginTop: 5, marginRight: 5}}
+        style={{marginTop: 85, marginRight: 5}}
         >
           <Button
           onClick={() => setOpened(true)}
